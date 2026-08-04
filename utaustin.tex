@@ -1,0 +1,297 @@
+\section{University of Texas Austin Integration Bee}
+\subsection*{2025}
+
+\subsubsection*{Quarterfinals Match 1}
+\begin{questions}
+    \question
+    \[ \int_{1}^{2025} e^{\gcd(\lfloor x \rfloor, 6)} \, dx \]
+    \begin{solution}
+        Let $k = \lfloor x \rfloor$. As $x$ ranges from $1$ to $2025$, the integral evaluates the sum of the integrands over intervals of length $1$:
+        \[ \sum_{k=1}^{2024} e^{\gcd(k, 6)} \]
+        The function $\gcd(k, 6)$ is periodic with period $6$. For $k = 1, 2, 3, 4, 5, 6$, the values are $1, 2, 3, 2, 1, 6$ respectively.
+        The sum over one full period of $6$ is $e^1 + e^2 + e^3 + e^2 + e^1 + e^6 = 2e + 2e^2 + e^3 + e^6$.
+        Dividing the interval, we have $2024 = 6 \times 337 + 2$. 
+        This gives $337$ full periods plus the first two terms ($k=1$ and $k=2$):
+        \[ 337(2e + 2e^2 + e^3 + e^6) + (e^1 + e^2) \]
+        \[ 675e + 675e^2 + 337e^3 + 337e^6 \]
+    \end{solution}
+
+    \question
+    \[ \int_{\frac{2}{\pi}}^{\frac{\pi}{2}} \frac{\arctan x}{x} \, dx \]
+    \begin{solution}
+        Apply the substitution $x = \frac{1}{u}$, which gives $dx = -\frac{1}{u^2} \, du$. The bounds flip, and utilizing the identity $\arctan\left(\frac{1}{u}\right) = \frac{\pi}{2} - \arctan u$ for $u > 0$:
+        \[ I = \int_{\frac{2}{\pi}}^{\frac{\pi}{2}} \frac{\frac{\pi}{2} - \arctan u}{u} \, du = \int_{\frac{2}{\pi}}^{\frac{\pi}{2}} \frac{\pi}{2u} \, du - \int_{\frac{2}{\pi}}^{\frac{\pi}{2}} \frac{\arctan u}{u} \, du \]
+        \[ I = \frac{\pi}{2} \left[ \ln u \right]_{\frac{2}{\pi}}^{\frac{\pi}{2}} - I \]
+        \[ 2I = \frac{\pi}{2} \left( \ln\left(\frac{\pi}{2}\right) - \ln\left(\frac{2}{\pi}\right) \right) = \frac{\pi}{2} \ln\left(\frac{\pi^2}{4}\right) = \pi \ln\left(\frac{\pi}{2}\right) \]
+        \[ I = \frac{\pi}{2} \ln\left(\frac{\pi}{2}\right) \]
+    \end{solution}
+
+    \question
+    \[ \int \frac{\sqrt{1 - \sin x}}{2025 + \sin x} \, dx \]
+    \begin{solution}
+        Assuming we are in a region where $\cos x > 0$, multiply the numerator and denominator by $\sqrt{1 + \sin x}$:
+        \[ \int \frac{\sqrt{1 - \sin^2 x}}{\sqrt{1 + \sin x} (2025 + \sin x)} \, dx = \int \frac{\cos x}{\sqrt{1 + \sin x} (2025 + \sin x)} \, dx \]
+        Substitute $u = \sqrt{1 + \sin x}$. Then $u^2 = 1 + \sin x$, so $2u \, du = \cos x \, dx$, and $\sin x = u^2 - 1$.
+        \[ \int \frac{2u \, du}{u (2025 + u^2 - 1)} = \int \frac{2}{2024 + u^2} \, du \]
+        This is a standard arctangent integral:
+        \[ \frac{2}{\sqrt{2024}} \arctan\left(\frac{u}{\sqrt{2024}}\right) + C = \frac{1}{\sqrt{506}} \arctan\left(\frac{\sqrt{1 + \sin x}}{2\sqrt{506}}\right) + C \]
+    \end{solution}
+\end{questions}
+
+\subsubsection*{Quarterfinals Match 2}
+\begin{questions}
+    \question
+    \[ \int \frac{1}{\sqrt{1 - \csch^2(x)}} \, dx \]
+    \begin{solution}
+        Rewrite $\csch^2(x)$ as $\frac{1}{\sinh^2(x)}$. 
+        \[ \int \frac{1}{\sqrt{1 - \frac{1}{\sinh^2(x)}}} \, dx = \int \frac{\sinh x}{\sqrt{\sinh^2(x) - 1}} \, dx \]
+        Let $u = \cosh x$, so $du = \sinh x \, dx$. Using the identity $\sinh^2(x) = \cosh^2(x) - 1 = u^2 - 1$:
+        \[ \int \frac{1}{\sqrt{u^2 - 2}} \, du = \ln\left(u + \sqrt{u^2 - 2}\right) + C \]
+        \[ \ln\left(\cosh x + \sqrt{\cosh^2(x) - 2}\right) + C \]
+    \end{solution}
+
+    \question
+    \[ \int_{0}^{\frac{\pi}{2}} \ln(\sin(2x) \sec^2(x)) \, dx \]
+    \begin{solution}
+        Use the double angle identity $\sin(2x) = 2 \sin x \cos x$:
+        \[ \ln(\sin(2x) \sec^2(x)) = \ln(2 \sin x \cos x \sec^2 x) = \ln(2 \tan x) \]
+        Split the integral into two parts using logarithm rules:
+        \[ \int_{0}^{\frac{\pi}{2}} (\ln 2 + \ln(\tan x)) \, dx = \int_{0}^{\frac{\pi}{2}} \ln 2 \, dx + \int_{0}^{\frac{\pi}{2}} \ln(\tan x) \, dx \]
+        The integral of $\ln(\tan x)$ over $[0, \pi/2]$ evaluates to $0$ by symmetry (using $x = \pi/2 - u$). Thus, we are left with:
+        \[ \frac{\pi}{2} \ln 2 \]
+    \end{solution}
+
+    \question
+    \[ \int_{-\infty}^{\infty} e^{-x^2} e^{-x^{-2}} \, dx \]
+    \begin{solution}
+        Combine the exponents:
+        \[ \int_{-\infty}^{\infty} e^{-\left(x^2 + \frac{1}{x^2}\right)} \, dx = 2 \int_{0}^{\infty} e^{-\left(x^2 + \frac{1}{x^2}\right)} \, dx \]
+        Complete the square in the exponent: $x^2 + \frac{1}{x^2} = \left(x - \frac{1}{x}\right)^2 + 2$.
+        \[ 2 \int_{0}^{\infty} e^{-\left(x - \frac{1}{x}\right)^2 - 2} \, dx = 2e^{-2} \int_{0}^{\infty} e^{-\left(x - \frac{1}{x}\right)^2} \, dx \]
+        Using the substitution $u = x - \frac{1}{x}$ or Glasser's Master Theorem, the remaining integral is equivalent to the standard Gaussian integral $\int_{0}^{\infty} e^{-x^2} \, dx = \frac{\sqrt{\pi}}{2}$.
+        \[ 2e^{-2} \left( \frac{\sqrt{\pi}}{2} \right) = \sqrt{\pi} e^{-2} \]
+    \end{solution}
+\end{questions}
+
+\subsubsection*{Quarterfinals Match 3}
+\begin{questions}
+    \question
+    \[ \left\lfloor \int_{1}^{\infty} \min_{n \in \mathbb{Z}_{>0}} \left( \frac{n!}{\lfloor x \rfloor^n} \right) \, dx \right\rfloor \]
+    \begin{solution}
+        Let $k = \lfloor x \rfloor$. Over each interval $x \in [k, k+1)$, the integrand is constant and equal to $\min_{n \ge 1} \frac{n!}{k^n}$.
+        The ratio of consecutive terms is $\frac{(n+1)!/k^{n+1}}{n!/k^n} = \frac{n+1}{k}$. This is $\le 1$ for $n < k$ and $> 1$ for $n \ge k$, meaning the sequence reaches its minimum at $n = k$.
+        Thus, the minimum value for a given $k$ is $\frac{k!}{k^k}$. The integral becomes the infinite sum:
+        \[ \sum_{k=1}^{\infty} \frac{k!}{k^k} = 1 + \frac{2}{4} + \frac{6}{27} + \frac{24}{256} + \frac{120}{3125} + \dots = 1 + 0.5 + 0.222\dots + 0.09375 + 0.0384 + \dots \]
+        This sum converges to approximately $1.879$. Taking the floor of this value yields:
+        \[ 1 \]
+    \end{solution}
+
+    \question
+    \[ \int \frac{x}{1 + x + x^2 + x^3} \, dx \]
+    \begin{solution}
+        Factor the denominator by grouping: $1 + x + x^2 + x^3 = (1+x)(1+x^2)$. Apply partial fraction decomposition:
+        \[ \frac{x}{(1+x)(1+x^2)} = \frac{A}{1+x} + \frac{Bx+C}{1+x^2} \]
+        Solving yields $A = -1/2$, $B = 1/2$, and $C = 1/2$. The integral splits into:
+        \[ \int \left( \frac{-1/2}{1+x} + \frac{1/2 x}{1+x^2} + \frac{1/2}{1+x^2} \right) \, dx \]
+        \[ -\frac{1}{2}\ln|1+x| + \frac{1}{4}\ln(1+x^2) + \frac{1}{2}\arctan x + C \]
+    \end{solution}
+
+    \question
+    \[ \int_{\frac{1}{2\sqrt{2}}}^{1} \arccos(\sqrt[3]{x}) \, dx \]
+    \begin{solution}
+        Let $y = \arccos(\sqrt[3]{x})$. Then $\cos y = \sqrt[3]{x} \implies x = \cos^3 y$, and $dx = -3\cos^2 y \sin y \, dy$.
+        The limits change from $x = 1 \to y = 0$ to $x = \frac{1}{2\sqrt{2}} \to y = \frac{\pi}{4}$. 
+        \[ \int_{\frac{\pi}{4}}^{0} y (-3\cos^2 y \sin y) \, dy = 3 \int_{0}^{\frac{\pi}{4}} y \cos^2 y \sin y \, dy \]
+        Using integration by parts with $u = y$ and $dv = \cos^2 y \sin y \, dy$ (so $v = -\frac{1}{3}\cos^3 y$):
+        \[ 3 \left( \left[ -\frac{1}{3}y \cos^3 y \right]_{0}^{\frac{\pi}{4}} + \frac{1}{3} \int_{0}^{\frac{\pi}{4}} \cos^3 y \, dy \right) \]
+        \[ = -\frac{\pi}{4} \cos^3\left(\frac{\pi}{4}\right) + \int_{0}^{\frac{\pi}{4}} \cos^3 y \, dy \]
+        Since $\cos(\pi/4) = \frac{\sqrt{2}}{2}$, the first term is $-\frac{\pi\sqrt{2}}{16}$. 
+        For the remaining integral: $\int_{0}^{\pi/4} (1-\sin^2 y)\cos y \, dy = \left[ \sin y - \frac{\sin^3 y}{3} \right]_{0}^{\pi/4} = \frac{\sqrt{2}}{2} - \frac{\sqrt{2}}{12} = \frac{5\sqrt{2}}{12}$.
+        \[ \frac{5\sqrt{2}}{12} - \frac{\pi\sqrt{2}}{16} \]
+    \end{solution}
+\end{questions}
+
+\subsubsection*{Quarterfinals Match 4}
+\begin{questions}
+    \question
+    \[ \int \sec^2 x \ln(\sec^2 x) \, dx \]
+    \begin{solution}
+        Let $u = \tan x$, so $du = \sec^2 x \, dx$. Using $\sec^2 x = 1 + \tan^2 x = 1 + u^2$, the integral becomes:
+        \[ \int \ln(1 + u^2) \, du \]
+        Apply integration by parts with $w = \ln(1+u^2)$ and $dv = du$:
+        \[ u \ln(1+u^2) - \int \frac{2u^2}{1+u^2} \, du = u \ln(1+u^2) - 2\int \left(1 - \frac{1}{1+u^2}\right) \, du \]
+        \[ = u \ln(1+u^2) - 2u + 2\arctan u + C \]
+        Substitute $u = \tan x$ back:
+        \[ \tan x \ln(\sec^2 x) - 2\tan x + 2x + C \]
+    \end{solution}
+
+    \question
+    \[ \int \frac{e^x x^x \ln x}{(x^x)^2 + (e^x)^2} \, dx \]
+    \begin{solution}
+        Factor out $(e^x)^2$ in the denominator:
+        \[ \int \frac{e^x x^x \ln x}{e^{2x} \left( \left(\frac{x^x}{e^x}\right)^2 + 1 \right)} \, dx = \int \frac{\left(\frac{x}{e}\right)^x \ln x}{\left(\left(\frac{x}{e}\right)^x\right)^2 + 1} \, dx \]
+        Let $u = \left(\frac{x}{e}\right)^x$. Then $\ln u = x \ln x - x$. 
+        Taking the derivative implicitly, $\frac{1}{u} du = (\ln x + 1 - 1) dx = \ln x \, dx \implies du = \left(\frac{x}{e}\right)^x \ln x \, dx$.
+        The integral simplifies perfectly to:
+        \[ \int \frac{1}{u^2 + 1} \, du = \arctan(u) + C \]
+        \[ \arctan(x^x e^{-x}) + C \]
+    \end{solution}
+
+    \question
+    \[ \int \frac{x}{\sqrt{x + \sqrt{x + \sqrt{x + \dots}}}} \, dx \]
+    \begin{solution}
+        Let $y = \sqrt{x + \sqrt{x + \dots}}$. Squaring both sides yields $y^2 = x + y$, which means $x = y^2 - y$. 
+        Differentiating gives $dx = (2y - 1) \, dy$.
+        Substitute $x$, $y$, and $dx$ into the integral:
+        \[ \int \frac{y^2 - y}{y} (2y - 1) \, dy = \int (y - 1)(2y - 1) \, dy \]
+        \[ = \int (2y^2 - 3y + 1) \, dy \]
+        \[ = \frac{2}{3}y^3 - \frac{3}{2}y^2 + y + C \]
+        where $y = \frac{1 + \sqrt{1 + 4x}}{2}$.
+    \end{solution}
+\end{questions}
+
+\subsubsection*{Semifinals Match 1}
+\begin{questions}
+    \question
+    \[ \int_{0}^{\frac{\pi}{2}} \sum_{k=1}^{2025} \frac{1}{1 + \sqrt[k]{\frac{\tan x}{\sqrt[k]{\frac{\tan x}{\sqrt[k]{\dots}}}}}} \, dx \]
+    \begin{solution}
+        Let $y = \sqrt[k]{\frac{\tan x}{y}}$ represent the infinitely nested radical for a given $k$. Squaring to the $k$-th power yields:
+        \[ y^k = \frac{\tan x}{y} \implies y^{k+1} = \tan x \implies y = (\tan x)^{\frac{1}{k+1}} \]
+        Substituting this back, the integral becomes:
+        \[ \sum_{k=1}^{2025} \int_{0}^{\frac{\pi}{2}} \frac{1}{1 + (\tan x)^{\frac{1}{k+1}}} \, dx \]
+        By applying King's Property ($x \to \frac{\pi}{2} - x$), we know that $\tan\left(\frac{\pi}{2}-x\right) = \cot x = \frac{1}{\tan x}$. This transforms each integral $I_k$ into:
+        \[ I_k = \int_{0}^{\frac{\pi}{2}} \frac{1}{1 + (\cot x)^{\frac{1}{k+1}}} \, dx = \int_{0}^{\frac{\pi}{2}} \frac{(\tan x)^{\frac{1}{k+1}}}{1 + (\tan x)^{\frac{1}{k+1}}} \, dx \]
+        Adding the two representations of $I_k$ gives:
+        \[ 2I_k = \int_{0}^{\frac{\pi}{2}} \frac{1 + (\tan x)^{\frac{1}{k+1}}}{1 + (\tan x)^{\frac{1}{k+1}}} \, dx = \int_{0}^{\frac{\pi}{2}} 1 \, dx = \frac{\pi}{2} \implies I_k = \frac{\pi}{4} \]
+        Since there are $2025$ identical terms in the summation, the total value is:
+        \[ 2025 \times \frac{\pi}{4} = \frac{2025\pi}{4} \]
+    \end{solution}
+
+    \question
+    \[ \int \frac{\ln(x + 2025)}{\sqrt{x + 2025}} \, dx \]
+    \begin{solution}
+        Let $u = x + 2025$, meaning $du = dx$. The integral simplifies to:
+        \[ \int \frac{\ln u}{\sqrt{u}} \, du \]
+        Apply integration by parts with $w = \ln u$ and $dv = u^{-1/2} \, du$. This gives $dw = \frac{1}{u} \, du$ and $v = 2\sqrt{u}$:
+        \[ \int \frac{\ln u}{\sqrt{u}} \, du = 2\sqrt{u}\ln u - \int 2\sqrt{u} \cdot \frac{1}{u} \, du \]
+        \[ = 2\sqrt{u}\ln u - 2\int u^{-1/2} \, du = 2\sqrt{u}\ln u - 4\sqrt{u} + C \]
+        Substituting back $u = x + 2025$ yields the final answer:
+        \[ 2\sqrt{x + 2025}\ln(x + 2025) - 4\sqrt{x + 2025} + C \]
+    \end{solution}
+
+    \question
+    \[ \int \frac{1}{x^3 \sqrt{x^4 + 1}} \, dx \]
+    \begin{solution}
+        Factor out $x^4$ from inside the square root to rewrite the expression:
+        \[ \int \frac{1}{x^3 \cdot x^2 \sqrt{1 + x^{-4}}} \, dx = \int \frac{1}{x^5 \sqrt{1 + x^{-4}}} \, dx \]
+        Substitute $u = 1 + x^{-4}$, which gives $du = -4x^{-5} \, dx \implies \frac{1}{x^5} \, dx = -\frac{1}{4} \, du$.
+        Substituting these into the integral gives:
+        \[ -\frac{1}{4} \int \frac{1}{\sqrt{u}} \, du = -\frac{1}{4} \left(2\sqrt{u}\right) + C = -\frac{1}{2}\sqrt{1 + x^{-4}} + C \]
+        Converting back to the original common denominator format:
+        \[ -\frac{\sqrt{x^4 + 1}}{2x^2} + C \]
+    \end{solution}
+\end{questions}
+
+\subsubsection*{Semifinals Match 2}
+\begin{questions}
+    \question
+    \[ \int \frac{1}{\sin x \sqrt{\sin(2x)}} \, dx \]
+    \begin{solution}
+        Use the double-angle identity $\sin(2x) = 2\sin x \cos x$:
+        \[ \int \frac{1}{\sin x \sqrt{2\sin x \cos x}} \, dx = \int \frac{1}{\sqrt{2} \sin^{3/2} x \cos^{1/2} x} \, dx \]
+        Divide the numerator and denominator by $\cos^2 x$ to introduce tangent and secant functions:
+        \[ \int \frac{\sec^2 x}{\sqrt{2} \left(\frac{\sin x}{\cos x}\right)^{3/2}} \, dx = \frac{1}{\sqrt{2}} \int \frac{\sec^2 x}{\tan^{3/2} x} \, dx \]
+        Substitute $u = \tan x$, so $du = \sec^2 x \, dx$:
+        \[ \frac{1}{\sqrt{2}} \int u^{-3/2} \, du = \frac{1}{\sqrt{2}} \left( -2u^{-1/2} \right) + C = -\frac{\sqrt{2}}{\sqrt{\tan x}} + C = -\sqrt{2\cot x} + C \]
+    \end{solution}
+
+    \question
+    \[ \int_{1}^{\infty} \frac{x + \lfloor x \rfloor \{x\}}{x \lfloor x \rfloor^2} \, dx \]
+    \begin{solution}
+        Use the relation $\{x\} = x - \lfloor x \rfloor$ to expand the numerator:
+        \[ x + \lfloor x \rfloor (x - \lfloor x \rfloor) = x + x\lfloor x \rfloor - \lfloor x \rfloor^2 = x(1 + \lfloor x \rfloor) - \lfloor x \rfloor^2 \]
+        Split the integrand term by term:
+        \[ \frac{x(1 + \lfloor x \rfloor)}{x \lfloor x \rfloor^2} - \frac{\lfloor x \rfloor^2}{x \lfloor x \rfloor^2} = \frac{1 + \lfloor x \rfloor}{\lfloor x \rfloor^2} - \frac{1}{x} \]
+        We integrate this over each unit interval $[k, k+1)$ where $\lfloor x \rfloor = k$:
+        \[ \sum_{k=1}^{\infty} \int_{k}^{k+1} \left( \frac{1 + k}{k^2} - \frac{1}{x} \right) \, dx = \sum_{k=1}^{\infty} \left( \frac{1}{k^2} + \frac{1}{k} - \ln(k+1) + \ln k \right) \]
+        Looking at the partial sum up to $N$:
+        \[ \sum_{k=1}^{N} \frac{1}{k^2} + \left( \sum_{k=1}^{N} \frac{1}{k} - \ln(N+1) \right) \]
+        As $N \to \infty$, the first series converges to $\zeta(2) = \frac{\pi^2}{6}$, and the second grouped limit converges by definition to the Euler-Mascheroni constant $\gamma$. 
+        \[ \frac{\pi^2}{6} + \gamma \]
+    \end{solution}
+
+    \question
+    \[ \int \frac{\sqrt{6} - \sqrt{2} + (\sqrt{6} + \sqrt{2}) \tan x}{\sqrt{6} + \sqrt{2} - (\sqrt{6} - \sqrt{2}) \tan x} \, dx \]
+    \begin{solution}
+        Divide the entire numerator and denominator by $\sqrt{6} + \sqrt{2}$:
+        \[ \int \frac{\frac{\sqrt{6} - \sqrt{2}}{\sqrt{6} + \sqrt{2}} + \tan x}{1 - \frac{\sqrt{6} - \sqrt{2}}{\sqrt{6} + \sqrt{2}} \tan x} \, dx \]
+        Recognize that $\frac{\sqrt{6} - \sqrt{2}}{\sqrt{6} + \sqrt{2}} = 2 - \sqrt{3} = \tan(15^\circ) = \tan\left(\frac{\pi}{12}\right)$. Using the tangent addition identity $\tan(A+B) = \frac{\tan A + \tan B}{1 - \tan A \tan B}$, the integrand simplifies dramatically to:
+        \[ \int \tan\left(x + \frac{\pi}{12}\right) \, dx \]
+        Integrating this yields:
+        \[ \ln\left|\sec\left(x + \frac{\pi}{12}\right)\right| + C \quad \text{or} \quad -\ln\left|\cos\left(x + \frac{\pi}{12}\right)\right| + C \]
+    \end{solution}
+\end{questions}
+
+\subsubsection*{Grand Finals}
+\begin{questions}
+    \question
+    \[ \int_{0}^{\frac{\pi}{2}} \frac{\cos(x)\cos(2x)}{1 + \cos(x)} \, dx \]
+    \begin{solution}
+        Substitute $\cos(2x) = 2\cos^2 x - 1$. The integrand becomes $\frac{2\cos^3 x - \cos x}{1 + \cos x}$. Using algebraic long division with respect to $\cos x$:
+        \[ \frac{2\cos^3 x - \cos x}{1 + \cos x} = 2\cos^2 x - 2\cos x + 1 - \frac{1}{1 + \cos x} \]
+        Using the identity $2\cos^2 x = 1 + \cos(2x)$, rewrite the polynomial section:
+        \[ \int_{0}^{\frac{\pi}{2}} \left( 2 + \cos(2x) - 2\cos x \right) \, dx = \left[ 2x + \frac{1}{2}\sin(2x) - 2\sin x \right]_{0}^{\frac{\pi}{2}} = \pi - 2 \]
+        For the remaining fraction, substitute using the half-angle identity $1 + \cos x = 2\cos^2(x/2)$:
+        \[ \int_{0}^{\frac{\pi}{2}} \frac{1}{2\cos^2(x/2)} \, dx = \frac{1}{2} \int_{0}^{\frac{\pi}{2}} \sec^2(x/2) \, dx = \left[ \tan(x/2) \right]_{0}^{\frac{\pi}{2}} = 1 \]
+        Subtracting this result from the first part yields:
+        \[ (\pi - 2) - 1 = \pi - 3 \]
+    \end{solution}
+
+    \question
+    \[ \int_{0}^{\infty} \int_{0}^{\infty} \frac{e^{-x} e^{-y}}{x + y} \, dx dy \]
+    \begin{solution}
+        Use the integral identity $\frac{1}{x+y} = \int_{0}^{\infty} e^{-t(x+y)} \, dt$ to transform the expression:
+        \[ \int_{0}^{\infty} \int_{0}^{\infty} \int_{0}^{\infty} e^{-x} e^{-y} e^{-t(x+y)} \, dt dx dy = \int_{0}^{\infty} \left( \int_{0}^{\infty} e^{-x(1+t)} \, dx \right) \left( \int_{0}^{\infty} e^{-y(1+t)} \, dy \right) \, dt \]
+        Evaluating the inner single integrals with respect to $x$ and $y$:
+        \[ \int_{0}^{\infty} e^{-x(1+t)} \, dx = \frac{1}{1+t} \quad \text{and} \quad \int_{0}^{\infty} e^{-y(1+t)} \, dy = \frac{1}{1+t} \]
+        The final outer integral becomes:
+        \[ \int_{0}^{\infty} \frac{1}{(1+t)^2} \, dt = \left[ -\frac{1}{1+t} \right]_{0}^{\infty} = 0 - (-1) = 1 \]
+    \end{solution}
+
+    \question
+    \[ \int_{0}^{\frac{\pi}{2}} \ln(1 + 5\tan^2(x)) \, dx \]
+    \begin{solution}
+        Define a parametric function $I(a) = \int_{0}^{\frac{\pi}{2}} \ln(1 + a^2\tan^2 x) \, dx$, where we wish to find $I(\sqrt{5})$. Differentiating under the integral sign with respect to $a$:
+        \[ I'(a) = \int_{0}^{\frac{\pi}{2}} \frac{2a\tan^2 x}{1 + a^2\tan^2 x} \, dx \]
+        Substitute $u = \tan x$, so $dx = \frac{1}{1+u^2} \, du$:
+        \[ I'(a) = \int_{0}^{\infty} \frac{2a u^2}{(1 + a^2 u^2)(1 + u^2)} \, du \]
+        Applying partial fraction decomposition to the integrand yields:
+        \[ I'(a) = \frac{2a}{a^2 - 1} \int_{0}^{\infty} \left( \frac{1}{1+u^2} - \frac{1}{1+a^2u^2} \right) \, du = \frac{2a}{a^2 - 1} \left( \frac{\pi}{2} - \frac{\pi}{2a} \right) = \frac{\pi}{a+1} \]
+        Integrate $I'(a)$ from $0$ to $\sqrt{5}$ noting that $I(0) = 0$:
+        \[ I(\sqrt{5}) = \int_{0}^{\sqrt{5}} \frac{\pi}{a+1} \, da = \left[ \pi \ln(a+1) \right]_{0}^{\sqrt{5}} = \pi \ln(1 + \sqrt{5}) \]
+    \end{solution}
+
+    \question
+    \[ \int_{0}^{\frac{\pi}{2}} \frac{1}{\sqrt{1 + \cos x} + \sqrt{1 - \cos x}} \, dx \]
+    \begin{solution}
+        Simplify the terms in the denominator using half-angle identities $\sqrt{1+\cos x} = \sqrt{2}\cos(x/2)$ and $\sqrt{1-\cos x} = \sqrt{2}\sin(x/2)$ for $x \in [0, \pi/2]$:
+        \[ \int_{0}^{\frac{\pi}{2}} \frac{1}{\sqrt{2}\left(\cos(x/2) + \sin(x/2)\right)} \, dx \]
+        Substitute $\theta = x/2$, meaning $dx = 2 \, d\theta$, altering the boundaries to $0$ and $\pi/4$:
+        \[ \frac{2}{\sqrt{2}} \int_{0}^{\frac{\pi}{4}} \frac{1}{\sin\theta + \cos\theta} \, d\theta = \sqrt{2} \int_{0}^{\frac{\pi}{4}} \frac{1}{\sqrt{2}\cos\left(\theta - \frac{\pi}{4}\right)} \, d\theta = \int_{0}^{\frac{\pi}{4}} \sec\left(\theta - \frac{\pi}{4}\right) \, d\theta \]
+        Let $u = \theta - \frac{\pi}{4}$, transforming the limits to $-\frac{\pi}{4}$ and $0$:
+        \[ \int_{-\frac{\pi}{4}}^{0} \sec u \, du = \left[ \ln|\sec u + \tan u| \right]_{-\frac{\pi}{4}}^{0} = \ln|1+0| - \ln|\sqrt{2}-1| = \ln(\sqrt{2}+1) \]
+    \end{solution}
+
+    \question
+    \[ \int \frac{(\sinh x + \cosh x)((1 - e^{2x})^2 - e^{4x})}{\sqrt{1 - \sinh(2x) - \cosh(2x)}} \, dx \]
+    \begin{solution}
+        Substitute fundamental exponential definitions for hyperbolic functions: $\sinh x + \cosh x = e^x$ and $\sinh(2x) + \cosh(2x) = e^{2x}$. The expression becomes:
+        \[ \int \frac{e^x \left( (1 - 2e^{2x} + e^{4x}) - e^{4x} \right)}{\sqrt{1 - e^{2x}}} \, dx = \int \frac{e^x (1 - 2e^{2x})}{\sqrt{1 - e^{2x}}} \, dx \]
+        Perform the substitution $u = e^x$, so $du = e^x \, dx$:
+        \[ \int \frac{1 - 2u^2}{\sqrt{1 - u^2}} \, du = \int \frac{2(1 - u^2) - 1}{\sqrt{1 - u^2}} \, du = 2\int \sqrt{1-u^2} \, du - \int \frac{1}{\sqrt{1-u^2}} \, du \]
+        Using standard integral forms:
+        \[ 2 \left( \frac{u}{2}\sqrt{1-u^2} + \frac{1}{2}\arcsin u \right) - \arcsin u = u\sqrt{1-u^2} + C \]
+        Substituting back $u = e^x$ yields:
+        \[ e^x \sqrt{1 - e^{2x}} + C \]
+    \end{solution}
+\end{questions}

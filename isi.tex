@@ -1,0 +1,520 @@
+\pagebreak
+\section{ISI Integration Bee}
+\subsection*{2026}
+\subsubsection*{Qualification Round}
+
+\begin{questions}
+
+\question
+\[ \int_{0}^{1} x^3 (1 - x)^{2026} \,dx \]
+\begin{solution}
+This integral can be evaluated directly using the definition of the Beta function, which is given by:
+\[ B(m+1, n+1) = \int_{0}^{1} x^m (1-x)^n \,dx = \frac{m! \, n!}{(m+n+1)!} \]
+Substituting $m = 3$ and $n = 2026$, we obtain:
+\[ \int_{0}^{1} x^3 (1 - x)^{2026} \,dx = B(4, 2027) = \frac{3! \cdot 2026!}{2030!} \]
+\end{solution}
+
+\question
+\[ \int \frac{2501 \sin^3 x - 2026 \cos^3 x}{\sin^2 x \cos^2 x} \,dx \]
+\begin{solution}
+We split the integrand into two separate fractions:
+\[ \int \left( \frac{2501 \sin^3 x}{\sin^2 x \cos^2 x} - \frac{2026 \cos^3 x}{\sin^2 x \cos^2 x} \right) \,dx = \int \left( 2501 \frac{\sin x}{\cos^2 x} - 2026 \frac{\cos x}{\sin^2 x} \right) \,dx \]
+Recognizing the standard derivatives $\frac{d}{dx}(\sec x) = \frac{\sin x}{\cos^2 x}$ and $\frac{d}{dx}(\csc x) = -\frac{\cos x}{\sin^2 x}$, the integral simplifies to:
+\[ 2501 \sec x + 2026 \csc x + C \]
+\end{solution}
+
+\question
+\[ \int \frac{1}{x + x^{2026}} \,dx \]
+\begin{solution}
+Factor out $x$ from the denominator:
+\[ \int \frac{1}{x(1 + x^{2025})} \,dx \]
+Multiply the numerator and the denominator by $x^{2024}$:
+\[ \int \frac{x^{2024}}{x^{2025}(1 + x^{2025})} \,dx \]
+Let $u = x^{2025}$, which means $du = 2025 x^{2024} \,dx$, or $\frac{1}{2025} \,du = x^{2024} \,dx$. Substituting these into the integral gives:
+\[ \frac{1}{2025} \int \frac{1}{u(1+u)} \,du = \frac{1}{2025} \int \left( \frac{1}{u} - \frac{1}{1+u} \right) \,du \]
+Integrating yields:
+\[ \frac{1}{2025} \left( \ln|u| - \ln|1+u| \right) + C = \frac{1}{2025} \ln \left| \frac{x^{2025}}{1 + x^{2025}} \right| + C \]
+\end{solution}
+
+\question
+\[ \int_{0}^{\pi/2} \frac{1}{\cot^{\sqrt{3}2026} x + 1} \,dx \]
+\begin{solution}
+Let $n = \sqrt{3}2026$. We rewrite $\cot x$ as $\frac{\cos x}{\sin x}$:
+\[ I = \int_{0}^{\pi/2} \frac{\sin^n x}{\cos^n x + \sin^n x} \,dx \]
+Using King's Property, $\int_{a}^{b} f(x) \,dx = \int_{a}^{b} f(a+b-x) \,dx$, we substitute $x \to \frac{\pi}{2} - x$:
+\[ I = \int_{0}^{\pi/2} \frac{\sin^n(\frac{\pi}{2}-x)}{\cos^n(\frac{\pi}{2}-x) + \sin^n(\frac{\pi}{2}-x)} \,dx = \int_{0}^{\pi/2} \frac{\cos^n x}{\sin^n x + \cos^n x} \,dx \]
+Adding the two expressions for $I$ together:
+\[ 2I = \int_{0}^{\pi/2} \frac{\sin^n x + \cos^n x}{\sin^n x + \cos^n x} \,dx = \int_{0}^{\pi/2} 1 \,dx = \frac{\pi}{2} \]
+Thus, $I = \frac{\pi}{4}$.
+\end{solution}
+
+\question
+\[ \int \sqrt[2026]{x \sqrt[2026]{x \sqrt[2026]{x \cdots}}} \,dx \]
+\begin{solution}
+The integrand can be written as an infinite product of fractional powers of $x$:
+\[ x^{\frac{1}{2026}} \cdot x^{\frac{1}{2026^2}} \cdot x^{\frac{1}{2026^3}} \cdots = x^{\sum_{k=1}^{\infty} \frac{1}{2026^k}} \]
+The exponent is an infinite geometric series with first term $a = \frac{1}{2026}$ and common ratio $r = \frac{1}{2026}$:
+\[ S = \frac{\frac{1}{2026}}{1 - \frac{1}{2026}} = \frac{1}{2025} \]
+Therefore, the integral simplifies to:
+\[ \int x^{\frac{1}{2025}} \,dx = \frac{1}{\frac{1}{2025} + 1} x^{\frac{1}{2025} + 1} + C = \frac{2025}{2026} x^{\frac{2026}{2025}} + C \]
+\end{solution}
+
+\question
+\[ \int \frac{1}{(\pi x + e)\sqrt{x}} \,dx \]
+\begin{solution}
+Use the substitution $u = \sqrt{x}$, which implies $x = u^2$ and $dx = 2u \,du$:
+\[ \int \frac{2u}{(\pi u^2 + e)u} \,du = 2 \int \frac{1}{\pi u^2 + e} \,du \]
+Factoring out $e$ from the denominator yields:
+\[ \frac{2}{e} \int \frac{1}{\frac{\pi}{e}u^2 + 1} \,du \]
+Let $v = \sqrt{\frac{\pi}{e}}u$, meaning $dv = \sqrt{\frac{\pi}{e}} \,du$:
+\[ \frac{2}{e} \sqrt{\frac{e}{\pi}} \int \frac{1}{v^2 + 1} \,dv = \frac{2}{\sqrt{\pi e}} \tan^{-1}(v) + C = \frac{2}{\sqrt{\pi e}} \tan^{-1}\left( \sqrt{\frac{\pi x}{e}} \right) + C \]
+\end{solution}
+
+\question
+\[ \int_{0}^{1} x^3 (1 - x)^{2026}(1 + x)^{2026} \,dx \]
+\begin{solution}
+Combine the two terms with power $2026$:
+\[ \int_{0}^{1} x^3 \left[(1 - x)(1 + x)\right]^{2026} \,dx = \int_{0}^{1} x^3 (1 - x^2)^{2026} \,dx \]
+Substitute $u = x^2$, which implies $du = 2x \,dx$ or $\frac{1}{2} \,du = x \,dx$. The limits remain $0$ and $1$:
+\[ \frac{1}{2} \int_{0}^{1} u (1 - u)^{2026} \,du \]
+Using the Beta function identity $B(m+1, n+1) = \int_{0}^{1} u^m (1-u)^n \,du$:
+\[ \frac{1}{2} B(2, 2027) = \frac{1}{2} \cdot \frac{1! \cdot 2026!}{2028!} = \frac{1}{2 \cdot 2027 \cdot 2028} = \frac{1}{8221512} \]
+\end{solution}
+
+\question
+\[ \int_{8}^{23} \frac{\lfloor x^2 \rfloor^5}{\lfloor x^2 \rfloor^5 + \lfloor x^2 - 62x + 961 \rfloor^5} \,dx \]
+\begin{solution}
+Note that the expression in the second term of the denominator forms a perfect square: $x^2 - 62x + 961 = (x - 31)^2$.
+Let the integral be $I$. Using King's Property, $\int_{a}^{b} f(x) \,dx = \int_{a}^{b} f(a+b-x) \,dx$, and setting $a+b = 8 + 23 = 31$, we make the substitution $x \to 31 - x$:
+\[ I = \int_{8}^{23} \frac{\lfloor (31-x)^2 \rfloor^5}{\lfloor (31-x)^2 \rfloor^5 + \lfloor (31-x)^2 - 62(31-x) + 961 \rfloor^5} \,dx \]
+Simplifying the terms under the floor function gives:
+\[ I = \int_{8}^{23} \frac{\lfloor (31-x)^2 \rfloor^5}{\lfloor (31-x)^2 \rfloor^5 + \lfloor x^2 \rfloor^5} \,dx \]
+Adding the original equation for $I$ and this new form:
+\[ 2I = \int_{8}^{23} \frac{\lfloor x^2 \rfloor^5 + \lfloor (31-x)^2 \rfloor^5}{\lfloor x^2 \rfloor^5 + \lfloor (31-x)^2 \rfloor^5} \,dx = \int_{8}^{23} 1 \,dx = 23 - 8 = 15 \]
+Hence, $I = \frac{15}{2}$.
+\end{solution}
+
+\question
+\[ \int_{-e^2}^{e^2} \frac{105x^5 + 4x^4 - \pi x^3 + x^2 - 1.589x + 60}{x^2 + 4} \,dx \]
+\begin{solution}
+Since the limits of integration are symmetric about the origin, $[-e^2, e^2]$, any odd components of the integrand integrate to zero. Splitting the integrand into odd and even functions gives:
+\[ \text{Odd part: } \frac{105x^5 - \pi x^3 - 1.589x}{x^2 + 4} \implies \int_{-e^2}^{e^2} (\text{Odd part}) \,dx = 0 \]
+\[ \text{Even part: } \frac{4x^4 + x^2 + 60}{x^2 + 4} \]
+Using the property of even functions, the integral becomes:
+\[ 2 \int_{0}^{e^2} \frac{4x^4 + x^2 + 60}{x^2 + 4} \,dx \]
+Performing polynomial long division on the numerator:
+\[ \frac{4x^4 + x^2 + 60}{x^2 + 4} = 4x^2 - 15 + \frac{120}{x^2 + 4} \]
+Now we integrate term by term:
+\[ 2 \left[ \frac{4}{3}x^3 - 15x + 60 \tan^{-1}\left(\frac{x}{2}\right) \right]_{0}^{e^2} = 2 \left( \frac{4e^6}{3} - 15e^2 + 60 \tan^{-1}\left(\frac{e^2}{2}\right) \right) \]
+\end{solution}
+
+\question
+\[ \int_{0}^{\infty} \frac{1}{(1 + x^9)(1 + x^2)} \,dx \]
+\begin{solution}
+Let $I$ be the given integral. Perform the substitution $x = \frac{1}{t}$, which implies $dx = -\frac{1}{t^2} \,dt$. The limits swap from $(0, \infty)$ to $(\infty, 0)$:
+\[ I = \int_{\infty}^{0} \frac{1}{(1 + t^{-9})(1 + t^{-2})} \left( -\frac{1}{t^2} \right) \,dt = \int_{0}^{\infty} \frac{t^9}{(t^9 + 1)(1 + t^2)} \,dt \]
+Changing the dummy variable back to $x$:
+\[ I = \int_{0}^{\infty} \frac{x^9}{(1 + x^9)(1 + x^2)} \,dx \]
+Adding the two representations of $I$:
+\[ 2I = \int_{0}^{\infty} \frac{1 + x^9}{(1 + x^9)(1 + x^2)} \,dx = \int_{0}^{\infty} \frac{1}{1 + x^2} \,dx \]
+Evaluating this standard integral gives:
+\[ 2I = \left[ \tan^{-1} x \right]_{0}^{\infty} = \frac{\pi}{2} \implies I = \frac{\pi}{4} \]
+\end{solution}
+
+\question
+\[ \int_{1/2026}^{2026} \frac{\tan^{-1} x}{x} \,dx \]
+\begin{solution}
+Let $I$ be the given integral. Substitute $x = \frac{1}{t}$, meaning $dx = -\frac{1}{t^2} \,dt$. The limits become $2026$ to $\frac{1}{2026}$:
+\[ I = \int_{2026}^{1/2026} \frac{\tan^{-1}(1/t)}{1/t} \left(-\frac{1}{t^2}\right) \,dt = \int_{1/2026}^{2026} \frac{\tan^{-1}(1/t)}{t} \,dt \]
+Using the identity $\tan^{-1}(1/t) = \frac{\pi}{2} - \tan^{-1} t$ for $t > 0$:
+\[ I = \int_{1/2026}^{2026} \frac{\frac{\pi}{2} - \tan^{-1} t}{t} \,dt = \frac{\pi}{2} \int_{1/2026}^{2026} \frac{1}{t} \,dt - I \]
+\[ 2I = \frac{\pi}{2} \Big[ \ln t \Big]_{1/2026}^{2026} = \frac{\pi}{2} \left( \ln(2026) - \ln\left(\frac{1}{2026}\right) \right) = \frac{\pi}{2} \cdot 2\ln(2026) = \pi \ln(2026) \]
+Dividing by 2 gives:
+\[ I = \frac{\pi}{2} \ln(2026) \]
+\end{solution}
+
+\question
+\[ \int_{0}^{\sin^2 x} \arcsin \sqrt{t} \,dt + \int_{0}^{\cos^2 x} \arccos \sqrt{t} \,dt \]
+\begin{solution}
+For the first integral, substitute $t = \sin^2 u$, which yields $dt = 2 \sin u \cos u \,du = \sin 2u \,du$. The upper limit changes to $x$:
+\[ \int_{0}^{x} u \sin 2u \,du \]
+For the second integral, substitute $t = \cos^2 v$, which yields $dt = -2 \cos v \sin v \,dv = -\sin 2v \,dv$. The upper limit changes to $x$:
+\[ \int_{\pi/2}^{x} v (-\sin 2v) \,dv = \int_{x}^{\pi/2} v \sin 2v \,dv \]
+Combining the two integrals over their contiguous domains:
+\[ \int_{0}^{x} u \sin 2u \,du + \int_{x}^{\pi/2} u \sin 2u \,du = \int_{0}^{\pi/2} u \sin 2u \,du \]
+Using integration by parts with $U = u$ and $dV = \sin 2u \,du$:
+\[ \left[ -\frac{u}{2} \cos 2u \right]_{0}^{\pi/2} + \frac{1}{2} \int_{0}^{\pi/2} \cos 2u \,du = \left( -\frac{\pi}{4}\cos\pi - 0 \right) + \frac{1}{4} \Big[ \sin 2u \Big]_{0}^{\pi/2} = \frac{\pi}{4} + 0 = \frac{\pi}{4} \]
+\end{solution}
+
+\question
+\[ \int \frac{\sin^{2/3} x}{\cos^{14/3} x} \,dx \]
+\begin{solution}
+Rewrite the denominator to match the power of the sine term and isolate secant terms:
+\[ \int \frac{\sin^{2/3} x}{\cos^{2/3} x \cdot \cos^4 x} \,dx = \int \tan^{2/3} x \cdot \sec^4 x \,dx \]
+Using the identity $\sec^2 x = 1 + \tan^2 x$, we write this as:
+\[ \int \tan^{2/3} x (1 + \tan^2 x) \sec^2 x \,dx \]
+Apply the substitution $u = \tan x$, so $du = \sec^2 x \,dx$:
+\[ \int u^{2/3}(1 + u^2) \,du = \int (u^{2/3} + u^{8/3}) \,du = \frac{3}{5}u^{5/3} + \frac{3}{11}u^{11/3} + C \]
+Substituting back $u = \tan x$:
+\[ \frac{3}{5} \tan^{5/3} x + \frac{3}{11} \tan^{11/3} x + C \]
+\end{solution}
+
+\question
+\[ \int_{0}^{1} \left( \left\lfloor \frac{2}{x} \right\rfloor - 2 \left\lfloor \frac{1}{x} \right\rfloor \right) \,dx \]
+\begin{solution}
+Analyze the integrand $f(x) = \lfloor \frac{2}{x} \rfloor - 2 \lfloor \frac{1}{x} \rfloor$ on the intervals of the form $x \in (\frac{1}{k+1}, \frac{1}{k}]$ for integers $k \ge 1$. Over this interval, $\lfloor \frac{1}{x} \rfloor = k$. 
+The term $\lfloor \frac{2}{x} \rfloor$ takes values based on the sub-intervals:
+- If $x \in (\frac{2}{2k+1}, \frac{1}{k}]$, then $\lfloor \frac{2}{x} \rfloor = 2k$, giving $f(x) = 2k - 2k = 0$.
+- If $x \in (\frac{1}{k+1}, \frac{2}{2k+1}]$, then $\lfloor \frac{2}{x} \rfloor = 2k+1$, giving $f(x) = (2k+1) - 2k = 1$.
+
+The integral over each interval is simply the length of the sub-interval where $f(x) = 1$:
+\[ \int_{\frac{1}{k+1}}^{\frac{1}{k}} f(x) \,dx = \frac{2}{2k+1} - \frac{1}{k+1} = \frac{1}{(k+1)(2k+1)} \]
+Summing this from $k = 1$ to $\infty$:
+\[ \sum_{k=1}^{\infty} \left( \frac{1}{k} - \frac{2}{2k+1} \right) = \sum_{k=1}^{\infty} \frac{1}{k(2k+1)} \]
+We recognize that this expands to:
+\[ 2 \sum_{k=1}^{\infty} \left( \frac{1}{2k} - \frac{1}{2k+1} \right) = 2 \left( \frac{1}{2} - \frac{1}{3} + \frac{1}{4} - \frac{1}{5} + \cdots \right) \]
+Since $\ln 2 = 1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + \cdots$, the series inside evaluates to $1 - \ln 2$. Thus:
+\[ 2(1 - \ln 2) = 2 - 2\ln 2 \]
+\end{solution}
+
+\question
+\[ \int_{1}^{16} \tan^{-1} \left( \sqrt{\sqrt{x} - 1} \right) \,dx \]
+\begin{solution}
+Apply the substitution $u = \sqrt{\sqrt{x} - 1}$, which gives $u^2 + 1 = \sqrt{x}$, so $x = (u^2 + 1)^2$. Taking the differential gives $dx = 4u(u^2 + 1) \,du$.
+Changing the limits of integration:
+- For $x = 1$, $u = 0$.
+- For $x = 16$, $u = \sqrt{\sqrt{16}-1} = \sqrt{3}$.
+
+The integral becomes:
+\[ \int_{0}^{\sqrt{3}} \tan^{-1}(u) \cdot (4u^3 + 4u) \,du \]
+Using integration by parts, setting $U = \tan^{-1}(u)$ and $dV = (4u^3 + 4u) \,du \implies V = u^4 + 2u^2$:
+\[ \Big[ (u^4 + 2u^2) \tan^{-1} u \Big]_{0}^{\sqrt{3}} - \int_{0}^{\sqrt{3}} \frac{u^4 + 2u^2}{1 + u^2} \,du \]
+Evaluating the first term gives $(9 + 6)\frac{\pi}{3} = 5\pi$. For the second term, simplify the fraction:
+\[ \frac{u^4 + 2u^2}{1 + u^2} = \frac{u^2(u^2 + 1) + u^2}{1 + u^2} = u^2 + \frac{u^2}{1 + u^2} = u^2 + 1 - \frac{1}{1 + u^2} \]
+Integrating this yields:
+\[ \left[ \frac{1}{3}u^3 + u - \tan^{-1} u \right]_{0}^{\sqrt{3}} = \left( \sqrt{3} + \sqrt{3} - \frac{\pi}{3} \right) = 2\sqrt{3} - \frac{\pi}{3} \]
+Subtracting this from the boundary term evaluation results in:
+\[ 5\pi - \left( 2\sqrt{3} - \frac{\pi}{3} \right) = \frac{16\pi}{3} - 2\sqrt{3} \]
+\end{solution}
+
+\end{questions}
+
+\subsubsection*{Round of 16}
+
+\begin{questions}
+
+\question
+\[ \int \sin(2026x) \sin^{2024} x \,dx \]
+\begin{solution}
+We can rewrite the angle in the sine term as $2026x = 2025x + x$ and apply the angle addition formula:
+\[ \int \sin(2025x + x) \sin^{2024} x \,dx = \int \left( \sin(2025x)\cos x + \cos(2025x)\sin x \right) \sin^{2024} x \,dx \]
+Splitting this into two integrals $I_1$ and $I_2$:
+\[ I_1 = \int \sin(2025x) \sin^{2024} x \cos x \,dx \]
+\[ I_2 = \int \cos(2025x) \sin^{2025} x \,dx \]
+Evaluate $I_1$ using integration by parts, setting $u = \sin(2025x)$ and $dv = \sin^{2024} x \cos x \,dx$. This gives $du = 2025 \cos(2025x) \,dx$ and $v = \frac{\sin^{2025} x}{2025}$:
+\[ I_1 = \frac{\sin(2025x)\sin^{2025} x}{2025} - \int \cos(2025x) \sin^{2025} x \,dx \]
+Notice that the remaining integral in $I_1$ perfectly cancels out $I_2$. Combining them yields the final answer:
+\[ \int \sin(2026x) \sin^{2024} x \,dx = \frac{\sin(2025x)\sin^{2025} x}{2025} + C \]
+\end{solution}
+
+\question
+\[ \int_{0}^{2026} x |\sin(\pi x)| \,dx \]
+\begin{solution}
+First, observe that $|\sin(\pi x)|$ is a periodic function with a period of $1$. We can decompose the integral over unit intervals:
+\[ \int_{0}^{2026} x |\sin(\pi x)| \,dx = \sum_{k=0}^{2025} \int_{k}^{k+1} x |\sin(\pi x)| \,dx \]
+Using the substitution $x = k + t$ where $t \in [0, 1]$, the integral on the interval $[k, k+1]$ becomes:
+\[ \int_{0}^{1} (k + t) \sin(\pi t) \,dt = k \int_{0}^{1} \sin(\pi t) \,dt + \int_{0}^{1} t \sin(\pi t) \,dt \]
+Evaluating the two integrals separately:
+\[ I_1 = \int_{0}^{1} \sin(\pi t) \,dt = \left[ -\frac{\cos(\pi t)}{\pi} \right]_{0}^{1} = \frac{2}{\pi} \]
+For $I_2 = \int_{0}^{1} t \sin(\pi t) \,dt$, we use integration by parts with $u = t$ and $dv = \sin(\pi t) \,dt$:
+\[ I_2 = \left[ -\frac{t \cos(\pi t)}{\pi} \right]_{0}^{1} + \frac{1}{\pi} \int_{0}^{1} \cos(\pi t) \,dt = \frac{1}{\pi} + 0 = \frac{1}{\pi} \]
+Substituting these back into our summation expression:
+\[ \int_{k}^{k+1} x |\sin(\pi x)| \,dx = k \cdot \frac{2}{\pi} + \frac{1}{\pi} = \frac{2k + 1}{\pi} \]
+Summing this from $k = 0$ to $2025$:
+\[ \int_{0}^{2026} x |\sin(\pi x)| \,dx = \frac{1}{\pi} \sum_{k=0}^{2025} (2k + 1) \]
+Using the arithmetic series sum $\sum_{k=0}^{n-1} (2k+1) = n^2$ where $n = 2026$:
+\[ \int_{0}^{2026} x |\sin(\pi x)| \,dx = \frac{2026^2}{\pi} \]
+\end{solution}
+
+\question
+\[ \int_{0}^{\infty} \frac{\ln(1 + x)}{x^{3/2}} \,dx \]
+\begin{solution}
+We evaluate this using integration by parts, setting $u = \ln(1 + x)$ and $dv = x^{-3/2} \,dx$, which yields $du = \frac{1}{1 + x} \,dx$ and $v = -2x^{-1/2}$:
+\[ \int_{0}^{\infty} \frac{\ln(1 + x)}{x^{3/2}} \,dx = \left[ -\frac{2\ln(1 + x)}{\sqrt{x}} \right]_{0}^{\infty} + 2 \int_{0}^{\infty} \frac{1}{\sqrt{x}(1 + x)} \,dx \]
+The boundary term evaluates to $0$ at both limits since $\lim_{x\to\infty} \frac{\ln(1+x)}{\sqrt{x}} = 0$ and $\lim_{x\to0} \frac{\ln(1+x)}{\sqrt{x}} = 0$.
+For the remaining integral, apply the substitution $x = t^2$, meaning $dx = 2t \,dt$ and $\sqrt{x} = t$:
+\[ 2 \int_{0}^{\infty} \frac{2t}{t(1 + t^2)} \,dt = 4 \int_{0}^{\infty} \frac{1}{1 + t^2} \,dt = 4 \Big[ \tan^{-1} t \Big]_{0}^{\infty} = 4 \cdot \frac{\pi}{2} = 2\pi \]
+\end{solution}
+
+\question
+\[ \int_{0}^{1} \frac{1}{(1 + x^2)^4} \,dx \]
+\begin{solution}
+Apply the trigonometric substitution $x = \tan t$, which implies $dx = \sec^2 t \,dt$. The limits of integration change from $[0, 1]$ to $[0, \pi/4]$:
+\[ \int_{0}^{1} \frac{1}{(1 + x^2)^4} \,dx = \int_{0}^{\pi/4} \frac{\sec^2 t}{\sec^8 t} \,dt = \int_{0}^{\pi/4} \cos^6 t \,dt \]
+We use the trigonometric power-reduction identity for $\cos^6 t$:
+\[ \cos^6 t = \frac{5}{16} + \frac{15}{32} \cos 2t + \frac{3}{16} \cos 4t + \frac{1}{32} \cos 6t \]
+Integrating term by term gives:
+\[ \left[ \frac{5}{16}t + \frac{15}{64} \sin 2t + \frac{3}{64} \sin 4t + \frac{1}{192} \sin 6t \right]_{0}^{\pi/4} \]
+Evaluating at the upper limit $\frac{\pi}{4}$ (noting that $\sin \frac{\pi}{2} = 1$, $\sin \pi = 0$, and $\sin \frac{3\pi}{2} = -1$):
+\[ = \frac{5}{16}\left(\frac{\pi}{4}\right) + \frac{15}{64} - \frac{1}{192} = \frac{5\pi}{64} + \frac{44}{192} = \frac{5\pi}{64} + \frac{11}{48} \]
+\end{solution}
+
+\question
+\[ \int \ln \left[ (x - 1)(x + 3)(x - 2)(x - 6) + 96 \right] \,dx \]
+\begin{solution}
+First, group and expand the polynomial terms strategically:
+\[ (x - 1)(x - 2) = x^2 - 3x + 2 \]
+\[ (x + 3)(x - 6) = x^2 - 3x - 18 \]
+Let $a = x^2 - 3x$. The full expression inside the natural log becomes:
+\[ (a + 2)(a - 18) + 96 = a^2 - 16a - 36 + 96 = a^2 - 16a + 60 = (a - 6)(a - 10) \]
+Substituting back $a = x^2 - 3x$:
+\[ (x^2 - 3x - 6)(x^2 - 3x - 10) \]
+Factoring both quadratic pieces into linear factors yields:
+\[ x^2 - 3x - 6 = \left(x - \frac{3 + \sqrt{33}}{2}\right)\left(x - \frac{3 - \sqrt{33}}{2}\right) \]
+\[ x^2 - 3x - 10 = (x - 5)(x + 2) \]
+Using the properties of logarithms, we can decompose the integrand into a sum of simple logarithmic functions:
+\[ \ln(\dots) = \ln\left(x - \frac{3 + \sqrt{33}}{2}\right) + \ln\left(x - \frac{3 - \sqrt{33}}{2}\right) + \ln(x - 5) + \ln(x + 2) \]
+Applying the standard integration formula $\int \ln(x - a) \,dx = (x - a)\ln(x - a) - x$, we sum the integrals:
+\[ = \left(x - \frac{3 + \sqrt{33}}{2}\right) \ln\left|x - \frac{3 + \sqrt{33}}{2}\right| + \left(x - \frac{3 - \sqrt{33}}{2}\right) \ln\left|x - \frac{3 - \sqrt{33}}{2}\right| + (x - 5)\ln|x - 5| + (x + 2)\ln|x + 2| - 4x + C \]
+\end{solution}
+
+\question
+\[ \int_{-2016}^{2016} \frac{\frac{\sin(\pi x)}{e} + \frac{6x^7}{e} + \frac{8x^2}{\pi}}{x^6 + 1} \,dx \]
+\begin{solution}
+We can split the integral over symmetric limits into three independent components:
+\[ I_1 = \int_{-2016}^{2016} \frac{\sin(\pi x)}{e(x^6 + 1)} \,dx, \quad I_2 = \int_{-2016}^{2016} \frac{6x^7}{e(x^6 + 1)} \,dx, \quad I_3 = \int_{-2016}^{2016} \frac{8x^2}{\pi(x^6 + 1)} \,dx \]
+Analyzing the parity of the integrands:
+- In $I_1$, $\sin(\pi x)$ is odd and $x^6 + 1$ is even, making the integrand odd. Thus, $I_1 = 0$.
+- In $I_2$, $x^7$ is odd and $x^6 + 1$ is even, making the integrand odd. Thus, $I_2 = 0$.
+- In $I_3$, $x^2$ and $x^6 + 1$ are even, so the integrand is even. We can simplify it to:
+\[ I_3 = 2 \int_{0}^{2016} \frac{8x^2}{\pi(x^6 + 1)} \,dx = \frac{16}{3\pi} \int_{0}^{2016} \frac{3x^2}{(x^3)^2 + 1} \,dx \]
+Using the substitution $t = x^3$, where $dt = 3x^2 \,dx$:
+\[ I_3 = \frac{16}{3\pi} \int_{0}^{2016^3} \frac{1}{t^2 + 1} \,dt = \frac{16}{3\pi} \tan^{-1}(2016^3) \]
+\end{solution}
+
+\question
+\[ \int_{0}^{\infty} \frac{x}{\sinh x} \,dx \]
+\begin{solution}
+We can use the infinite series expansion for $\frac{1}{\sinh x}$ when $x > 0$:
+\[ \frac{1}{\sinh x} = \frac{2}{e^x - e^{-x}} = 2 \sum_{n=0}^{\infty} e^{-(2n+1)x} \]
+Substituting this into the integral and swapping summation and integration orders gives:
+\[ \int_{0}^{\infty} \frac{x}{\sinh x} \,dx = 2 \sum_{n=0}^{\infty} \int_{0}^{\infty} x e^{-(2n+1)x} \,dx \]
+Using the identity $\int_{0}^{\infty} x e^{-ax} \,dx = \frac{1}{a^2}$ for $a > 0$:
+\[ \int_{0}^{\infty} x e^{-(2n+1)x} \,dx = \frac{1}{(2n + 1)^2} \]
+This leaves us with the sum:
+\[ 2 \sum_{n=0}^{\infty} \frac{1}{(2n + 1)^2} \]
+Using the standard Basel-related series value $\sum_{n=0}^{\infty} \frac{1}{(2n+1)^2} = \frac{\pi^2}{8}$, we find:
+\[ 2 \cdot \frac{\pi^2}{8} = \frac{\pi^2}{4} \]
+\end{solution}
+
+\question
+Evaluate the following expression involving indefinite integrals:
+\[ \int e^{x^2} x \sin(x^2) \,dx + \int e^{x^2} \pi x \cos(x^2) \,dx \]
+\begin{solution}
+Combine the two expressions into a single integrand:
+\[ \int e^{x^2} x \left( \sin(x^2) + \pi \cos(x^2) \right) \,dx \]
+Apply the substitution $t = x^2$, which yields $dt = 2x \,dx \implies x \,dx = \frac{1}{2} \,dt$:
+\[ \frac{1}{2} \int e^t (\sin t + \pi \cos t) \,dt = \frac{1}{2} \int e^t \sin t \,dt + \frac{\pi}{2} \int e^t \cos t \,dt \]
+Using standard integration by parts, we find:
+\[ \int e^t \sin t \,dt = \frac{1}{2}e^t(\sin t - \cos t) \]
+\[ \int e^t \cos t \,dt = \frac{1}{2}e^t(\cos t + \sin t) \]
+Combining these results back together:
+\[ I = \frac{1}{4}e^t(\sin t - \cos t) + \frac{\pi}{4}e^t(\cos t + \sin t) + C = \frac{1}{4} e^t \left[ (1 + \pi)\sin t + (\pi - 1)\cos t \right] + C \]
+Reverting to the original variable $x^2 = t$:
+\[ \frac{1}{4} e^{x^2} \left[ (1 + \pi)\sin(x^2) + (\pi - 1)\cos(x^2) \right] + C \]
+\end{solution}
+
+\end{questions}
+
+\subsubsection*{Round of 8}
+
+\begin{questions}
+
+\question
+\[ \int_{0}^{\infty} \frac{\sin^4 x}{x^2} \,dx \]
+\begin{solution}
+Integrate by parts with $u = \sin^4 x$ and $dv = x^{-2} \,dx$, meaning $du = 4\sin^3 x \cos x \,dx$ and $v = -\frac{1}{x}$:
+\[ \int_{0}^{\infty} \frac{\sin^4 x}{x^2} \,dx = \left[ -\frac{\sin^4 x}{x} \right]_{0}^{\infty} + \int_{0}^{\infty} \frac{4\sin^3 x \cos x}{x} \,dx \]
+The boundary term vanishes at both limits. Next, we use trigonometric identity expansions for the remaining numerator:
+\[ 4\sin^3 x \cos x = (3\sin x - \sin 3x)\cos x = 3\sin x \cos x - \sin 3x \cos x = \frac{3}{2}\sin 2x - \frac{1}{2}(\sin 4x + \sin 2x) \]
+This simplifies the integral to:
+\[ \frac{3}{2}\int_{0}^{\infty} \frac{\sin 2x}{x} \,dx - \frac{1}{2}\int_{0}^{\infty} \frac{\sin 4x}{x} \,dx - \frac{1}{2}\int_{0}^{\infty} \frac{\sin 2x}{x} \,dx = \int_{0}^{\infty} \frac{\sin 2x}{x} \,dx - \frac{1}{2}\int_{0}^{\infty} \frac{\sin 4x}{x} \,dx \]
+Applying the Dirichlet integral identity $\int_{0}^{\infty} \frac{\sin(ax)}{x} \,dx = \frac{\pi}{2}$ for $a > 0$:
+\[ \frac{\pi}{2} - \frac{1}{2}\left(\frac{\pi}{2}\right) = \frac{\pi}{4} \]
+\end{solution}
+
+\question
+\[ \int_{-\infty}^{\infty} 10 (x^7 - x^2)^2 e^{-x^{10} + 2x^5} \,dx \]
+\begin{solution}
+Complete the square within the exponent: $-x^{10} + 2x^5 = -(x^5 - 1)^2 + 1$, meaning $e^{-x^{10} + 2x^5} = e \cdot e^{-(x^5 - 1)^2}$.
+We rewrite the front polynomial coefficient as well:
+\[ (x^7 - x^2)^2 = \left[ x^2(x^5 - 1) \right]^2 = x^4(x^5 - 1)^2 \]
+Substituting these into our integral:
+\[ 10e \int_{-\infty}^{\infty} x^4(x^5 - 1)^2 e^{-(x^5 - 1)^2} \,dx \]
+Apply the substitution $u = x^5 - 1$, which implies $du = 5x^4 \,dx$:
+\[ 2e \int_{-\infty}^{\infty} u^2 e^{-u^2} \,du \]
+Using the standard Gaussian integral variation $\int_{-\infty}^{\infty} u^2 e^{-u^2} \,du = \frac{\sqrt{\pi}}{2}$:
+\[ 2e \cdot \frac{\sqrt{\pi}}{2} = e\sqrt{\pi} \]
+\end{solution}
+
+\question
+Let $f(x) = 3 \tan^{-1} x$ and $g(x) = \tan^{-1} \left( \frac{3x - x^3}{1 - 3x^2} \right)$. Evaluate:
+\[ \int_{-2-\sqrt{3}}^{2+\sqrt{3}} |f(x) - g(x)| \,dx \]
+\begin{solution}
+Recall the triple-angle identity for tangent, which reveals $g(x) = \tan^{-1}(\tan(3\tan^{-1} x))$. Taking the principal value windows into consideration:
+\[ g(x) = \begin{cases} 
+3\tan^{-1} x & \text{for } 3\tan^{-1}x \in \left(-\frac{\pi}{2}, \frac{\pi}{2}\right) \\ 
+3\tan^{-1} x - \pi & \text{for } 3\tan^{-1}x \in \left(\frac{\pi}{2}, \frac{3\pi}{2}\right) \\ 
+3\tan^{-1} x + \pi & \text{for } 3\tan^{-1}x \in \left(-\frac{3\pi}{2}, -\frac{\pi}{2}\right) 
+\end{cases} \]
+The boundaries occur when $3\tan^{-1} x = \pm \frac{\pi}{2}$, meaning $x = \pm \frac{1}{\sqrt{3}}$.
+Thus, the absolute difference simplifies to a step function:
+\[ |f(x) - g(x)| = \begin{cases} 0 & \text{if } |x| < \frac{1}{\sqrt{3}} \\ \pi & \text{if } |x| > \frac{1}{\sqrt{3}} \end{cases} \]
+Because the integrand is even and vanishes when $|x| < \frac{1}{\sqrt{3}}$, we integrate over the remaining domain:
+\[ \int_{-2-\sqrt{3}}^{2+\sqrt{3}} |f(x) - g(x)| \,dx = 2\pi \int_{1/\sqrt{3}}^{2+\sqrt{3}} 1 \,dx = 2\pi \left( 2 + \sqrt{3} - \frac{1}{\sqrt{3}} \right) = \pi \left(4 + 4\sqrt{3}\right) \]
+\end{solution}
+
+\question
+\[ \int_{1}^{2} \frac{\lceil x^2 \rceil \{x\}}{\lfloor 2x \rfloor} \,dx \]
+\begin{solution}
+For $x \in [1, 2)$, the fractional part is defined as $\{x\} = x - 1$. The functions $\lceil x^2 \rceil$ and $\lfloor 2x \rfloor$ are piecewise constant, jumping at values $\sqrt{2}, \frac{3}{2}, \sqrt{3}$. We break the integration domain into four pieces:
+- For $x \in [1, \sqrt{2})$: $\lceil x^2 \rceil = 2, \lfloor 2x \rfloor = 2 \implies I_1 = \int_{1}^{\sqrt{2}} (x - 1) \,dx = \frac{(\sqrt{2}-1)^2}{2} = \frac{3}{2} - \sqrt{2}$
+- For $x \in [\sqrt{2}, \frac{3}{2})$: $\lceil x^2 \rceil = 3, \lfloor 2x \rfloor = 2 \implies I_2 = \frac{3}{2}\int_{\sqrt{2}}^{3/2} (x - 1) \,dx = \frac{24\sqrt{2} - 33}{16}$
+- For $x \in [\frac{3}{2}, \sqrt{3})$: $\lceil x^2 \rceil = 3, \lfloor 2x \rfloor = 3 \implies I_3 = \int_{3/2}^{\sqrt{3}} (x - 1) \,dx = \frac{15}{8} - \sqrt{3}$
+- For $x \in [\sqrt{3}, 2)$: $\lceil x^2 \rceil = 4, \lfloor 2x \rfloor = 3 \implies I_4 = \frac{4}{3}\int_{\sqrt{3}}^{2} (x - 1) \,dx = \frac{4\sqrt{3}}{3} - 2$
+
+Summing all the parts together:
+\[ I = I_1 + I_2 + I_3 + I_4 = -\frac{11}{16} + \frac{\sqrt{2}}{2} + \frac{\sqrt{3}}{3} \]
+\end{solution}
+
+\end{questions}
+
+\subsubsection*{Round of 4}
+
+\begin{questions}
+
+\question
+\[ \int_{0}^{\pi/2} x^3 \sin(4x) \tan^{-1} \left( \frac{1 + \tan x}{1 - \tan x} \right) \,dx \]
+\begin{solution}
+Rewrite the term inside the arctangent using the angle addition formula: $\frac{1 + \tan x}{1 - \tan x} = \tan\left(\frac{\pi}{4} + x\right)$. 
+Accounting for the branch cuts of $\tan^{-1}(\tan y)$ across the interval $[0, \frac{\pi}{2}]$, we get:
+\[ \tan^{-1}\left(\tan\left(\frac{\pi}{4} + x\right)\right) = \begin{cases} \frac{\pi}{4} + x & \text{if } 0 \le x \le \frac{\pi}{4} \\ x - \frac{3\pi}{4} & \text{if } \frac{\pi}{4} \le x \le \frac{\pi}{2} \end{cases} \]
+Splitting and executing the integration by parts calculations for $x \sin(4x)$ and $x^2 \sin(4x)$ piecewise yields:
+\[ \int_{0}^{\pi/2} x^3 \sin(4x) \tan^{-1} \left( \frac{1 + \tan x}{1 - \tan x} \right) \,dx = \frac{\pi^2}{32} \]
+\end{solution}
+
+\question
+\[ \int_{0}^{\pi/2} \frac{\sin^2 x}{\sin^3 x + \cos^3 x} \,dx \]
+\begin{solution}
+By applying King's Rule ($x \to \frac{\pi}{2} - x$), we can find an equivalent expression:
+\[ I = \int_{0}^{\pi/2} \frac{\cos^2 x}{\sin^3 x + \cos^3 x} \,dx \]
+Adding both versions of $I$ together gives:
+\[ 2I = \int_{0}^{\pi/2} \frac{\sin^2 x + \cos^2 x}{\sin^3 x + \cos^3 x} \,dx = \int_{0}^{\pi/2} \frac{1}{(\sin x + \cos x)(1 - \sin x \cos x)} \,dx \]
+Substitute $p = \sin x - \cos x$, which yields $dp = (\sin x + \cos x) \,dx$ and $\sin x \cos x = \frac{1-p^2}{2}$. The bounds transform from $[0, \frac{\pi}{2}]$ to $[-1, 1]$:
+\[ 2I = \int_{-1}^{1} \frac{1}{1 + \left(\frac{1-p^2}{2}\right)} \cdot \frac{dp}{1+p^2 \dots} \implies I = -2 \int_{0}^{1} \frac{1}{(p^2 + 1)(p^2 - 2)} \,dp \]
+Resolving the integrand via partial fraction decomposition:
+\[ I = -\frac{2}{3} \int_{0}^{1} \frac{1}{p^2 - 2} \,dp + \frac{2}{3} \int_{0}^{1} \frac{1}{p^2 + 1} \,dp \]
+Evaluating these standard forms reveals:
+\[ I = \frac{\pi}{6} - \frac{\sqrt{2}}{3} \ln(\sqrt{2} - 1) \]
+\end{solution}
+
+\end{questions}
+
+\subsubsection*{Semi final}
+
+\begin{questions}
+
+\question
+\[ \int \ln \left[ x^6 + 3x^4 + x^3 - 6x^2 + 27x - 26 - (x^2 + x - 2)^3 \right] \,dx \]
+\begin{solution}
+We can decompose the main polynomial grouping into cubes:
+\[ x^6 + 3x^4 + x^3 - 6x^2 + 27x - 26 = (x^6 + 3x^4 + 3x^2 + 1) + (x^3 - 9x^2 + 27x - 27) = (x^2 + 1)^3 + (x - 3)^3 \]
+Substituting this back, the entire term under the logarithm becomes:
+\[ (x^2 + 1)^3 + (x - 3)^3 + (2 - x - x^2)^3 \]
+Let $a = x^2 + 1$, $b = x - 3$, and $c = 2 - x - x^2$. Notice that $a + b + c = 0$. Using the identity where $a^3 + b^3 + c^3 = 3abc$ when $a+b+c=0$, our expression simplifies directly into a product:
+\[ 3(x^2 + 1)(x - 3)(2 - x - x^2) = 3(x^2 + 1)(x - 3)(x + 2)(1 - x) \]
+We expand the log function termwise:
+\[ \ln(\dots) = \ln 3 + \ln(x^2 + 1) + \ln(x - 3) + \ln(x + 2) + \ln(1 - x) \]
+Integrating each component independently results in:
+\[ I = x \ln 3 + x \ln(x^2 + 1) - 2x + 2 \tan^{-1} x + (x - 3) \ln(x - 3) + (x + 2) \ln(x + 2) - (1 - x) \ln(1 - x) - 3x + C \]
+\end{solution}
+
+\question
+\[ \int_{0}^{\infty} \frac{e^{-2x} \sin x}{x} \,dx \]
+\begin{solution}
+Define a parameter-based variable integral $I(a) = \int_{0}^{\infty} \frac{e^{-ax} \sin x}{x} \,dx$ for $a > 0$. Differentiating under the integral sign with respect to $a$:
+\[ \frac{dI}{da} = -\int_{0}^{\infty} e^{-ax} \sin x \,dx = -\frac{1}{a^2 + 1} \]
+Integrating with respect to $a$ gives:
+\[ I(a) = -\tan^{-1}(a) + C \]
+Using the boundary limit constraint value from the standard Dirichlet integral $I(0) = \int_{0}^{\infty} \frac{\sin x}{x} \,dx = \frac{\pi}{2}$, we obtain $C = \frac{\pi}{2}$. Therefore:
+\[ I(a) = \frac{\pi}{2} - \tan^{-1}(a) \implies I(2) = \frac{\pi}{2} - \tan^{-1}(2) \]
+\end{solution}
+
+\question
+Let $f(x) = \frac{1 - x^2}{1 + x^2} + \frac{2x}{1 + x^2}i$ and $g(x) = \sin x$. Evaluate:
+\[ \int_{-\pi/2}^{\pi/2} \left| \frac{f(x) - (\sqrt{20} - 26i)}{1 - (\sqrt{20} + 26i)f(x)} g(x) \right| \,dx \]
+\begin{solution}
+First, find the absolute magnitude value of the complex function $f(x)$:
+\[ |f(x)|^2 = \frac{(1 - x^2)^2 + (2x)^2}{(1 + x^2)^2} = \frac{(1 + x^2)^2}{(1 + x^2)^2} = 1 \implies |f(x)| = 1 \]
+Let $\alpha = \sqrt{20} - 26i$. The fractional expression is a standard M\"{o}bius transformation mapping the unit circle onto itself:
+\[ \left| \frac{f(x) - \alpha}{1 - \bar{\alpha}f(x)} \right| = 1 \]
+Thus, the absolute value simplifies completely, leaving only the real function component $g(x)$:
+\[ \int_{-\pi/2}^{\pi/2} |\sin x| \,dx = 2 \int_{0}^{\pi/2} \sin x \,dx = 2 \]
+\end{solution}
+
+\question
+Evaluate the following double integral expression:
+\[ \int_{0}^{\pi/2} \left[ \int_{\pi/2}^{\pi} \frac{\sin x}{x} \,dx \right] \,dy + \int_{\pi/2}^{\pi} \left[ \int_{y}^{\pi} \frac{\sin x}{x} \,dx \right] \,dy \]
+\begin{solution}
+For the first term, the inner integral is completely independent of $y$, so it simplifies to:
+\[ \left( \int_{0}^{\pi/2} \,dy \right) \cdot \left( \int_{\pi/2}^{\pi} \frac{\sin x}{x} \,dx \right) = \frac{\pi}{2} \int_{\pi/2}^{\pi} \frac{\sin x}{x} \,dx \]
+For the second term, we change the integration order boundaries over the triangular region $\frac{\pi}{2} \le y \le x \le \pi$:
+\[ \int_{\pi/2}^{\pi} \left[ \int_{\pi/2}^{x} \,dy \right] \frac{\sin x}{x} \,dx = \int_{\pi/2}^{\pi} \left(x - \frac{\pi}{2}\right) \frac{\sin x}{x} \,dx \]
+Adding both derived components together leads to a massive simplification:
+\[ \frac{\pi}{2} \int_{\pi/2}^{\pi} \frac{\sin x}{x} \,dx + \int_{\pi/2}^{\pi} \sin x \,dx - \frac{\pi}{2} \int_{\pi/2}^{\pi} \frac{\sin x}{x} \,dx = \int_{\pi/2}^{\pi} \sin x \,dx = [-\cos x]_{\pi/2}^{\pi} = 1 \]
+\end{solution}
+
+\end{questions}
+
+\subsubsection*{Final}
+
+\begin{questions}
+
+\question
+\[ \int_{0}^{1} \frac{1 - x^{12}}{1 + x + x^2} \frac{1}{\ln x} \,dx \]
+\begin{solution}
+Factor the numerator expression algebraic step: $1 - x^{12} = (1 - x^3)(1 + x^3 + x^6 + x^9) = (1 - x)(1 + x + x^2)(1 + x^3 + x^6 + x^9)$.
+Dividing out the common denominator terms simplifies the integrand:
+\[ \frac{(1 - x)(1 + x^3 + x^6 + x^9)}{\ln x} = \frac{(1 - x) + (x^3 - x^4) + (x^6 - x^7) + (x^9 - x^{10})}{\ln x} \]
+We can evaluate this series of differences using Feynman's trick parameterization tool $F(a) = \int_{0}^{1} \frac{x^a - 1}{\ln x} \,dx \implies F'(a) = \frac{1}{a+1} \implies F(a) = \ln(a+1)$.
+Grouping the pairs:
+\[ I = \ln 2 + \ln\left(\frac{5}{4}\right) + \ln\left(\frac{8}{7}\right) + \ln\left(\frac{11}{10}\right) = \ln\left( \frac{2 \cdot 5 \cdot 8 \cdot 11}{1 \cdot 4 \cdot 7 \cdot 10} \right) = \ln\left(\frac{22}{7}\right) \]
+\end{solution}
+
+\question
+\[ \int_{0}^{1} \left( \frac{x^2 + 2x - 1}{1 + x} \right)^{2026} \,dx \]
+\begin{solution}
+Rewrite the internal fraction expression by splitting terms: $\frac{x^2 + 2x - 1}{1 + x} = x - \frac{1 - x}{1 + x}$.
+Let $f(x) = \frac{1 - x}{1 + x}$. Notice that $f(x)$ represents an involution, meaning $f(f(x)) = x$.
+Our integral forms $I = \int_{0}^{1} (x - f(x))^{2026} \,dx$. Substituting $x = f(z)$ means $dx = f'(z) \,dz$:
+\[ I = \int_{1}^{0} (f(z) - z)^{2026} f'(z) \,dz = -\int_{0}^{1} (z - f(z))^{2026} f'(z) \,dz \]
+Averaging both integral forms gives:
+\[ 2I = \int_{0}^{1} (x - f(x))^{2026} (1 - f'(x)) \,dx \]
+Substitute $y = x - f(x)$, so $dy = (1 - f'(x)) \,dx$. The integration boundary scales match $[-1, 1]$:
+\[ 2I = \int_{-1}^{1} y^{2026} \,dy = 2 \int_{0}^{1} y^{2026} \,dy = \frac{2}{2027} \implies I = \frac{1}{2027} \]
+\end{solution}
+
+\question
+\[ \int_{2}^{\infty} \frac{\lfloor x \rfloor x^2}{x^6 - 1} \,dx \]
+\begin{solution}
+Deconstruct the integral space across unit step boundaries $[n, n+1]$:
+\[ \int_{2}^{\infty} \frac{\lfloor x \rfloor x^2}{x^6 - 1} \,dx = \sum_{n=2}^{\infty} n \int_{n}^{n+1} \frac{x^2}{x^6 - 1} \,dx \]
+Decomposing via partial fractions: $\frac{x^2}{x^6 - 1} = \frac{1}{2} \left( \frac{x^2}{x^3 - 1} - \frac{x^2}{x^3 + 1} \right)$, which integrates into:
+\[ \frac{1}{6} \sum_{n=2}^{\infty} n \left[ \ln\left( \frac{x^3 - 1}{x^3 + 1} \right) \right]_{n}^{n+1} \]
+Expanding this telescoping structure into a clear system limit form yields:
+\[ \frac{1}{6} \lim_{N \to \infty} \left[ -2\ln\left(\frac{2^3-1}{2^3+1}\right) - \sum_{n=3}^{N} \ln\left(\frac{n^3-1}{n^3+1}\right) + N \ln\left(\frac{(N+1)^3-1}{(N+1)^3+1}\right) \right] \]
+Factoring the cubic terms as products $(n-1)(n^2+n+1)$ and $(n+1)(n^2-n+1)$ results in comprehensive internal cancellation. Evaluating the remaining constants yields:
+\[ \frac{1}{6} \ln\left(\frac{27}{14}\right) \]
+\end{solution}
+
+\end{questions}

@@ -1,0 +1,417 @@
+\pagebreak
+\section{Portugal Integration Bee}
+\subsection*{2025}
+\subsubsection*{Fase Escrita -- Prova I}
+\begin{questions}
+    \question \[\int_{2.025}^{5.025} \frac{d}{dx} \left( x + \cos(2\pi x)^3 \right) \,dx\]
+    \begin{solution}
+        By the Fundamental Theorem of Calculus, the integral is simply the function evaluated at the limits:
+        \[\left[ x + \cos^3(2\pi x) \right]_{2.025}^{5.025}\]
+        \[= \left( 5.025 + \cos^3(10.05\pi) \right) - \left( 2.025 + \cos^3(4.05\pi) \right)\]
+        Since the cosine function has a period of $2\pi$, $\cos(10.05\pi) = \cos(4.05\pi) = \cos(0.05\pi)$. Thus, the cosine terms cancel out:
+        \[5.025 - 2.025 = 3\]
+    \end{solution}
+
+    \question \[-\int \sin^5(x) \,dx\]
+    \begin{solution}
+        Rewrite $\sin^5(x)$ as $\sin(x)(\sin^2(x))^2 = \sin(x)(1-\cos^2(x))^2$. Let $u = \cos(x)$, then $du = -\sin(x)\,dx$.
+        \[-\int \sin^5(x) \,dx = \int (1 - u^2)^2 \,du\]
+        \[= \int (1 - 2u^2 + u^4) \,du\]
+        \[= u - \frac{2}{3}u^3 + \frac{1}{5}u^5 + C\]
+        Substituting back $u = \cos(x)$ yields:
+        \[\cos(x) - \frac{2\cos^3(x)}{3} + \frac{\cos^5(x)}{5} + C\]
+    \end{solution}
+
+    \question \[\int_1^\infty \frac{1}{x + x^{2025}} \,dx\]
+    \begin{solution}
+        Multiply the numerator and denominator by $x^{-2025}$:
+        \[\int_1^\infty \frac{x^{-2025}}{x^{-2024} + 1} \,dx\]
+        Let $u = x^{-2024} + 1$, then $du = -2024x^{-2025} \,dx$. The limits change from $x=1 \implies u=2$ to $x\to\infty \implies u=1$.
+        \[-\frac{1}{2024} \int_2^1 \frac{1}{u} \,du = \frac{1}{2024} \int_1^2 \frac{1}{u} \,du\]
+        \[= \frac{1}{2024} [\log(u)]_1^2 = \frac{\log(2)}{2024}\]
+    \end{solution}
+
+    \question \[\int_1^\infty \frac{\log(1 + x)}{x\sqrt{x}} \,dx\]
+    \begin{solution}
+        Use integration by parts with $u = \log(1+x)$ and $dv = x^{-3/2}\,dx$. Then $du = \frac{1}{1+x}\,dx$ and $v = -2x^{-1/2}$.
+        \[\left[ -2\frac{\log(1+x)}{\sqrt{x}} \right]_1^\infty + 2 \int_1^\infty \frac{1}{\sqrt{x}(1+x)} \,dx\]
+        The boundary terms evaluate to $0 - (-2\log(2)) = 2\log(2)$.
+        For the remaining integral, let $t = \sqrt{x}$, $dt = \frac{1}{2\sqrt{x}}\,dx \implies 2\,dt = \frac{1}{\sqrt{x}}\,dx$.
+        \[4 \int_1^\infty \frac{1}{1+t^2} \,dt = 4 [\arctan(t)]_1^\infty = 4\left(\frac{\pi}{2} - \frac{\pi}{4}\right) = \pi\]
+        Adding them together gives $2\log(2) + \pi$.
+    \end{solution}
+
+    \question \[\int_1^\infty \frac{1}{(x+8)\sqrt{x-1}} \,dx\]
+    \begin{solution}
+        Let $u = \sqrt{x-1}$, so $u^2 = x-1$, $x = u^2+1$, and $dx = 2u \,du$. The limits change from $0$ to $\infty$.
+        \[\int_0^\infty \frac{2u}{(u^2+1+8)u} \,du = 2 \int_0^\infty \frac{1}{u^2+9} \,du\]
+        \[= 2 \left[ \frac{1}{3}\arctan\left(\frac{u}{3}\right) \right]_0^\infty\]
+        \[= \frac{2}{3} \left( \frac{\pi}{2} - 0 \right) = \frac{\pi}{3}\]
+    \end{solution}
+
+    \question \[\int_0^{2025} (x - \lfloor x \rfloor) \,dx\]
+    \begin{solution}
+        The function $x - \lfloor x \rfloor$ is the fractional part of $x$, which is periodic with period $1$. 
+        The integral over one period $[0,1]$ is:
+        \[\int_0^1 x \,dx = \left[ \frac{x^2}{2} \right]_0^1 = \frac{1}{2}\]
+        Since the interval $[0, 2025]$ covers $2025$ full periods, the total value is:
+        \[2025 \times \frac{1}{2} = \frac{2025}{2}\]
+    \end{solution}
+
+    \question \[\int_0^{\pi/2} \frac{(\sin x)^{2025}}{(\sin x)^{2025} + (\cos x)^{2025}} \,dx\]
+    \begin{solution}
+        Let $I$ be the given integral. Using the property $\int_0^a f(x) \,dx = \int_0^a f(a-x) \,dx$, let $x \to \frac{\pi}{2} - x$.
+        \[I = \int_0^{\pi/2} \frac{(\sin(\frac{\pi}{2}-x))^{2025}}{(\sin(\frac{\pi}{2}-x))^{2025} + (\cos(\frac{\pi}{2}-x))^{2025}} \,dx\]
+        \[I = \int_0^{\pi/2} \frac{(\cos x)^{2025}}{(\cos x)^{2025} + (\sin x)^{2025}} \,dx\]
+        Adding the two expressions for $I$ together:
+        \[2I = \int_0^{\pi/2} \frac{(\sin x)^{2025} + (\cos x)^{2025}}{(\sin x)^{2025} + (\cos x)^{2025}} \,dx = \int_0^{\pi/2} 1 \,dx = \frac{\pi}{2}\]
+        \[\implies I = \frac{\pi}{4}\]
+    \end{solution}
+
+    \question \[\int \frac{1}{x(4 - \log^2(x))} \,dx\]
+    \begin{solution}
+        Let $u = \log(x)$, then $du = \frac{1}{x} \,dx$.
+        \[\int \frac{1}{4 - u^2} \,du = \int \frac{1}{(2-u)(2+u)} \,du\]
+        Using partial fractions:
+        \[= \frac{1}{4} \int \left( \frac{1}{2+u} + \frac{1}{2-u} \right) \,du\]
+        \[= \frac{1}{4} (\log|2+u| - \log|2-u|) + C\]
+        \[= \frac{1}{4} \log \left| \frac{2+u}{2-u} \right| + C = \frac{1}{4} \log \left| \frac{2 + \log(x)}{2 - \log(x)} \right| + C\]
+    \end{solution}
+
+    \question \[\int_{-\infty}^{+\infty} \frac{x + 2x^3}{(x^2 + x^6 + 1)^{3/2}} \,dx\]
+    \begin{solution}
+        Let $f(x) = \frac{x + 2x^3}{(x^2 + x^6 + 1)^{3/2}}$.
+        Notice that the numerator $x + 2x^3$ is an odd function, and the denominator $(x^2 + x^6 + 1)^{3/2}$ is an even function.
+        Therefore, $f(-x) = -f(x)$, meaning the entire integrand is an odd function.
+        The integral of an odd function over a symmetric interval $[-\infty, \infty]$ is $0$.
+    \end{solution}
+
+    \question \[\int 2\cosh(x)\cos^2(x) \,dx\]
+    \begin{solution}
+        Use the half-angle identity $\cos^2(x) = \frac{1 + \cos(2x)}{2}$.
+        \[\int 2\cosh(x) \left( \frac{1 + \cos(2x)}{2} \right) \,dx = \int \cosh(x) \,dx + \int \cosh(x)\cos(2x) \,dx\]
+        The first integral is $\sinh(x)$. 
+        For the second, $\int \cosh(x)\cos(2x) \,dx$, applying integration by parts twice yields the standard result:
+        \[\int \cosh(x)\cos(2x) \,dx = \frac{\sinh(x)\cos(2x) + 2\cosh(x)\sin(2x)}{1^2 + 2^2}\]
+        Adding them gives the final answer:
+        \[\sinh(x) + \frac{\sinh(x)\cos(2x) + 2\cosh(x)\sin(2x)}{5}\]
+    \end{solution}
+\end{questions}
+
+\subsubsection*{Fase Escrita -- Prova II}
+\begin{questions}
+    \question \[\int e^x e^{e^x} e^{e^{e^x}} e^{e^{e^{e^x}}} e^{e^{e^{e^{e^x}}}} \,dx\]
+    \begin{solution}
+        Let $u = e^{e^{e^{e^{e^x}}}}$. By the chain rule, taking the derivative of this nested exponential yields:
+        \[du = e^{e^{e^{e^{e^x}}}} \cdot e^{e^{e^{e^x}}} \cdot e^{e^{e^x}} \cdot e^{e^x} \cdot e^x \,dx\]
+        This exactly matches the integrand. Therefore, the integral becomes:
+        \[\int 1 \,du = u + C = e^{e^{e^{e^{e^x}}}} + C\]
+    \end{solution}
+
+    \question \[\int_1^2 \log^2(x) \,dx\]
+    \begin{solution}
+        Use integration by parts twice. Let $u = \log^2(x)$, $dv = \,dx \implies du = \frac{2\log(x)}{x} \,dx$, $v = x$.
+        \[\int \log^2(x) \,dx = x\log^2(x) - \int 2\log(x) \,dx\]
+        For $\int \log(x) \,dx$, use parts again ($u=\log(x), dv=\,dx$) to get $x\log(x) - x$.
+        \[\int \log^2(x) \,dx = x\log^2(x) - 2(x\log(x) - x) = x\log^2(x) - 2x\log(x) + 2x\]
+        Evaluate from $1$ to $2$:
+        \[[2\log^2(2) - 4\log(2) + 4] - [0 - 0 + 2] = 2\log^2(2) - 4\log(2) + 2\]
+        Factoring out $2$ gives $2(\log^2(2) - 2\log(2) + 1)$.
+    \end{solution}
+
+    \question \[\int_0^\infty \frac{1}{1 + e^{2025x}} \,dx\]
+    \begin{solution}
+        Multiply numerator and denominator by $e^{-2025x}$:
+        \[\int_0^\infty \frac{e^{-2025x}}{e^{-2025x} + 1} \,dx\]
+        Let $u = e^{-2025x} + 1$, then $du = -2025e^{-2025x} \,dx$. The limits change from $u=2$ (when $x=0$) to $u=1$ (when $x\to\infty$).
+        \[-\frac{1}{2025} \int_2^1 \frac{1}{u} \,du = \frac{1}{2025} \int_1^2 \frac{1}{u} \,du\]
+        \[= \frac{1}{2025} [\log(u)]_1^2 = \frac{\log(2)}{2025}\]
+    \end{solution}
+
+    \question \[\int_{-1}^1 \frac{x^5 + 3x^{11} + x^{12} + 2x^{18} + x^{24}}{(x^6 + x^{12})^2} \,dx\]
+    \begin{solution}
+        Separate the integrand into odd and even parts. Over the symmetric interval $[-1, 1]$, the integral of odd functions ($x^5$ and $3x^{11}$) is $0$. We are left with the even terms:
+        \[\int_{-1}^1 \frac{x^{12} + 2x^{18} + x^{24}}{(x^6(1+x^6))^2} \,dx\]
+        Factor the numerator: $x^{12} + 2x^{18} + x^{24} = x^{12}(1 + 2x^6 + x^{12}) = x^{12}(1+x^6)^2$.
+        \[\int_{-1}^1 \frac{x^{12}(1+x^6)^2}{x^{12}(1+x^6)^2} \,dx = \int_{-1}^1 1 \,dx = 2\]
+    \end{solution}
+
+    \question \[\int_0^2 \sqrt{1 - \frac{x^2}{4}} \,dx\]
+    \begin{solution}
+        This integral represents the area in the first quadrant under the curve $y = \sqrt{1 - \frac{x^2}{4}}$, which simplifies to $\frac{x^2}{4} + y^2 = 1$.
+        This is an ellipse with semi-major axis $a=2$ and semi-minor axis $b=1$.
+        The integral from $0$ to $2$ is exactly one quarter of the total area of the ellipse.
+        \[\text{Area} = \frac{1}{4} \cdot \pi a b = \frac{1}{4} \cdot \pi(2)(1) = \frac{\pi}{2}\]
+    \end{solution}
+
+    \question \[\int \left( \frac{1}{\log(x)} + \log(\log(x)) \right) \,dx\]
+    \begin{solution}
+        This is a reverse product rule problem. Consider the derivative of $x \log(\log(x))$:
+        \[\frac{d}{dx} \left[ x \log(\log(x)) \right] = (1)\log(\log(x)) + x \left( \frac{1}{\log(x)} \cdot \frac{1}{x} \right)\]
+        \[= \log(\log(x)) + \frac{1}{\log(x)}\]
+        Since the integrand is exactly the derivative of $x \log(\log(x))$, the integral is $x \log(\log(x)) + C$.
+    \end{solution}
+
+    \question \[\int_0^{+\infty} \frac{\log(x)}{1+x^2} \,dx\]
+    \begin{solution}
+        Let $I$ be the integral. Substitute $x = \frac{1}{u}$, then $dx = -\frac{1}{u^2}\,du$.
+        The limits change from $0 \to \infty$ to $\infty \to 0$.
+        \[I = \int_\infty^0 \frac{\log(\frac{1}{u})}{1+(\frac{1}{u})^2} \left(-\frac{1}{u^2}\right) \,du = \int_\infty^0 \frac{-\log(u)}{\frac{u^2+1}{u^2}} \left(-\frac{1}{u^2}\right) \,du\]
+        \[= -\int_0^\infty \frac{\log(u)}{1+u^2} \,du = -I\]
+        Since $I = -I$, it must be that $2I = 0 \implies I = 0$.
+    \end{solution}
+
+    \question \[\int \frac{x^{2025} - 1}{x^{405} - 1} \,dx\]
+    \begin{solution}
+        Recognize the integrand as a finite geometric series. Let $y = x^{405}$. Then the expression is $\frac{y^5 - 1}{y - 1}$.
+        \[\frac{y^5 - 1}{y - 1} = y^4 + y^3 + y^2 + y + 1\]
+        Substitute back $y = x^{405}$:
+        \[\int (x^{1620} + x^{1215} + x^{810} + x^{405} + 1) \,dx\]
+        Apply the power rule to integrate each term:
+        \[\frac{x^{1621}}{1621} + \frac{x^{1216}}{1216} + \frac{x^{811}}{811} + \frac{x^{406}}{406} + x + C\]
+    \end{solution}
+
+    \question \[\int \frac{\cos^3(x)}{\sqrt{1 + \sin^2(x)}} \,dx\]
+    \begin{solution}
+        Rewrite $\cos^3(x) = \cos(x)(1 - \sin^2(x))$. Let $u = \sin(x)$, $du = \cos(x)\,dx$.
+        \[\int \frac{1 - u^2}{\sqrt{1+u^2}} \,du = \int \frac{1}{\sqrt{1+u^2}} \,du - \int \frac{u^2}{\sqrt{1+u^2}} \,du\]
+        The first integral is $\operatorname{arcsinh}(u)$. The second can be done by parts ($w = u, dv = \frac{u}{\sqrt{1+u^2}}\,du$), giving:
+        \[\int \frac{u^2}{\sqrt{1+u^2}} \,du = \frac{1}{2}u\sqrt{1+u^2} - \frac{1}{2}\operatorname{arcsinh}(u)\]
+        Putting it together:
+        \[\operatorname{arcsinh}(u) - \left( \frac{1}{2}u\sqrt{1+u^2} - \frac{1}{2}\operatorname{arcsinh}(u) \right)\]
+        \[= \frac{3}{2}\operatorname{arcsinh}(u) - \frac{1}{2}u\sqrt{1+u^2} + C\]
+        Substitute back $u = \sin(x)$ to get the final answer.
+    \end{solution}
+
+    \question \[\int \frac{2x^3 - 1}{x(x^3 + 1)(1 + (\log(x^3 + 1) - \log(x))^2)} \,dx\]
+    \begin{solution}
+        Simplify the logarithmic argument: $\log(x^3 + 1) - \log(x) = \log\left(\frac{x^3+1}{x}\right) = \log(x^2 + x^{-1})$.
+        Let $u = \log(x^2 + x^{-1})$. Calculate the derivative $du$:
+        \[du = \frac{1}{x^2 + x^{-1}} (2x - x^{-2}) \,dx = \frac{x}{x^3+1} \frac{2x^3 - 1}{x^2} \,dx = \frac{2x^3 - 1}{x(x^3+1)} \,dx\]
+        Notice that this is exactly the remaining factor in the integrand. The integral simplifies to:
+        \[\int \frac{1}{1+u^2} \,du = \arctan(u) + C\]
+        Substitute back $u = \log(x^2 + \frac{1}{x})$:
+        \[\arctan\left(\log\left(x^2 + \frac{1}{x}\right)\right) + C\]
+    \end{solution}
+\end{questions}
+
+\subsubsection*{Ronda de desempate -- Luta pelos 3.º, 4.º e 5.º lugares}
+\begin{questions}
+    \question \[ \int_{-\infty}^{\infty} \frac{1}{\cosh x} \,dx \]
+    \begin{solution}
+        Rewrite the hyperbolic cosine using its exponential definition, $\cosh x = \frac{e^x + e^{-x}}{2}$:
+        \[ \int_{-\infty}^{\infty} \frac{2}{e^x + e^{-x}} \,dx \]
+        Substitute $u = e^x$, which gives $du = e^x \,dx \implies dx = \frac{1}{u} \,du$. The limits change from $x = -\infty \implies u = 0$ to $x = \infty \implies u = \infty$:
+        \[ \int_0^\infty \frac{2}{u + u^{-1}} \frac{1}{u} \,du = \int_0^\infty \frac{2}{u^2 + 1} \,du \]
+        This is a standard arctangent integral:
+        \[ 2 \left[ \arctan u \right]_0^\infty = 2 \left( \frac{\pi}{2} - 0 \right) = \pi \]
+    \end{solution}
+
+    \question \[ \int_{-\infty}^{+\infty} \frac{1}{x^4 + 1} \,dx \]
+    \begin{solution}
+        Since the integrand is an even function, we can evaluate it over the positive real line and multiply by 2:
+        \[ 2 \int_0^\infty \frac{1}{x^4 + 1} \,dx \]
+        Apply the substitution $x^4 = u$, meaning $x = u^{1/4}$ and $dx = \frac{1}{4}u^{-3/4} \,du$:
+        \[ 2 \int_0^\infty \frac{1}{u + 1} \frac{1}{4} u^{-3/4} \,du = \frac{1}{2} \int_0^\infty \frac{u^{(1/4) - 1}}{u + 1} \,du \]
+        This form perfectly matches the Beta function integral definition, evaluating to $B(1/4, 3/4) = \Gamma(1/4)\Gamma(3/4)$. Using Euler's reflection formula:
+        \[ \Gamma(z)\Gamma(1-z) = \frac{\pi}{\sin(\pi z)} \]
+        Substitute $z = 1/4$:
+        \[ \frac{1}{2} \left( \frac{\pi}{\sin(\pi/4)} \right) = \frac{1}{2} \left( \frac{\pi}{1/\sqrt{2}} \right) = \frac{\pi\sqrt{2}}{2} \]
+    \end{solution}
+\end{questions}
+
+\subsubsection*{Meia-final 1}
+\begin{questions}
+    \question \[ \int_0^{2025} \lfloor \sqrt{x} \rfloor \,dx \]
+    \begin{solution}
+        Note that $\sqrt{2025} = 45$. We can split the interval $[0, 2025]$ into subintervals between consecutive perfect squares $[k^2, (k+1)^2)$ where the floor function takes a constant integer value $k$:
+        \[ \sum_{k=0}^{44} \int_{k^2}^{(k+1)^2} k \,dx \]
+        Evaluating each integral gives the width of the interval multiplied by $k$:
+        \[ \sum_{k=0}^{44} k \left( (k+1)^2 - k^2 \right) = \sum_{k=0}^{44} k(2k + 1) \]
+        \[ = 2\sum_{k=0}^{44} k^2 + \sum_{k=0}^{44} k \]
+        Using the standard summation formulas for $n = 44$:
+        \[ 2 \left( \frac{44 \times 45 \times 89}{6} \right) + \frac{44 \times 45}{2} = 58740 + 990 = 59730 \]
+    \end{solution}
+
+    \question \[ \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}} \max \{ 2\sin^2(x), 2\cos^2(x) \} \,dx \]
+    \begin{solution}
+        Since both sine squared and cosine squared are even functions, the integrand is symmetric about $0$:
+        \[ 4 \int_0^{\frac{\pi}{2}} \max \{ \sin^2(x), \cos^2(x) \} \,dx \]
+        In the interval $[0, \pi/4]$, $\cos^2(x) \geq \sin^2(x)$, and in $[\pi/4, \pi/2]$, $\sin^2(x) \geq \cos^2(x)$. By symmetry over $\pi/4$, we can evaluate just the first half and double the result:
+        \[ 8 \int_0^{\frac{\pi}{4}} \cos^2(x) \,dx \]
+        Apply the half-angle identity:
+        \[ 4 \int_0^{\frac{\pi}{4}} (1 + \cos(2x)) \,dx = 4 \left[ x + \frac{1}{2}\sin(2x) \right]_0^{\frac{\pi}{4}} \]
+        \[ = 4 \left( \frac{\pi}{4} + \frac{1}{2} \right) = \pi + 2 \]
+    \end{solution}
+
+    \question \[ \int_0^1 \frac{1}{\sqrt{|\log(x)|}} \,dx \]
+    \begin{solution}
+        For $x \in (0, 1]$, $\log(x) \leq 0$, so $|\log(x)| = -\log(x)$. Let $u = -\log(x)$, which means $x = e^{-u}$ and $dx = -e^{-u} \,du$. The limits reverse from $\infty$ to $0$:
+        \[ \int_\infty^0 \frac{1}{\sqrt{u}} (-e^{-u}) \,du = \int_0^\infty u^{-\frac{1}{2}} e^{-u} \,du \]
+        This integral precisely defines the Gamma function at $1/2$:
+        \[ \Gamma\left(\frac{1}{2}\right) = \sqrt{\pi} \]
+    \end{solution}
+
+    \question \[ \int_{-\infty}^{+\infty} x^{100} e^{-x^2} \,dx \]
+    \begin{solution}
+        The integrand is an even function, so we can evaluate it over the positive real line and double it:
+        \[ 2 \int_0^\infty x^{100} e^{-x^2} \,dx \]
+        Substitute $u = x^2$, so $x = u^{1/2}$ and $dx = \frac{1}{2} u^{-1/2} \,du$:
+        \[ 2 \int_0^\infty u^{50} e^{-u} \left( \frac{1}{2} u^{-1/2} \right) \,du = \int_0^\infty u^{49.5} e^{-u} \,du = \Gamma\left(\frac{101}{2}\right) \]
+        Apply the recursive Gamma relation $\Gamma\left(n + \frac{1}{2}\right) = \frac{(2n)!}{4^n n!}\sqrt{\pi}$ for $n = 50$:
+        \[ \frac{100!}{4^{50}50!} \sqrt{\pi} = \frac{\sqrt{\pi}}{4^{50}} \frac{100!}{50!} \]
+    \end{solution}
+\end{questions}
+
+\subsubsection*{Meia-final 2}
+\begin{questions}
+    \question \[ \int_0^\infty \frac{1}{(x^2 + 4)^2} \,dx \]
+    \begin{solution}
+        Substitute $x = 2\tan\theta$, making $dx = 2\sec^2\theta \,d\theta$. The boundaries change from $0$ to $\pi/2$:
+        \[ \int_0^{\frac{\pi}{2}} \frac{2\sec^2\theta}{(4\tan^2\theta + 4)^2} \,d\theta = \int_0^{\frac{\pi}{2}} \frac{2\sec^2\theta}{16\sec^4\theta} \,d\theta \]
+        \[ = \frac{1}{8} \int_0^{\frac{\pi}{2}} \cos^2\theta \,d\theta \]
+        Using the half-angle identity:
+        \[ \frac{1}{16} \int_0^{\frac{\pi}{2}} (1 + \cos(2\theta)) \,d\theta = \frac{1}{16} \left[ \theta + \frac{1}{2}\sin(2\theta) \right]_0^{\frac{\pi}{2}} = \frac{\pi}{32} \]
+    \end{solution}
+
+    \question \[ \int_0^\infty \frac{3^{-\lfloor x \rfloor} \cos(\lfloor x \rfloor \pi)}{2\lfloor x \rfloor + 1} \,dx \]
+    \begin{solution}
+        Decompose the domain into unit intervals $[n, n+1)$ where $\lfloor x \rfloor = n$. Observe that $\cos(n\pi) = (-1)^n$:
+        \[ \sum_{n=0}^\infty \int_n^{n+1} \frac{3^{-n} (-1)^n}{2n + 1} \,dx \]
+        Since the integrand is constant across the interval of length $1$, the integral is simply the constant:
+        \[ \sum_{n=0}^\infty \frac{(-1)^n 3^{-n}}{2n + 1} = \sum_{n=0}^\infty \frac{(-1)^n}{(2n + 1) (\sqrt{3})^{2n}} \]
+        Multiply and divide by $\sqrt{3}$:
+        \[ \sqrt{3} \sum_{n=0}^\infty \frac{(-1)^n}{2n + 1} \left(\frac{1}{\sqrt{3}}\right)^{2n+1} \]
+        This recognizes the Maclaurin series for $\arctan(t)$ evaluated at $t = 1/\sqrt{3}$:
+        \[ \sqrt{3} \arctan\left(\frac{1}{\sqrt{3}}\right) = \sqrt{3} \left( \frac{\pi}{6} \right) = \frac{\sqrt{3}\pi}{6} \]
+    \end{solution}
+
+    \question \[ \int_0^{+\infty} \frac{\sin x}{x} \,dx \]
+    \begin{solution}
+        Define a parametric integral function mapping to the Laplace transform:
+        \[ I(t) = \int_0^{+\infty} e^{-tx} \frac{\sin x}{x} \,dx \]
+        Differentiate with respect to $t$ to eliminate the denominator:
+        \[ I'(t) = \int_0^{+\infty} -e^{-tx} \sin x \,dx \]
+        This is a standard Laplace transform for sine:
+        \[ I'(t) = -\frac{1}{t^2 + 1} \]
+        Integrating yields:
+        \[ I(t) = -\arctan(t) + C \]
+        Take the limit as $t \to \infty$. Since $e^{-tx} \to 0$, $I(\infty) = 0$:
+        \[ 0 = -\frac{\pi}{2} + C \implies C = \frac{\pi}{2} \]
+        We seek the original integral, which occurs at $t = 0$:
+        \[ I(0) = \frac{\pi}{2} - \arctan(0) = \frac{\pi}{2} \]
+    \end{solution}
+
+    \question \[ \int_0^3 2x \max \left( \lfloor (x^2 - 1)\lfloor x^2 - 1 \rfloor \rfloor, x \right) \,dx \]
+    \begin{solution}
+        Let $u = x^2 - 1$, which gives $du = 2x \,dx$. The integration limits transform from $x=0 \implies u=-1$ to $x=3 \implies u=8$:
+        \[ \int_{-1}^8 \max \left( \lfloor u\lfloor u \rfloor \rfloor, \sqrt{u+1} \right) \,du \]
+        Partition $[-1, 8]$ into $[-1, 2)$ and $[2, 8]$. For $u \in [-1, 2)$, the floor expression gives $\lfloor u\lfloor u \rfloor \rfloor \le 1$, but $\sqrt{u+1}$ reaches up to $\sqrt{3}$. The maximum is strictly $\sqrt{u+1}$:
+        \[ \int_{-1}^2 \sqrt{u+1} \,du = \left[ \frac{2}{3}(u+1)^{\frac{3}{2}} \right]_{-1}^2 = \frac{2}{3} \left( 3^{\frac{3}{2}} - 0 \right) = 2\sqrt{3} \]
+        For $u \in [2, 8]$, we have $u \ge 2$, meaning $\lfloor u\lfloor u \rfloor \rfloor \ge \lfloor 2u \rfloor \ge 4$. Since $\sqrt{u+1} \le \sqrt{9} = 3$, the floor expression is always strictly greater, making the maximum $\lfloor u\lfloor u \rfloor \rfloor$:
+        \[ \int_2^8 \lfloor u\lfloor u \rfloor \rfloor \,du = \sum_{n=2}^7 \int_n^{n+1} \lfloor nu \rfloor \,du \]
+        Let $y = nu$, meaning $du = \frac{dy}{n}$ and the limits are $n^2$ to $n^2+n$:
+        \[ \frac{1}{n} \int_{n^2}^{n^2+n} \lfloor y \rfloor \,dy \]
+        This evaluates an arithmetic series of integer floor levels from $n^2$ to $n^2+n-1$:
+        \[ \frac{1}{n} \sum_{k=0}^{n-1} (n^2 + k) = \frac{1}{n} \left( n \cdot n^2 + \frac{n(n-1)}{2} \right) = n^2 + \frac{n-1}{2} \]
+        Summing this over $n=2$ to $n=7$:
+        \[ \sum_{n=2}^7 \left( n^2 + \frac{n-1}{2} \right) = (4 + 9 + 16 + 25 + 36 + 49) + \frac{1 + 2 + 3 + 4 + 5 + 6}{2} \]
+        \[ = 139 + 10.5 = 149.5 = 150 - \frac{1}{2} \]
+        Adding the two partitioned regions gives the exact area:
+        \[ 150 - \frac{1}{2} + 2\sqrt{3} \]
+    \end{solution}
+\end{questions}
+
+\subsubsection*{Meia-final 2 - Ronda de desempate}
+\begin{questions}
+    \question \[ \int_0^2 \left( 3 + (x - 1)^4 \sin\left((x - 1)e^{(x-1)^2}\right) \right) \,dx \]
+    \begin{solution}
+        Substitute $u = x - 1$, so $du = dx$. The limits transform to $[-1, 1]$:
+        \[ \int_{-1}^1 \left( 3 + u^4 \sin\left(u e^{u^2}\right) \right) \,du \]
+        Let $f(u) = u^4 \sin\left(u e^{u^2}\right)$. Testing for symmetry gives $f(-u) = (-u)^4 \sin\left(-u e^{(-u)^2}\right) = -u^4 \sin\left(u e^{u^2}\right) = -f(u)$. The function is odd, so its integral over a symmetric interval vanishes:
+        \[ \int_{-1}^1 3 \,du + 0 = [3u]_{-1}^1 = 3 - (-3) = 6 \]
+    \end{solution}
+
+    \question \[ \int_0^{\pi/2} \frac{\sqrt{\sin(x)}}{\sqrt{\sin(x)} + \sqrt{\cos(x)}} \,dx \]
+    \begin{solution}
+        Let $I$ be the value of the integral. Applying King's Property:
+        \[ \int_a^b f(x) \,dx = \int_a^b f(a+b-x) \,dx \]
+        We replace $x$ with $\frac{\pi}{2} - x$:
+        \[ I = \int_0^{\pi/2} \frac{\sqrt{\sin\left(\frac{\pi}{2}-x\right)}}{\sqrt{\sin\left(\frac{\pi}{2}-x\right)} + \sqrt{\cos\left(\frac{\pi}{2}-x\right)}} \,dx = \int_0^{\pi/2} \frac{\sqrt{\cos(x)}}{\sqrt{\cos(x)} + \sqrt{\sin(x)}} \,dx \]
+        Summing the two symmetrical representations for $I$:
+        \[ 2I = \int_0^{\pi/2} \frac{\sqrt{\sin(x)} + \sqrt{\cos(x)}}{\sqrt{\sin(x)} + \sqrt{\cos(x)}} \,dx = \int_0^{\pi/2} 1 \,dx = \frac{\pi}{2} \]
+        \[ \implies I = \frac{\pi}{4} \]
+    \end{solution}
+\end{questions}
+
+\subsubsection*{Final}
+\begin{questions}
+    \question \[ \int_0^\infty \sum_{n=1}^{+\infty} \left(2024e^{-2024nx} - 2025e^{-2025nx}\right) \,dx \]
+    \begin{solution}
+        We compute the infinite geometric sum explicitly first:
+        \[ \sum_{n=1}^\infty a e^{-anx} = \frac{a e^{-ax}}{1 - e^{-ax}} = \frac{d}{dx} \log(1 - e^{-ax}) \]
+        Applying this identity to both parts gives a clean analytical derivative:
+        \[ \int_0^\infty \frac{d}{dx} \left[ \log(1 - e^{-2024x}) - \log(1 - e^{-2025x}) \right] \,dx \]
+        \[ = \int_0^\infty \frac{d}{dx} \log\left(\frac{1 - e^{-2024x}}{1 - e^{-2025x}}\right) \,dx \]
+        Using the Fundamental Theorem of Calculus:
+        \[ \left[ \log\left(\frac{1 - e^{-2024x}}{1 - e^{-2025x}}\right) \right]_0^\infty \]
+        As $x \to \infty$, the terms approach $\log(1) = 0$. As $x \to 0$, using the Taylor expansion $1 - e^{-ax} \approx ax$:
+        \[ 0 - \log\left(\frac{2024x}{2025x}\right) = -\log\left(\frac{2024}{2025}\right) = \log\left(\frac{2025}{2024}\right) \]
+    \end{solution}
+
+    \question \[ \int_0^{+\infty} e^{-x^2} \cos(2025 x) \,dx \]
+    \begin{solution}
+        Define a parametric function dependent on $b$:
+        \[ I(b) = \int_0^{+\infty} e^{-x^2} \cos(bx) \,dx \]
+        Differentiate under the integral sign:
+        \[ I'(b) = \int_0^{+\infty} -x e^{-x^2} \sin(bx) \,dx \]
+        Apply integration by parts with $u = \sin(bx)$ and $dv = -x e^{-x^2} \,dx$, which gives $du = b\cos(bx) \,dx$ and $v = \frac{1}{2}e^{-x^2}$:
+        \[ I'(b) = \left[ \frac{1}{2} e^{-x^2} \sin(bx) \right]_0^{+\infty} - \frac{b}{2} \int_0^{+\infty} e^{-x^2} \cos(bx) \,dx \]
+        The boundary terms evaluate to zero, producing a differential equation:
+        \[ I'(b) = -\frac{b}{2} I(b) \implies \frac{I'(b)}{I(b)} = -\frac{b}{2} \]
+        Integrating both sides gives $\ln I(b) = -\frac{b^2}{4} + C \implies I(b) = I(0) e^{-b^2/4}$. We evaluate $I(0)$ using the standard Gaussian integral area:
+        \[ I(0) = \int_0^{+\infty} e^{-x^2} \,dx = \frac{\sqrt{\pi}}{2} \]
+        Substitute $I(0)$ back in, and evaluate at $b = 2025$:
+        \[ I(2025) = \frac{\sqrt{\pi}}{2} e^{-\frac{2025^2}{4}} \]
+    \end{solution}
+
+    \question \[ \int_0^\infty \frac{x^3}{e^x - 1} \,dx \]
+    \begin{solution}
+        Multiply numerator and denominator by $e^{-x}$ and expand using a geometric series:
+        \[ \int_0^\infty \frac{x^3 e^{-x}}{1 - e^{-x}} \,dx = \int_0^\infty x^3 \sum_{n=1}^\infty e^{-nx} \,dx = \sum_{n=1}^\infty \int_0^\infty x^3 e^{-nx} \,dx \]
+        For each integral in the series, let $u = nx$, giving $du = n \,dx$:
+        \[ \frac{1}{n^4} \int_0^\infty u^3 e^{-u} \,du = \frac{\Gamma(4)}{n^4} = \frac{6}{n^4} \]
+        Substituting this result back into the infinite sum yields the Riemann zeta function evaluated at 4:
+        \[ 6 \sum_{n=1}^\infty \frac{1}{n^4} = 6 \zeta(4) \]
+        Substitute the known value $\zeta(4) = \frac{\pi^4}{90}$:
+        \[ 6 \times \frac{\pi^4}{90} = \frac{\pi^4}{15} \]
+    \end{solution}
+
+    \question \[ \int_0^1 \frac{x^4(1-x)^4}{1+x^2} \,dx \]
+    \begin{solution}
+        Expand the numerator algebraically:
+        \[ x^4(1-x)^4 = x^4(1 - 4x + 6x^2 - 4x^3 + x^4) = x^8 - 4x^7 + 6x^6 - 4x^5 + x^4 \]
+        Perform polynomial long division on the expression by dividing it by $x^2 + 1$:
+        \[ \frac{x^8 - 4x^7 + 6x^6 - 4x^5 + x^4}{x^2+1} = x^6 - 4x^5 + 5x^4 - 4x^2 + 4 - \frac{4}{x^2+1} \]
+        Integrate the resulting polynomial and rational terms across $0$ to $1$:
+        \[ \left[ \frac{x^7}{7} - \frac{2x^6}{3} + x^5 - \frac{4x^3}{3} + 4x - 4\arctan(x) \right]_0^1 \]
+        \[ = \left( \frac{1}{7} - \frac{2}{3} + 1 - \frac{4}{3} + 4 \right) - 4\left(\frac{\pi}{4}\right) \]
+        \[ = \left( \frac{1}{7} - 2 + 5 \right) - \pi = \frac{22}{7} - \pi \]
+    \end{solution}
+
+    \question \[ \int_0^\infty \sum_{k=\lfloor x \rfloor}^\infty \cos(k\pi) \frac{2025^{-k}}{(k+1)!} \pi^{2k+1} \,dx \]
+    \begin{solution}
+        Decompose the integral into a sum over unit intervals $[n, n+1)$, where $\lfloor x \rfloor = n$ and $\cos(k\pi) = (-1)^k$:
+        \[ \sum_{n=0}^\infty \int_n^{n+1} \left( \sum_{k=n}^\infty (-1)^k \frac{\pi^{2k+1}}{2025^k (k+1)!} \right) \,dx \]
+        Since the inner sum is constant with respect to $x$ over each length-1 interval, the integration acts as an identity:
+        \[ \sum_{n=0}^\infty \sum_{k=n}^\infty (-1)^k \frac{\pi^{2k+1}}{2025^k (k+1)!} \]
+        Reverse the order of summation. The domain $0 \le n \le k < \infty$ gives:
+        \[ \sum_{k=0}^\infty \sum_{n=0}^k (-1)^k \frac{\pi^{2k+1}}{2025^k (k+1)!} \]
+        The inner sum does not depend on $n$ and contains exactly $k+1$ terms, which smoothly cancels the $(k+1)!$ denominator into $k!$:
+        \[ \sum_{k=0}^\infty (k+1) (-1)^k \frac{\pi^{2k+1}}{2025^k (k+1)!} = \sum_{k=0}^\infty (-1)^k \frac{\pi \cdot (\pi^2)^k}{2025^k k!} \]
+        Factor out $\pi$ to isolate a familiar series:
+        \[ \pi \sum_{k=0}^\infty \frac{1}{k!} \left(-\frac{\pi^2}{2025}\right)^k \]
+        This recognizes the strict Maclaurin series representation for $e^z$:
+        \[ \pi e^{-\frac{\pi^2}{2025}} \]
+    \end{solution}
+\end{questions}

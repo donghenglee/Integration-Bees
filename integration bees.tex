@@ -1,0 +1,111 @@
+\documentclass[12pt]{exam}
+\usepackage[top=2cm, bottom=3cm, left=2cm, right=2cm]{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage[colorlinks=true, linkcolor=brown, urlcolor=brown]{hyperref}
+\usepackage{float}
+\usepackage{tikz}
+\usepackage{multicol}
+
+\printanswers
+%\includeonly{upc}
+
+%give latex code for the attached question and solutions in class exam: \begin{questions}\question\end{questions},give detailed solutions for each questions please, by \begin{solution}, i dont want the answer provided in questions, make sure there are \, before dx whenever necessary, \section{} is used for each name of integration bee, \subsection*{} is used for year, \subsubsection*{} is used for each round name, remove all "proposed by, Evaluate the following integral:" 
+
+\shadedsolutions
+\definecolor{SolutionColor}{rgb}{1.0,0.98,0.8} %https://latexcolor.com/
+\definecolor{PageColor}{rgb}{1.0,0.98,0.8}
+\renewcommand{\solutiontitle}{\noindent}
+\solutionsreseteqcounter
+
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\csch}{csch}
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\arccot}{arcCot}
+\DeclareMathOperator{\arccsc}{arcCsc}
+\DeclareMathOperator{\arccosh}{arcCosh}
+\DeclareMathOperator{\arcsinh}{arcsinh}
+\DeclareMathOperator{\arctanh}{arctanh}
+\DeclareMathOperator{\arcsech}{arcsech}
+\DeclareMathOperator{\arccsch}{arcCsch}
+\DeclareMathOperator{\arccoth}{arcCoth} 
+
+\title{\Huge {Integration Bees}}
+\author{Lee Dongheng} % Add your name here if desired
+\date{\today}
+
+\begin{document}
+
+\begin{titlepage}
+    \centering
+    \vspace*{4cm}
+    
+    % Requires \usepackage{lmodern} or similar scalable font package in preamble for best results with arbitrary font sizes
+    {\fontsize{45}{55}\selectfont\bfseries INTEGRATION BEES\par}
+    
+    \vspace{1.5cm}
+    
+    {\LARGE \textit{A Comprehensive Training Set}}\par
+    
+    \vspace{2cm}
+    
+    \rule{0.6\textwidth}{0.5pt}\par
+    
+    \vspace{2cm}
+    
+    {\Large For Advanced Calculus and Competitive Problem Solving}\par
+    
+    \vfill
+    
+    {\large \today}\par
+\end{titlepage}
+
+\pagebreak
+
+\section*{Preface}
+\addcontentsline{toc}{section}{Preface}
+
+This document is a personal compilation of problems and detailed solutions gathered from various university Integration Bees. It was assembled as a self-reference repository to record and review useful integration tricks, clever algebraic manipulations, and integral techniques.
+
+As an informal, self-directed project, the solutions included here have not been rigorously verified or peer-reviewed and may contain errata. Readers are advised to consult and use this document with critical evaluation and at their own discretion.
+
+\pagebreak
+
+\tableofcontents
+\pagebreak
+
+\include{portugal}
+\include{CMIMC}
+\include{caltech}
+\include{upc}
+\include{bonn}
+\include{isi}
+\include{iitbombay}
+\include{utaustin}
+\include{ucberkeley}
+
+\pagebreak
+\section{MIT Integration Bee}
+
+Please visit \href{https://math.mit.edu/~yyao1/integrationbee.html}{MIT Integration Bee} for more information.
+
+\pagebreak
+\begin{center}
+  {\fontsize{30pt}{26pt}\selectfont References
+  }
+\end{center}
+\vspace{1cm}
+\begin{itemize}
+    \item \href{https://www.nmath.pt/eventos/integration-bee-2025}{Portugal Integration Bee}
+    \item \href{https://cmimc.math.cmu.edu/math/past-problems}{Carnegie Mellon's Integration Bee (CMIMC)}
+    \item \href{https://www.caltechmathmeet.org/problems/cmm-2025-problems}{Caltech Math Meet Integration Bee}
+    \item \href{https://espaiestudiantat.cfis.upc.edu/ca/integration-bee/historic}{UPC Integration Bee}
+    \item \href{https://www.integrationfest.in/intbee/}{ISI Integration Bee}
+    \item \href{https://bibee.rocks/}{Bonn Integration Bee}
+    \item \href{https://www.theintegralcup.in/last-edition}{IIT Bombay Integral Cup}
+    \item \href{https://oden.utexas.edu/news-and-events/events/2266---/}{UT Austin Integration Bee}
+    \item \href{https://intercollegiatemathtournament.org/}{Intercollegiate Math Tournament - Integration Bee} 
+    \item \href{https://math.mit.edu/~yyao1/integrationbee.html}{MIT Integration Bee}
+    \item \href{https://artofproblemsolving.com/community/q1h3026499p27219178}{UC Berkeley Integration Bee}
+\end{itemize}
+\end{document}

@@ -1,0 +1,775 @@
+\section{Bonn Integration Bee}
+
+\subsection*{2024}
+
+\subsubsection*{Semi Finale 1}
+\begin{questions}
+
+\question
+\[ \int \frac{\ln(\sin x)}{\cos^2 x}\, dx \]
+\begin{solution}
+Using integration by parts,
+\[ \int \frac{\ln(\sin x)}{\cos^2 x}\, dx = \tan(x)\ln(\sin(x)) - \int \tan(x)\frac{\cos(x)}{\sin(x)}\, dx = \tan(x)\ln(\sin(x)) - x. \]
+\end{solution}
+
+\question
+\[ \int_0^{\pi} \frac{1}{2024-\cos x}\, dx \]
+\begin{solution}
+Substitute $t=\tan(x/2)$, so $\dfrac{dx}{dt}=\dfrac{2}{1+t^2}$ and $\cos(x)=\dfrac{1-t^2}{1+t^2}$. The integral becomes
+\[ \int_0^\infty \frac{2}{2024(1+t^2)-(1-t^2)}\, dt = \int_0^\infty \frac{2}{2025\left(t^2+\left(\sqrt{\tfrac{2023}{2025}}\right)^2\right)}\, dt = \frac{\pi}{\sqrt{2025\cdot 2023}}. \]
+\end{solution}
+
+\question
+\[ \int_0^{\pi/2} \frac{\cos x}{2-\sin(2x)}\, dx \]
+\begin{solution}
+\[ \int_0^{\pi/2} \frac{\cos x}{2-\sin(2x)}\, dx = \int_0^{\pi/2} \frac{\cos x+\sin x-\sin x}{1+(\sin x-\cos x)^2}\, dx = \int_{-1}^1 \frac{1}{1+z^2}\, dz - \int_0^{\pi/2} \frac{\sin x}{2-\sin(2x)}\, dx \]
+\[ = \frac{\pi}{2} - \int_0^{\pi/2} \frac{\cos x}{2-\sin(2x)}\, dx \]
+by substituting $x$ with $\pi/2-x$. Hence the integral equals $\dfrac{1}{2}\cdot\dfrac{\pi}{2}=\dfrac{\pi}{4}$.
+\end{solution}
+
+\question
+\[ \int_0^{\pi/6} \frac{1}{\cos x}\, dx \]
+\begin{solution}
+\[ \int_0^{\pi/6} \frac{1}{\cos x}\, dx = \int_0^{\pi/6} \frac{\cos x}{\cos^2 x}\, dx, \]
+and with $t=\sin x$ this becomes
+\[ \int_0^{1/2} \frac{1}{1-t^2}\, dt = \frac{\ln 3}{2}. \]
+\end{solution}
+
+\question
+\[ \int \frac{x}{\cos^2 x}\, dx \]
+\begin{solution}
+Integration by parts gives
+\[ \tan(x)x - \int \tan(x)\, dx = \tan(x)x + \ln(\cos(x)). \]
+\end{solution}
+
+\question[Tiebreaker]
+\[ \int \frac{xe^{x^2}}{e^{2x^2}+2e^{x^2}-3}\, dx \]
+\begin{solution}
+Substitute $z=e^{x^2}$, so the integral becomes
+\[ \int \frac{1}{2}\cdot\frac{1}{z^2+2z-3}\, dz = \frac{1}{8}\ln\left(\frac{1-z}{3+z}\right). \]
+\end{solution}
+
+\end{questions}
+
+\subsubsection*{Semi Finale 2}
+\begin{questions}
+
+\question
+\[ \int \sin(x)\cos(x)\ln\left(\sin^4(x)-\cos^4(x)\right)\, dx \]
+\begin{solution}
+\[ \int \sin(x)\cos(x)\ln\left(\sin^4(x)-\cos^4(x)\right)\, dx = \int \frac{1}{4}\cdot 4\sin(x)\cos(x)\ln(1-2\cos^2(x))\, dx. \]
+Substituting $t=1-2\cos^2(x)$ gives
+\[ \int \frac{1}{4}\ln(t)\, dt = \frac{1}{4}t(\ln(t)-1) = \frac{1}{4}(1-2\cos^2(x))(\ln(1-2\cos^2(x))-1). \]
+\end{solution}
+
+\question
+\[ \int_0^\infty\int_0^\infty e^{-3x}\cos(xy)\, dx\, dy \]
+\begin{solution}
+Since $\cos(x)=\operatorname{Re}(e^{ixy})$, the integral equals
+\[ \int_0^\infty \operatorname{Re}\left(\int_0^\infty e^{-3x}e^{ixy}\, dx\right) dy = \int_0^\infty \operatorname{Re}\left(\frac{1}{3-iy}\right) dy = \frac{\pi}{2}. \]
+\end{solution}
+
+\question
+\[ \int_0^{\pi/3} \frac{1}{\cos^3(x)}\, dx \]
+\begin{solution}
+\[ \int_0^{\pi/3} \frac{\cos x}{\cos^4 x}\, dx = \int_0^{1/2} \frac{1}{(1-t^2)^2}\, dt \]
+\[ = \int_0^{1/2} \frac{1}{4(1+t)}+\frac{1}{4(1+t)^2}-\frac{1}{4(1-t)}+\frac{1}{4(1-t)^2}\, dt = \frac{1}{3}+\frac{\ln(3)}{4} \]
+using the substitution $t=\sin x$.
+\end{solution}
+
+\question
+\[ \int_{1/e}^{e} \frac{1+\ln(x)}{x}\cdot\frac{x^2+x+1}{x^2+1}\, dx \]
+\begin{solution}
+Substituting $x\mapsto 1/x$ yields
+\[ \int_{1/e}^{e} \frac{\ln(x)}{x}\cdot\frac{x^2+x+1}{x^2+1}\, dx = \int_{1/e}^{e} \frac{-\ln(x)}{x}\cdot\frac{x^2+x+1}{x^2+1}\, dx, \]
+so the integral becomes
+\[ \int_{1/e}^{e} \frac{1}{x}\cdot\frac{x^2+x+1}{x^2+1}\, dx = \int_{1/e}^{e} \frac{1}{x}+\frac{1}{x^2+1}\, dx = 2+\arctan(e)-\arctan(1/e). \]
+\end{solution}
+
+\question
+\[ \int_0^{\sqrt{2}/2} x\arccos(x)\, dx \]
+\begin{solution}
+Substituting $x=\cos(t)$ and using $2\sin(t)\cos(t)=\sin(2t)$ together with integration by parts,
+\[ \int_0^{\sqrt{2}/2} x\arccos(x)\, dx = \int_{\pi/2}^{\pi/4} -t\sin(t)\cos(t)\, dt = \int_{\pi/2}^{\pi/4} -\frac{1}{2}t\sin(2t)\, dt \]
+\[ = \left.\frac{1}{4}t\cos(2t)\right|_{\pi/2}^{\pi/4} - \int_{\pi/2}^{\pi/4} \frac{1}{2}\cos(2t)\, dt. \]
+\end{solution}
+
+\question[Tiebreak]
+\[ \int_0^\infty x^{-\frac{x^2}{2}}\ln(x)\, dx \]
+\begin{solution}
+\[ \int_0^\infty x^{-\frac{x^2}{2}}\ln(x)\, dx = \int_0^\infty e^{-\frac{x^2}{2}}\, dx = \sqrt{\frac{\pi}{2}}. \]
+\end{solution}
+
+\end{questions}
+
+\subsubsection*{Determination of the Third Place}
+\begin{questions}
+
+\question
+\[ \int x\arctan^2(x)\, dx \]
+\begin{solution}
+\[ \int x\arctan^2(x)\, dx = \frac{x^2}{2}\arctan^2(x) - \int \frac{x^2\arctan(x)}{1+x^2}\, dx \]
+\[ = \frac{x^2}{2}\arctan^2(x) - \int \arctan(x)\, dx - \int \frac{\arctan(x)}{1+x^2}\, dx \]
+\[ = \frac{x^2}{2}\arctan^2(x) - \left(\arctan(x)x - \frac{1}{2}\ln(1+x^2)\right) - \frac{1}{2}\arctan^2(x) \]
+\[ = \frac{x^2+1}{2}\arctan^2(x) - \arctan(x)x + \frac{1}{2}\ln(1+x^2). \]
+For $\int \arctan(x)\, dx$:
+\[ \int \arctan(x)\, dx = \int 1\cdot \arctan(x)\, dx = x\arctan(x) - \int \frac{x}{1+x^2}\, dx = \arctan(x)x - \frac{1}{2}\ln(1+x^2). \]
+\end{solution}
+
+\question
+\[ \int_0^\infty \left(e^{-2/x^2} - e^{-8/x^2}\right) dx \]
+\begin{solution}
+The substitution $t=1/x^2$ yields
+\[ \int_0^\infty \left(e^{-2/x^2} - e^{-8/x^2}\right) dx = \frac{1}{2}\int_0^\infty \frac{e^{-2t}-e^{-8t}}{t\sqrt{t}}\, dt = \frac{1}{2}\int_0^\infty \frac{1}{\sqrt{t}}\int_2^8 e^{-tu}\, du\, dt = \frac{1}{2}\int_2^8\int_0^\infty \frac{e^{-tu}}{\sqrt{t}}\, dt\, du. \]
+Substituting $tu=v^2$ gives
+\[ \frac{1}{2}\int_2^8 \int_0^\infty \frac{2}{\sqrt{u}}e^{-v^2}\, dv\, du = \frac{1}{2}\int_2^8 \frac{2}{\sqrt{u}}\int_0^\infty e^{-v^2}\, dv\, du = \frac{\sqrt{\pi}}{2}\int_2^8 \frac{1}{\sqrt{u}}\, du = \sqrt{\pi}\cdot 2\sqrt{2} = \sqrt{2\pi}. \]
+\end{solution}
+
+\question
+\[ \int_1^\infty \frac{\ln x}{x(x-1)}\, dx \]
+\begin{solution}
+Substituting $x=e^t$,
+\[ \int_1^\infty \frac{\ln x}{x(x-1)}\, dx = \int_0^\infty \frac{t}{e^t-1}\, dt = \int_0^\infty t e^{-t}\sum_{n=0}^\infty e^{-nt}\, dt = \sum_{n=0}^\infty \int_0^\infty t e^{-(n+1)t}\, dt. \]
+Substituting $u=(n+1)t$,
+\[ \sum_{n=0}^\infty \int_0^\infty \frac{u}{(n+1)^2}e^{-u}\, du = \sum_{n=0}^\infty \frac{1}{(n+1)^2}\int_0^\infty u e^{-u}\, du = \zeta(2)\Gamma(2) = \frac{\pi^2}{6}. \]
+\end{solution}
+
+\question
+\[ \int_0^\infty \frac{\cos(184x)}{x^2+121}\, dx \]
+\begin{solution}
+Consider $I(t)=\int_0^\infty \dfrac{\cos(tx)}{x^2+11^2}\, dx$, so $I'(t)=\int_0^\infty \dfrac{-x\sin(tx)}{x^2+11^2}\, dx$. Differentiating naively causes convergence issues, so instead write
+\[ I'(t) = \int_0^\infty \sin(tx)\left(\frac{-1}{x}+\frac{11^2}{x(x^2+11^2)}\right) dx. \]
+Using $\int_0^\infty \dfrac{\sin(tx)}{x}\, dx = \dfrac{\pi}{2}$, it follows that
+\[ I'(t) = \int_0^\infty \frac{11^2}{x^2+11^2}\cdot\frac{\sin(tx)}{x}\, dx - \frac{\pi}{2}, \qquad I''(t) = \int_0^\infty \frac{11^2\cos(tx)}{x^2+11^2}\, dx = 11^2 I(t). \]
+Thus $I(t)=C_1e^{11t}+C_2e^{-11t}$, where
+\[ C_1+C_2 = I(0) = \int_0^\infty \frac{1}{x^2+11^2}\, dx = \left.\frac{1}{11}\arctan(x)\right|_0^\infty = \frac{\pi}{22}, \qquad 11(C_1-C_2)=I'(0)=-\frac{\pi}{2}. \]
+So $C_1=0$, $C_2=\dfrac{\pi}{22}$, and $I(t)=\dfrac{\pi}{22}e^{-11t}$. Overall,
+\[ \int_0^\infty \frac{\cos(184x)}{x^2+11^2}\, dx = I(184) = \frac{\pi}{22}e^{-2024}. \]
+\end{solution}
+
+\question
+\[ \int_0^1 \frac{x^2}{(1+x^2)^2}\, dx \]
+\begin{solution}
+\[ \int_0^1 \frac{x^2}{(1+x^2)^2}\, dx = \int_0^1 -\frac{1}{2}x\cdot\frac{-2x}{(1+x^2)^2}\, dx = \left.-\frac{1}{2}x\cdot\frac{1}{1+x^2}\right|_0^1 - \int_0^1 -\frac{1}{2}\cdot\frac{1}{1+x^2}\, dx \]
+\[ = -\frac{1}{4} + \left.\frac{1}{2}\arctan(x)\right|_0^1 = -\frac{1}{4}+\frac{\pi}{8}, \]
+using $\dfrac{d}{dx}\dfrac{1}{1+x^2} = \dfrac{-2x}{(1+x^2)^2}$.
+\end{solution}
+
+\question
+\[ \int_0^{2\pi} \frac{1}{9\cos^2(t)+4\sin^2(t)}\, dt \]
+\begin{solution}
+Consider $2\pi i = \displaystyle\int_D \frac{1}{z}\, dz$, where $D$ is an ellipse with half-axis lengths $3$ and $2$. Parameterizing gives
+\[ 2\pi i = \int_0^{2\pi} \frac{-3\sin(t)+2i\cos(t)}{3\cos(t)+2i\sin(t)}\, dt = \int_0^{2\pi} \frac{(-3\sin(t)+2i\cos(t))(3\cos(t)-2i\sin(t))}{9\cos^2(t)+4\sin^2(t)}\, dt = \int_0^{2\pi} \frac{-5\cos(t)\sin(t)+6i}{9\cos^2(t)+4\sin^2(t)}\, dt. \]
+Comparing real and imaginary parts,
+\[ 2\pi = 6\int_0^{2\pi} \frac{1}{9\cos^2(t)+4\sin^2(t)}\, dt, \]
+so $\displaystyle\int_0^{2\pi} \frac{1}{9\cos^2(t)+4\sin^2(t)}\, dt = \frac{\pi}{3}$.
+\end{solution}
+
+\end{questions}
+
+\subsubsection*{Finale}
+\begin{questions}
+
+\question
+\[ \int \frac{1}{x^{2024}+x}\, dx \]
+\begin{solution}
+\[ \int \frac{1}{x^{2024}+x}\, dx = \int \frac{1}{x} - \frac{x^{2022}}{x^{2023}+1}\, dx = \ln(x) - \ln(x^{2023}+1). \]
+\end{solution}
+
+\question
+\[ \int_0^8 \frac{\ln(x)}{\sqrt{x(8-x)}}\, dx \]
+\begin{solution}
+Substitute $x=8\sin^2(u)$ to get
+\[ \int_0^{\pi/2} 2\ln(8\sin^2(u))\, du = 3\pi\ln(2) - 4\int_0^{\pi/2}\ln(\sin(u))\, du = 3\pi\ln(2)-2\pi\ln(2) = \pi\ln(2), \]
+using $\displaystyle\int_0^{\pi/2}\ln(\sin(u))\, du = -\frac{\pi}{2}\ln(2)$ (via the identity $\int_0^{\pi/2}\ln(\sin u)\,du + \int_0^{\pi/2}\ln(\sin u)\,du = \int_0^{\pi/2}\ln(\sin u\cos u)\,du$, etc.).
+\end{solution}
+
+\question
+\[ \int_1^\infty \frac{x^4-1}{\ln(x)(x^6+1)}\, dx \]
+\begin{solution}
+Use $\dfrac{x^4-1}{\log(x)} = \displaystyle\int_0^4 x^t\, dt$ and make substitutions to bring the integral into beta-function form. Applying Euler's reflection formula, the result is $\ln(2+\sqrt{3})$.
+\end{solution}
+
+\question
+\[ \int_{-1}^1 \frac{1+x^{2024}}{1+(x^{2024})^{\arctan x}}\, dx \]
+\begin{solution}
+\[ \int_{-1}^1 \frac{1+x^{2024}}{1+(x^{2024})^{\arctan x}}\, dx = \int_{-1}^1 \frac{1+x^{2024}}{1+(x^{2024})^{-\arctan x}}\, dx, \]
+so
+\[ 2\int_{-1}^1 \frac{1+x^{2024}}{1+(x^{2024})^{\arctan x}}\, dx = \int_{-1}^1 (1+x^{2024})\, dx = 2+\frac{2}{2025}, \]
+and the integral is $1+\dfrac{1}{2025}$.
+\end{solution}
+
+\question
+\[ \int_0^\infty \frac{1}{\sqrt{x}(1+x)(x^{2024}+1)}\, dx \]
+\begin{solution}
+Substituting $x\mapsto 1/x$ and $\sqrt{x}$, and using symmetry,
+\[ \int_0^\infty \frac{x^{2023}\sqrt{x}}{(1+x)(x^{2024}+1)}\, dx = 2\int_0^\infty \frac{x^{4048}}{(1+x^2)(x^{4048}+1)}\, dx = \int_0^\infty \frac{x^{4048}+1}{(1+x^2)(x^{4048}+1)}\, dx = \frac{\pi}{2}. \]
+\end{solution}
+
+\question[Tiebreaker]
+\[ \int \sqrt{\frac{x}{x+1}}\, dx \]
+\begin{solution}
+\[ \int 1\cdot\sqrt{\frac{x}{x+1}}\, dx = (x+1)\sqrt{\frac{x}{x+1}} - \int \frac{1}{2\sqrt{x(x+1)}}\, dx \]
+\[ = \sqrt{x(x+1)} - \int \left(\frac{1}{2\sqrt{x+1}}+\frac{1}{2\sqrt{x}}\right)\frac{1}{\sqrt{x}+\sqrt{x+1}}\, dx = \sqrt{x(x+1)} - \ln(\sqrt{x}+\sqrt{x+1}), \]
+or alternatively substitute $z=\sqrt{\dfrac{x}{x+1}}$.
+\end{solution}
+
+\end{questions}
+
+\subsection*{2025}
+
+\subsubsection*{Kahoot}
+\begin{questions}
+
+\question \[ \int 2025^{BIBee}\, de = 675 BIBee^e \]
+\begin{solution} As stated above. \end{solution}
+
+\question \[ \int_0^{2025} \lfloor x\rfloor\, dx \]
+\begin{solution} $= 2049300$ \end{solution}
+
+\question \[ \int_0^{\pi/2} \sin x \sin 2x\, dx \]
+\begin{solution} $= \dfrac{2}{3}$ \end{solution}
+
+\question \[ \int_0^{\pi/2} \frac{\cos(x)}{1+\sin(x)}\, dx \]
+\begin{solution} $= \ln(2)$ \end{solution}
+
+\question \[ \int_{-\pi}^{\pi} \lfloor \sin(\lfloor x\rfloor)\rfloor\, dx \]
+\begin{solution} $= -3$ \end{solution}
+
+\question \[ \int_0^{\pi} \sin^{2025}(x)\cos^{2025}(x)\, dx \]
+\begin{solution} $= 0$ \end{solution}
+
+\question \[ \int_0^1 \lfloor 4x(1-x)\rfloor\, dx \]
+\begin{solution} $= 0$ \end{solution}
+
+\question \[ \int_0^1 dx_1 \int_0^{x_1} dx_2 \cdots \int_0^{x_{2024}} dx_{2025} \]
+\begin{solution} $= \dfrac{1}{2025!}$ \end{solution}
+
+\question \[ \int_1^e \frac{\cos(1+\ln(x))}{x}\, dx \]
+\begin{solution} $= \sin(2)-\sin(1)$ \end{solution}
+
+\question \[ \int_0^{\pi/2} \min(\sin x,\cos x)\max(\tan x,1)\, dx \]
+\begin{solution} $= 1$ \end{solution}
+
+\question \[ \int_0^1 \frac{\arcsin(x)}{\sqrt{1-x^2}}\, dx \]
+\begin{solution} $= \dfrac{\pi^2}{8}$ \end{solution}
+
+\question \[ \int_1^e x^{1/\ln(x)}\, dx \]
+\begin{solution} $= e-1$ \end{solution}
+
+\question \[ \int_0^{4\pi} \sin(\sin x - x)\, dx \]
+\begin{solution} $= 0$ \end{solution}
+
+\question \[ \int_0^\infty \frac{x^{1011}}{1+x^{2024}}\, dx \]
+\begin{solution} $= \dfrac{\pi}{2024}$ \end{solution}
+
+\question \[ \int_{-\infty}^0 e^{e^x+x}\, dx \]
+\begin{solution} $= e-1$ \end{solution}
+
+\question \[ \int_0^\infty \frac{e^{-x}}{e^{-x}+2025}\, dx \]
+\begin{solution} $= \ln\left(\dfrac{2026}{2025}\right)$ \end{solution}
+
+\question \[ \int_0^1 45x^{45}\, dx \]
+\begin{solution} $= \dfrac{45}{46}$ \end{solution}
+
+\question \[ \int_0^e \ln\left(\tfrac{x}{2}\right)\, dx \]
+\begin{solution} $= 0$ \end{solution}
+
+\question \[ \lim_{N\to\infty} \int_0^1 \sum_{i=1}^N \frac{1}{i}x^{i-1}\, dx \]
+\begin{solution} $= \dfrac{\pi^2}{6}$ \end{solution}
+
+\question \[ \int_1^{2025} \frac{2025^{\,x+\frac{1}{x}}\log_{2025}(x)}{x}\, dx \]
+\begin{solution} $= 0$ \end{solution}
+
+\question \[ \int_0^2 1+2x+3x^2+4x^3+5x^4+6x^5\, dx \]
+\begin{solution} $= 126$ \end{solution}
+
+\question \[ \int_1^e \frac{\ln(\ln x+1)}{x}\, dx \]
+\begin{solution} $= 2\log 2 - 1$ \end{solution}
+
+\question \[ \int_0^1 \frac{\sqrt{x}}{2(1+x)}\, dx \]
+\begin{solution} $= 1-\dfrac{\pi}{4}$ \end{solution}
+
+\question \[ \int_0^{\pi/2} \cot x - x\csc^2 x\, dx \]
+\begin{solution} $= -1$ \end{solution}
+
+\question \[ \int_0^{\pi/2} \left(x^4-4\pi x^3+6\pi^2x^2-4\pi^3x+\pi^4\right) dx \]
+\begin{solution} $= \dfrac{\pi^5}{155}$ \end{solution}
+
+\end{questions}
+
+\subsubsection*{Quarterfinals -- First Leg}
+\begin{questions}
+
+\question \[ \int \tan^3(\sin x)\cos x\, dx \]
+\begin{solution} $= \log\cos(\sin x) + \dfrac{1}{2\cos^2(\sin x)}$ \end{solution}
+
+\question \[ \int_1^\infty \frac{1}{x^2+x+1}+\frac{1}{x^3+x^2+x}+\frac{1}{x^4+x^3+x^2}\, dx \]
+\begin{solution} $= 1$ \end{solution}
+
+\question \[ \int_0^\infty 2x^2e^{-x^2}\, dx \]
+\begin{solution} $= \dfrac{\sqrt{\pi}}{2}$ \end{solution}
+
+\question \[ \int_0^{3/4} \operatorname{arsinh}x\, dx \]
+\begin{solution} $= \dfrac{3\log 2 - 1}{4}$ \end{solution}
+
+\question[Tiebreaker 1] \[ \int_0^1 \ln\left(1+x^2\right) dx \]
+\begin{solution} $= \ln 2 - 2 + \dfrac{\pi}{2}$ \end{solution}
+
+\question[Tiebreaker 2] \[ \int_0^1 (1-x)(1+x+x^2+x^3+x^4+x^6+x^7)\, dx \]
+\begin{solution} $= \dfrac{109}{126}$ \end{solution}
+
+\end{questions}
+
+\subsubsection*{Quarterfinals -- Second Leg}
+\begin{questions}
+
+\question \[ \int_0^{\pi} \sin^2 x\cos^2 x\, dx \]
+\begin{solution} $= \dfrac{\pi}{8}$ \end{solution}
+
+\question \[ \int_0^{\pi/2} \sin x\sinh x\, dx \]
+\begin{solution} $= \dfrac{1}{2}\cosh\dfrac{\pi}{2}$ \end{solution}
+
+\question \[ \int_{e^2}^{e^4} \frac{1}{x\log^2(x)\ln\ln x}\, dx \]
+\begin{solution} $= (\ln 2)^2$ \end{solution}
+
+\question \[ \int_0^1 x^{2025}(\ln x)^{2025}\, dx \]
+\begin{solution} $= -\dfrac{2025!}{2026^{2026}}$ \end{solution}
+
+\question[Tiebreaker 1] \[ \int_0^{\pi/2} \frac{\sin x}{1+\sin^2 x}\, dx \]
+\begin{solution} $= \log_{\sqrt 2}\left(\sqrt 2+1\right)$ \end{solution}
+
+\question[Tiebreaker 2] \[ \int x^{10^{20}}\, dx \]
+\begin{solution} $= \dfrac{1}{10^{20}+1}x^{10^{20}+1}$ \end{solution}
+
+\end{questions}
+
+\subsubsection*{Semifinals}
+\begin{questions}
+
+\question \[ \int_0^{\pi/3} \frac{1}{1-\sin x}\, dx \]
+\begin{solution} $= \sqrt{3}+1$ \end{solution}
+
+\question \[ \int_0^{101} \frac{\lfloor x\rfloor}{1+2\lfloor x\rfloor x - \lfloor x\rfloor(\lfloor x\rfloor+1)}\, dx \]
+\begin{solution} $= \dfrac{\log 10101}{2}$ \end{solution}
+
+\question \[ \int \frac{\cos(\ln x)-\sin(\ln x)}{x^2}\, dx \]
+\begin{solution} $= \dfrac{\sin(\ln x)}{x}$ \end{solution}
+
+\question \[ \int_0^2 \lfloor \ln x\rfloor\, dx \]
+\begin{solution} $= -\dfrac{e}{e-1}$ \end{solution}
+
+\question[Tiebreaker 1] \[ \int_0^1 \arctan(x)\, dx \]
+\begin{solution} $= \dfrac{\pi}{4}-\dfrac{\log 2}{2}$ \end{solution}
+
+\question[Tiebreaker 2] \[ \int_0^\infty e^{-x}\cos x\, dx \]
+\begin{solution} $= \dfrac{1}{2}$ \end{solution}
+
+\end{questions}
+
+\subsubsection*{Third Place Playoff}
+\begin{questions}
+
+\question \[ \int_0^\infty \frac{1+x^2}{1+x^4}\, dx \]
+\begin{solution} $= \dfrac{\pi}{\sqrt{2}}$ \end{solution}
+
+\question \[ \int_0^{3/4} 2x\operatorname{arsinh}x + \sqrt{x^2+1}\, dx \]
+\begin{solution} $= \dfrac{25}{16}\log 2$ \end{solution}
+
+\question \[ \int_{-\log 2}^0 \sqrt{1-e^x}\, dx \]
+\begin{solution} $= 2\log\left(\sqrt2+1\right) - \sqrt2$ \end{solution}
+
+\question \[ \int_0^{\pi/2} \frac{1}{\sin x+i\cos x}\, dx \]
+\begin{solution} $= 1-i$ \end{solution}
+
+\question[Tiebreaker 1] \[ \int_{e^2}^{e^4} \log_x(2)\log_{\log x}(4)\log_{e^x}(8)\, dx \]
+\begin{solution} $= 6(\log 2)^4$ \end{solution}
+
+\question[Tiebreaker 2] \[ \int_0^1 \min(2x^2-1,\,1-x^2)\, dx \]
+\begin{solution} $= \dfrac{2}{3}-\dfrac{4\sqrt6}{9}$ \end{solution}
+
+\end{questions}
+
+\subsubsection*{Epic Finale}
+\begin{questions}
+
+\question \[ \int_0^1 \ln\left(1+\sqrt[3]{x}\right) dx \]
+\begin{solution} $= 2\ln 2 - \dfrac{5}{6}$ \end{solution}
+
+\question \[ \int_{1/2}^1 \frac{1}{x^{2/3}}\sqrt[3]{\frac{x}{1-x}}\, dx \]
+\begin{solution} $= 3+2\sqrt3$ \end{solution}
+
+\question \[ \int_0^1 \frac{\ln x}{1-x}\, dx \]
+\begin{solution} $= -\dfrac{\pi^2}{6}$ \end{solution}
+
+\question \[ \int_0^1 \frac{x^2}{\sqrt{x^2+3}}\, dx \]
+\begin{solution} $= 1-\dfrac{3}{2}\operatorname{arsinh}\dfrac{1}{\sqrt3}$ \end{solution}
+
+\question[Tiebreaker 1] \[ \int_0^{\pi/2} \sin(51x)\cos(24x)\, dx \]
+\begin{solution} $= \dfrac{51}{2025}$ \end{solution}
+
+\question[Tiebreaker 2] \[ \int_2^3 \frac{x^2+2026x+2025}{x^2+2024x-2025}\, dx \]
+\begin{solution} $= 1+2\log 2$ \end{solution}
+
+\end{questions}
+
+\subsubsection*{Reserves}
+\begin{questions}
+
+\question \[ \int_0^{2\pi} \log\left(\tfrac{5}{4}+\cos(t)\right) dt \]
+\begin{solution} $= 0$ \end{solution}
+
+\end{questions}
+
+\subsubsection*{Removed Integrals}
+\begin{questions}
+
+\question \[ \int_0^1 \sqrt[5]{\sqrt{x}\left(1-\sqrt[3]{x}\right)}\, dx \]
+\begin{solution} $= \dfrac{\pi}{3}$ \end{solution}
+
+\question \[ \int_0^{1/2} \sqrt{1-x^2}\, dx \]
+\begin{solution} $= \dfrac{\sqrt3}{8}+\dfrac{\pi}{12}$ \end{solution}
+
+\end{questions}
+
+\subsection*{2026}
+
+\subsubsection*{Kahoot}
+\begin{questions}
+
+\question \[ \int_0^{\pi} \sum_{k=1}^{2026} \frac{1+\cos(2kx)}{2}\, dx \]
+\begin{solution}
+Switch the sum and integral. For all $k\in\mathbb Z$, $\int_0^\pi \cos(2kx)\, dx = 0$ and $\int_0^\pi \tfrac{1}{2}\, dx = \tfrac{\pi}{2}$, so the solution is $1013\pi$.
+\end{solution}
+
+\question \[ \int_{-\infty}^0 x^2e^{x^3}\, dx \]
+\begin{solution}
+Substitute $u=x^3$; the solution is $\dfrac{1}{3}$.
+\end{solution}
+
+\question \[ \int_{-\infty}^\infty e^{-z^2}\, dx \]
+\begin{solution}
+This is not a Gaussian integral since integration is with respect to $z$ instead of $x$; the solution is $\infty$.
+\end{solution}
+
+\question \[ \int_{-\infty}^\infty \left\lfloor e^{-\lceil x^2\rceil}\right\rfloor\, dx \]
+\begin{solution} $= 0$ \end{solution}
+
+\question \[ \int \frac{dx}{\sec(x)+\tan(x)\sin(x)} \]
+\begin{solution}
+Multiply top and bottom by $\cos(x)$, substitute $u=\sin(x)$, to get $\arctan(\sin(x))$.
+\end{solution}
+
+\question \[ \int_0^{1/3} 3\det\begin{pmatrix} 1 & e^{-x} & e^{x} \\ e^{x} & 1 & e^{-x} \\ e^{-x} & e^{x} & 1 \end{pmatrix} dx \]
+\begin{solution}
+By Sarrus' rule the determinant is $e^{-3x}+e^{3x}-2$. Integrating gives $e-\dfrac{1}{e}-2$.
+\end{solution}
+
+\question \[ \int_6^7 \left(6x^2-7x^2\right)^{6-7}\, dx \]
+\begin{solution}
+$= -\displaystyle\int_6^7 \frac{1}{x^2}\, dx = -\dfrac{1}{6}+\dfrac{1}{7} = -\dfrac{1}{42}$
+\end{solution}
+
+\question \[ \int_0^{24} \lfloor \sin x\rfloor\, dx \]
+\begin{solution}
+Split the integral at $\pi,2\pi,\dots,7\pi$ to get $0-\pi+0-\pi+0-\pi+0-(24-7\pi) = 4\pi-24$.
+\end{solution}
+
+\question \[ \int_0^{\pi} \frac{1}{1+\tan x} + \frac{1}{1+\cot x}\, dx \]
+\begin{solution}
+$= \displaystyle\int_0^\pi \frac{\cos x}{\sin x+\cos x}+\frac{\sin x}{\sin x+\cos x}\, dx = \pi$
+\end{solution}
+
+\question \[ \int_0^1 \left[\cos(\arctan(x))+\sin(\arctan(x))\right]^2+\left[\cos(\arctan(x))-\sin(\arctan(x))\right]^2\, dx \]
+\begin{solution}
+$= 2$, by obviousness.
+\end{solution}
+
+\question \[ \int_0^x \cos(\cos(\cos(\cos(\cos(\ldots(t)\ldots)))))\, dt \]
+\begin{solution}
+Since infinitely many nested cosines converge to a constant (by the Banach fixed point theorem), the result is $\Theta(x)$.
+\end{solution}
+
+\question \[ \int_0^1 \frac{x^3+3x^2+3x}{x+1}\, dx \]
+\begin{solution}
+$= \displaystyle\int_0^1 \frac{(x+1)^3-1}{x+1}\, dx = \int_1^2 \frac{y^3-1}{y}\, dy = \dfrac{7}{3}-\ln(2)$
+\end{solution}
+
+\question \[ \int_0^2\int_0^2\int_0^2\int_0^2\int_0^2 beeee\, db\, de\, de\, de\, de \]
+\begin{solution}
+$= \displaystyle\int_0^2\int_0^2\int_0^2\int_0^2 2e^4\, de\, de\, de\, de = \int_0^2\int_0^2\int_0^2 \frac{64}{5}\, de\, de\, de = \frac{64\cdot 2^3}{5} = \frac{512}{5}$
+\end{solution}
+
+\question \[ \int_{-0.0001}^{0.2026} \frac{1}{2}\operatorname{sgn}(G)\sqrt{|G|}\, dG \]
+\begin{solution}
+This equals $\left.\operatorname{sgn}(G)\sqrt{|G|}\right|_{-0.0001}^{0.2025} = 0.45+0.01 = 0.46$.
+\end{solution}
+
+\question \[ \int_0^{\sqrt{2026}} \frac{(2x)^2}{\sqrt{2026-x^2}}\, dx \]
+\begin{solution}
+$= 4\displaystyle\int_0^{\pi/2} 2026\sin^2(u)\, du = 4\cdot 2026\left(\frac{u}{2}-\frac{\sin(2u)}{4}\right)\Big|_0^{\pi/2} = 2026\pi$,
+substituting $x=\sqrt{2026}\sin(u)$.
+\end{solution}
+
+\question \[ \int_0^1 e^{e^{e^{e^{e^{x}}}}}\cdot e^{e^{e^{e^{x}}}}\cdot e^{e^{e^{x}}}\cdot e^{e^{x}}\cdot e^{x}\, dx \]
+\begin{solution}
+$= \left.e^{e^{e^{e^{e^x}}}}\right|_0^1 = e^{e^{e^{e^{e}}}} - e^{e^{e^{e}}}$
+\end{solution}
+
+\question \[ \int\int\int\int_0^1 x\, dx\, \cdots \]
+\begin{solution}
+Nested and evaluated repeatedly, the result is $\displaystyle\int_0^1 x^{128/55}\, dx$ wait resolves to $-\dfrac{189}{2048}$. (Adapted from MIT Integration Bee 2026.)
+\end{solution}
+
+\question \[ \int_0^1 \prod_{n=1}^\infty (1+x)^{1/n^2}\, dx \]
+\begin{solution}
+Using $\displaystyle\prod_{n=1}^\infty (1+x)^{1/n^2} = (1+x)^{\pi^2/6}$, the solution follows directly as $\dfrac{2^{\pi^2/6+1}-1}{\pi^2/6+1}$.
+\end{solution}
+
+\question \[ \int x^{\frac{\ln\sin x}{\ln x}}\, dx \]
+\begin{solution}
+$= \displaystyle\int \sin x\, dx = -\cos x$
+\end{solution}
+
+\question \[ \int_1^\infty \frac{1}{\lceil x\rceil^2}\, dx \]
+\begin{solution}
+$= \dfrac{\pi^2}{6}-1$
+\end{solution}
+
+\question \[ \int_0^{\pi/2} e^{ix}\cos(x)\, dx \]
+\begin{solution}
+Using $\cos(x)=\dfrac{e^{ix}+e^{-ix}}{2}$ and Euler's identity, the solution is $\dfrac{\pi}{4}+\dfrac{i}{2}$.
+\end{solution}
+
+\question \[ \int_0^5 \sqrt{x\sqrt{x\sqrt{x}\cdots}}\, dx \]
+\begin{solution}
+By the identity $x^{1/2+1/4+\cdots}=x^1$, the integral is $\displaystyle\int_0^5 x\, dx = 12.5$.
+\end{solution}
+
+\question \[ \int_{e^2}^{e^4} \frac{\ln 2x}{x\ln x}\, dx \]
+\begin{solution}
+$= \displaystyle\int_{e^2}^{e^4} \frac{\ln x+\ln 2}{x\ln x}\, dx = \left.\ln x+\ln 2\ln\ln x\right|_{e^2}^{e^4} = 2+\ln^2 2$
+\end{solution}
+
+\question \[ \int_0^1 5^{\log_2 x}\, dx \]
+\begin{solution}
+$= \displaystyle\int_0^1 x^{1/\log_5 2}\, dx = \dfrac{1}{1+1/\log_5 2} = \log_{10} 2$
+\end{solution}
+
+\question \[ \int_0^\infty 2026^{-x}\, dx \]
+\begin{solution}
+$= \dfrac{1}{\ln 2026}$
+\end{solution}
+
+\end{questions}
+
+\subsubsection*{Tiebreakers}
+\begin{questions}
+
+\question \[ \int \sin^2(x)\cos^2(x)\, dx \]
+\begin{solution}
+$= \dfrac{1}{4}\displaystyle\int \sin^2(2x)\, dx = \dfrac{1}{8}\int \sin^2(u)\, du = \dfrac{x}{8}-\dfrac{\sin(2x)\cos(2x)}{16}$, equivalently $\dfrac{x}{8}-\dfrac{\sin(4x)}{32}$.
+\end{solution}
+
+\question \[ \int_0^1 2026^{2026^{2026^{2026^{2026^{2026^{2026x}}}}}}\, dx \]
+\begin{solution}
+$= \dfrac{2026^{2026^{2026^{2026^{2026^{2026^{2026}}}}}}}{\ln\left(2026^{2026^{2026^{2026^{2026^{2026^{2026}}}}}}\right)}$
+\end{solution}
+
+\question \[ \int \frac{(1+x+x^2+\cdots+x^{2024})(1-x^3)}{1+x+x^2}\, dx \]
+\begin{solution}
+The integrand simplifies to $1-x^{2025}$, so the answer is $x-\dfrac{1}{2026}x^{2026}$.
+\end{solution}
+
+\question \[ \int_0^3 4\lfloor x\rfloor^{\lceil x\rceil}+\lceil x\rceil^{\lceil x\rceil - \lfloor x\rfloor}\lfloor x\rfloor\, dx \]
+\begin{solution}
+$= 2080$ (not $2026$, as intended -- a slight miscalculation in construction).
+\end{solution}
+
+\question \[ \int \sqrt{e^x-1}\, dx \]
+\begin{solution}
+Substitute $t=\sqrt{e^x-1}$ to get $\displaystyle\int \frac{2t^2}{1+t^2}\, dt$, leading to $2\sqrt{e^x-1}-2\arctan\left(\sqrt{e^x-1}\right)$.
+\end{solution}
+
+\question \[ \int_0^3 2\left(\lfloor x\rfloor^{\lceil x\rceil}+250\lfloor \sqrt{x}\rfloor\right) dx \]
+\begin{solution}
+Evaluating piecewise: $2(0+1+512)+500(2) = 2026$.
+\end{solution}
+
+\question \[ \int \frac{dx}{9\cos^2(x)+4\sin^2(x)} \]
+\begin{solution}
+Substitute $t=\tan x$ to get $\displaystyle\int \frac{dt}{9+4t^2}$, so the solution is $\dfrac{1}{6}\arctan\left(\dfrac{2\tan(x)}{3}\right)$.
+\end{solution}
+
+\question \[ \int_0^1 \sqrt{x}e^{\sqrt{x}}\, dx \]
+\begin{solution}
+$= 2\displaystyle\int_0^1 u^2e^u\, du = \left.2(u^2-2u+2)e^u\right|_0^1 = 2e-4$
+\end{solution}
+
+\question \[ \int_0^5 \left(\left\lfloor \tfrac{x}{2}\right\rfloor - \left\lceil \tfrac{x}{3}\right\rceil\right) dx \]
+\begin{solution}
+$= \displaystyle\int_0^2 dx + \int_2^3 2\, dx + \int_3^4 dx + \int_4^5 2\, dx = 7$
+\end{solution}
+
+\question \[ \int_{1/e}^{e} \frac{\arctan x}{(\ln x)^{2026}x}\, dx \]
+\begin{solution}
+Call the integral $I$. Substituting $t=1/x$ gives $I=\displaystyle\int_{1/e}^e \arctan\left(\tfrac{1}{x}\right)\frac{(\ln x)^{2026}}{x}\, dx$. Summing and using $\arctan x+\arctan\tfrac{1}{x}=\tfrac{\pi}{2}$,
+\[ 2I = \frac{\pi}{2}\int_{1/e}^e \frac{(\ln x)^{2026}}{x}\, dx = \frac{\pi}{2}\left[\frac{(\ln x)^{2027}}{2027}\right]_{1/e}^e = \frac{\pi}{2027}. \]
+So $I=\dfrac{\pi}{4054}$.
+\end{solution}
+
+\question \[ \lim_{R\to\infty} \int_{-R}^{R} \sum_{j=0}^{2026} \frac{1}{j+1}x^{j^2+j+1}\, dx \]
+\begin{solution}
+Since $j^2+j+1=j(j+1)+1$ is odd for all $j$, the integral collapses to $0$.
+\end{solution}
+
+\question \[ \int_0^1 x^{13}+67x+x^9+13x^{12}+3x^6+2(x+1)^{-3}\, dx \]
+\begin{solution}
+$= \dfrac{5019}{140}$
+\end{solution}
+
+\end{questions}
+
+\subsubsection*{Quarterfinals}
+\begin{questions}
+
+\question \[ \int_1^2 \frac{x^5}{\sqrt{x^3-1}}\, dx \]
+\begin{solution}
+$= \dfrac{1}{3}\displaystyle\int_1^8 \frac{u}{\sqrt{u-1}}\, du = \frac{1}{3}\int_1^8 \sqrt{u-1}+\frac{1}{\sqrt{u-1}}\, du = \dfrac{20\sqrt7}{9}$
+\end{solution}
+
+\question \[ \int \frac{4x^2+6x+1}{x^3+2x^2+x+2}\, dx \]
+\begin{solution}
+$= \displaystyle\int \frac{1}{x+2}+\frac{3x}{x^2+1}\, dx = \ln|x+2|+\dfrac{3}{2}\ln(x^2+1)$
+\end{solution}
+
+\question \[ \int_0^{2\pi} \frac{\displaystyle\prod_{n=0}^{2026}(n^2+1)\cos\left(\dfrac{x}{3\prod_{n=0}^{2026}(n^2+1)}\right)!}{}\, dx \]
+\begin{solution}
+Let $A=\prod_{n=0}^{2026}(n^2+1)$. The integral is $\int_0^{2\pi} A\cos\left(\tfrac{x}{3A}\right) dx = 3\int_0^{2\pi A/3}\cos x\, dx$. Since $A\equiv 2\pmod 3$, by periodicity the answer is $3\left(\sin\tfrac{4\pi}{3}-\sin(0)\right) = -\dfrac{3\sqrt3}{2}$.
+\end{solution}
+
+\question \[ \int_0^\infty \frac{\{x\}}{(\lfloor x\rfloor+1)^2}\, dx \]
+\begin{solution}
+Write the integral as $\displaystyle\sum_{n=0}^\infty \int_n^{n+1} \frac{x-n}{(n+1)^2}\, dx = \sum_{n=0}^\infty \frac{1}{(n+1)^2}\int_0^1 u\, du = \frac{1}{2}\sum_{n=0}^\infty \frac{1}{(n+1)^2} = \frac{1}{2}\cdot\frac{\pi^2}{6} = \frac{\pi^2}{12}$.
+\end{solution}
+
+\question \[ \int \frac{2x^2+3x+1}{x^3+x^2+x}\, dx \]
+\begin{solution}
+By partial fractions, $\dfrac{2x^2+3x+1}{x^3+x^2+x} = \dfrac{1}{x}+\dfrac{x+2}{x^2+x+1}$. Noting $x+2=\tfrac{1}{2}(2x+1)+\tfrac{3}{2}$ and completing the square,
+\[ \int \frac{1}{x^2+x+1}\, dx = \frac{2}{\sqrt3}\arctan\left(\frac{2x+1}{\sqrt3}\right). \]
+The solution is
+\[ \ln|x| + \frac{1}{2}\ln(x^2+x+1) + \sqrt3\arctan\left(\frac{2x+1}{\sqrt3}\right). \]
+\end{solution}
+
+\question \[ \int_0^1 s(\lfloor 100x\rfloor)\, dx \]
+\begin{solution}
+Here $s(n)$ denotes the digit sum of $n$. By linearity,
+\[ \int_0^1 s(\lfloor 100x\rfloor)\, dx = \frac{1}{100}\sum_{k=0}^{99} s(k). \]
+Writing $k=10a+b$ with $a,b\in\{0,\dots,9\}$, $s(k)=a+b$, so $\sum_{k=0}^{99}s(k)=10\sum_{a=0}^9 a+10\sum_{b=0}^9 b=900$. The solution is $\dfrac{900}{100}=9$.
+\end{solution}
+
+\question \[ \int_0^1 \sqrt{x^2+x+\sqrt{x^2+x+\sqrt{\cdots}}}\, dx \]
+\begin{solution}
+Calling the integrand $y$, recursion gives $y=\sqrt{x^2+x+y}$, so $y^2-y=x^2+x$, hence $y-\tfrac12=\pm(x+\tfrac12)$. By positivity, $y=x+1$, leaving $\int_0^1 (x+1)\, dx = \dfrac{3}{2}$.
+\end{solution}
+
+\question \[ \int_0^1 \arctan\left(\frac{\sqrt{1-x^2}}{x}\right) dx \]
+\begin{solution}
+Substitute $x=\cos(y)$ to get the answer $1$.
+\end{solution}
+
+\end{questions}
+
+\subsubsection*{Semifinals}
+\begin{questions}
+
+\question \[ \int_0^{\pi/4} \sqrt{\frac{\tan(x)}{\cos^4(x)}}\, dx \]
+\begin{solution}
+$= \displaystyle\int_0^1 \sqrt{u}\cdot\frac{1}{\cos^2(\arctan(u))}\, du = \int_0^1 u^{5/2}+u^{1/2}\, du = \left(\frac{2}{7}u^{7/2}+\frac{2}{3}u^{3/2}\right)\Big|_0^1 = \frac{2}{7}+\frac{2}{3}$,
+substituting $u=\tan x$ and using $\cos(\arctan(u)) = 1/\sqrt{u^2+1}$.
+\end{solution}
+
+\question \[ \int_{\ln(e^2/\sqrt5)}^{\ln(e^2\sqrt5)} \left(x^5-10x^4+40x^3-80x^2+80x-30\right)\left(\cos(x)\cos(2)+\sin(x)\sin(2)\right)\, dx \]
+\begin{solution}
+$= \displaystyle\int (x-2)^5\cos(x-2)\, dx + 2\int \cos(x-2)\, dx = 4\sin(\ln\sqrt5)$, over the given bounds, since the first term vanishes by symmetry about $x=2$.
+\end{solution}
+
+\question \[ \lim_{n\to\infty} \int_1^9 \sum_{k=1}^n \frac{1}{\sqrt{n^2x+k}}\, dx \]
+\begin{solution}
+Write $a_n=\sum_{k=1}^n \tfrac{1}{\sqrt{n^2x+k}}$. Exchanging the limit and integral, one finds $\lim_{n\to\infty} a_n = \tfrac{1}{\sqrt x}$ by the squeeze theorem, since $a_n\ge n\cdot\tfrac{1}{\sqrt{n^2x+n}}=\tfrac{1}{\sqrt{x+1/n}}$ and $a_n\le n\cdot\tfrac{1}{\sqrt{n^2x}}=\tfrac{1}{\sqrt x}$. Hence the integral is $\int_1^9 \tfrac{1}{\sqrt x}\, dx = [2\sqrt x]_1^9 = 6-2=4$.
+\end{solution}
+
+\question \[ \int_0^{\pi/3} \tan^2(x)x\, dx \]
+\begin{solution}
+Using $\int \tan^2(x)\, dx = \tan x - x$, integration by parts gives
+\[ \left(x\tan x + \ln(\cos(x)) - \frac{x^2}{2}\right)\Big|_0^{\pi/3} = \frac{\pi}{\sqrt3} - \ln 2 - \frac{\pi^2}{18}. \]
+\end{solution}
+
+\end{questions}
+
+\subsubsection*{Third Place}
+\begin{questions}
+
+\question \[ \int_{\sqrt2}^{\sqrt3} \frac{x^3(x^2+3)}{(x^4-1)(x^2+1)}\, dx \]
+\begin{solution}
+$= \displaystyle\int_{\sqrt2}^{\sqrt3} \frac{x^5+3x^3}{x^6+x^4-x^2-1}\, dx = \frac{1}{2}\int_2^3 \frac{u^2+3u}{u^3+u^2-u-1}\, du = \frac{1}{2}\int_2^3 \frac{1}{(u+1)^2}+\frac{1}{u-1}\, du = \frac{1}{24}+\frac{\ln(2)}{2}$,
+substituting $u=x^2$, after which partial fractions become straightforward.
+\end{solution}
+
+\question \[ \int \frac{\sin(x)}{\sin(x)+1}\, dx \]
+\begin{solution}
+$= \displaystyle\int 1 - \frac{1}{\sin(x)+1}\, dx = x - \int \frac{1-\sin(x)}{\cos^2(x)}\, dx = x - \tan(x) + \sec(x)$
+\end{solution}
+
+\question \[ \int_0^{\pi/2} \left(\sin(x)^{2\cos(x)-1}\cos^2(x) - \sin(x)^{2\cos(x)+1}\ln(\sin(x))\right) dx \]
+\begin{solution}
+Algebraic manipulation reduces this to the derivative of $\sin^2(x)\cos(x)$-type expressions; evaluating gives $\dfrac{1}{2}$.
+\end{solution}
+
+\question \[ \int_1^\infty \frac{e^{-x}}{x}+\frac{e^{-x}}{x^2}\, dx \]
+\begin{solution}
+$= \displaystyle\int_1^\infty \frac{e^{-x}}{x}\, dx + \left(-\frac{e^{-x}}{x}\Big|_1^\infty - \int_1^\infty \frac{e^{-x}}{x}\, dx\right) = -\frac{e^{-x}}{x}\Big|_1^\infty = e^{-1}$, using the (inverted) quotient rule.
+\end{solution}
+
+\end{questions}
+
+\subsubsection*{Final}
+\begin{questions}
+
+\question \[ \int_0^\infty \frac{\ln x}{\left(1+x^{\sqrt2}\right)^{\sqrt2}}\, dx \]
+\begin{solution}
+Using $t=x^{-1}$ and symmetry, the integral is $0$.
+\end{solution}
+
+\question \[ \int_{-\infty}^0 \frac{\left(x+\sqrt{1+x^2}\right)^{2026}}{\sqrt{1+x^2}}\, dx \]
+\begin{solution}
+$= \displaystyle\int_0^1 u^{2025}\, du = \dfrac{1}{2026}$, substituting $u=x+\sqrt{1+x^2}$ and using $\dfrac{d}{dx}\left(x+\sqrt{1+x^2}\right) = \dfrac{x+\sqrt{1+x^2}}{\sqrt{1+x^2}}$.
+\end{solution}
+
+\question \[ \lim_{n\to\infty} \sqrt{\pi n}\int_0^1 \frac{x^{2n}}{\sqrt{1-x^2}}\, dx \]
+\begin{solution}
+Substituting $x=\sin(t)$, this becomes $\lim_{n\to\infty} \sqrt{\pi n}\int_0^{\pi/2} \sin^{2n}(x)\, dx$. By Wallis' product, $\int_0^{\pi/2}\sin^{2n}(x)\,dx = \dfrac{\pi}{2}\cdot\dfrac{(2n-1)!!}{(2n)!!}$, which is asymptotically $\dfrac{1}{\sqrt{\pi n}}$. The limit resolves to $\dfrac{\pi}{2}$.
+\end{solution}
+
+\question \[ \int \frac{\sqrt{9\cosh^2(x)\sinh^2(x) - 3\sinh^2(x) + 1}}{\cosh(x)\sinh(x)}\, dx \]
+\begin{solution}
+Using $\cosh^2=\sinh^2+1$ and substituting $u=\sinh(x)$,
+\[ \int \frac{\sqrt{9u^4+6u^2+1}}{u^3+u}\, du = \int \frac{3u^2+1}{u^3+u}\, du = \ln(u^3+u) = \ln\left(\sinh(x)\cosh^2(x)\right). \]
+\end{solution}
+
+\question \[ \int_0^{\pi/2} \frac{e^{\left|x-\pi/4\right|}}{1+\tan^{\varphi}x}\, dx \]
+\begin{solution}
+Call the integral $I$. Substituting $t=\tfrac{\pi}{2}-x$ gives $I = \int_0^{\pi/2} \dfrac{e^{|x-\pi/4|}}{1+\tan^\varphi x}\tan^\varphi x\, dx$, so $2I = \int_0^{\pi/2} e^{|x-\pi/4|}\, dx$. Splitting at $x=\pi/4$ gives $2I = e^{\pi/4}-1$, so $I = \dfrac{e^{\pi/4}-1}{2}$.
+\end{solution}
+
+\end{questions}
+
+\subsubsection*{Bonus}
+\begin{questions}
+
+\question \[ \int_0^\infty \frac{dx}{\left(1+x^{\varphi}\right)^{\varphi}} \]
+\begin{solution}
+Substitute $u=x^\varphi$ to get $\dfrac{1}{\varphi}\displaystyle\int_0^\infty \frac{u^{1/\varphi - 1}}{(1+u)^\varphi}\, du$, which resolves into a Beta function, giving $\dfrac{\Gamma(1/\varphi)}{\varphi\,\Gamma(\varphi)}$. Since $\varphi\Gamma(\varphi)=\Gamma(\varphi+1)=\Gamma(1/\varphi)$ by the golden ratio identity, the solution is $1$.
+\end{solution}
+
+\end{questions}

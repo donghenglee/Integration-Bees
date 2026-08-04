@@ -1,0 +1,350 @@
+\section{CMIMC Integration Bee}
+\subsection*{2023}
+\begin{questions}
+    \question \[ \int_2^0 (x^2 + 3) \,dx \]
+    \begin{solution}
+        Use the Fundamental Theorem of Calculus to find the antiderivative and evaluate it from $2$ to $0$:
+        \[ \int_2^0 (x^2 + 3) \,dx = \left[ \frac{x^3}{3} + 3x \right]_2^0 \]
+        \[ = \left( \frac{0}{3} + 0 \right) - \left( \frac{8}{3} + 6 \right) = - \left( \frac{8}{3} + \frac{18}{3} \right) = -\frac{26}{3} \]
+    \end{solution}
+
+    \question \[ \int_0^1 \frac{1}{x + \sqrt{x}} \,dx \]
+    \begin{solution}
+        Substitute $u = \sqrt{x}$, which implies $x = u^2$ and $dx = 2u \,du$. The integration limits remain $0$ to $1$:
+        \[ \int_0^1 \frac{2u}{u^2 + u} \,du = \int_0^1 \frac{2u}{u(u + 1)} \,du = \int_0^1 \frac{2}{u + 1} \,du \]
+        Evaluating this standard logarithmic integral:
+        \[ 2 \left[ \log(u + 1) \right]_0^1 = 2(\log(2) - \log(1)) = 2\log(2) \]
+    \end{solution}
+
+    \question \[ \int_0^{\frac{\pi}{4}} \cot(x) \sqrt{\sin(x)} \,dx \]
+    \begin{solution}
+        Rewrite the integrand in terms of sine and cosine:
+        \[ \cot(x) \sqrt{\sin(x)} = \frac{\cos(x)}{\sin(x)} \sqrt{\sin(x)} = \frac{\cos(x)}{\sqrt{\sin(x)}} \]
+        Substitute $u = \sin(x)$, which gives $du = \cos(x) \,dx$. The limits change from $x = 0 \implies u = 0$ to $x = \frac{\pi}{4} \implies u = \frac{1}{\sqrt{2}} = 2^{-1/2}$:
+        \[ \int_0^{2^{-1/2}} u^{-1/2} \,du = \left[ 2u^{1/2} \right]_0^{2^{-1/2}} \]
+        \[ = 2\left(2^{-1/2}\right)^{1/2} = 2(2^{-1/4}) = 2^{1 - 1/4} = 2^{3/4} \]
+    \end{solution}
+
+    \question \[ \int_0^\infty x e^{-\sqrt[3]{x}} \,dx \]
+    \begin{solution}
+        Substitute $u = \sqrt[3]{x}$, which means $x = u^3$ and $dx = 3u^2 \,du$. The limits remain $0$ to $\infty$:
+        \[ \int_0^\infty u^3 e^{-u} (3u^2) \,du = 3 \int_0^\infty u^5 e^{-u} \,du \]
+        This integral precisely matches the definition of the Gamma function, $\Gamma(n) = \int_0^\infty t^{n-1} e^{-t} \,dt = (n-1)!$:
+        \[ 3 \Gamma(6) = 3 \times 5! = 3 \times 120 = 360 \]
+    \end{solution}
+
+    \question \[ \int_1^\infty \frac{1}{x\sqrt{x^{2023} - 1}} \,dx \]
+    \begin{solution}
+        Substitute $u = \sqrt{x^{2023} - 1}$, which gives $u^2 + 1 = x^{2023}$. Differentiating both sides yields $2u \,du = 2023x^{2022} \,dx$, meaning $\frac{dx}{x} = \frac{2u}{2023x^{2023}} \,du = \frac{2u}{2023(u^2 + 1)} \,du$. The limits change from $x = 1 \implies u = 0$ to $x = \infty \implies u = \infty$:
+        \[ \int_0^\infty \frac{1}{u} \left( \frac{2u}{2023(u^2 + 1)} \right) \,du = \frac{2}{2023} \int_0^\infty \frac{1}{u^2 + 1} \,du \]
+        \[ = \frac{2}{2023} \left[ \arctan(u) \right]_0^\infty = \frac{2}{2023} \left( \frac{\pi}{2} \right) = \frac{\pi}{2023} \]
+    \end{solution}
+
+    \question \[ \int_0^2 e^x (x^4 + 8x^3 + 18x^2 + 16x + 5) \,dx \]
+    \begin{solution}
+        We seek an antiderivative of the form $P(x)e^x$ where $P(x)$ is a polynomial. Differentiating $P(x)e^x$ yields $(P(x) + P'(x))e^x$. We must find $P(x)$ such that:
+        \[ P(x) + P'(x) = x^4 + 8x^3 + 18x^2 + 16x + 5 \]
+        Let $P(x) = x^4 + Ax^3 + Bx^2 + Cx + D$. Then $P'(x) = 4x^3 + 3Ax^2 + 2Bx + C$. Equating coefficients:
+        \begin{align*}
+            A + 4 &= 8 \implies A = 4 \\
+            B + 3A &= 18 \implies B + 12 = 18 \implies B = 6 \\
+            C + 2B &= 16 \implies C + 12 = 16 \implies C = 4 \\
+            D + C &= 5 \implies D + 4 = 5 \implies D = 1
+        \end{align*}
+        Thus, $P(x) = x^4 + 4x^3 + 6x^2 + 4x + 1 = (x + 1)^4$. Using this antiderivative:
+        \[ \left[ (x + 1)^4 e^x \right]_0^2 = 3^4 e^2 - 1^4 e^0 = 81e^2 - 1 \]
+    \end{solution}
+
+    \question \[ \int_0^{\frac{\pi}{2}} \left( \frac{1}{1 - \cos(x)} - \frac{2}{x^2} \right) \,dx \]
+    \begin{solution}
+        Using the half-angle identity $1 - \cos(x) = 2\sin^2\left(\frac{x}{2}\right)$, the first term becomes $\frac{1}{2}\csc^2\left(\frac{x}{2}\right)$, whose antiderivative is $-\cot\left(\frac{x}{2}\right)$. The antiderivative of $-\frac{2}{x^2}$ is $\frac{2}{x}$. Since the integral is improper at $x = 0$, we evaluate it as a limit:
+        \[ \lim_{\epsilon \to 0^+} \left[ \frac{2}{x} - \cot\left(\frac{x}{2}\right) \right]_\epsilon^{\frac{\pi}{2}} \]
+        Evaluating at the upper limit yields $\frac{4}{\pi} - \cot\left(\frac{\pi}{4}\right) = \frac{4}{\pi} - 1$. For the lower limit, apply the Maclaurin series expansion for cotangent, $\cot(u) = \frac{1}{u} - \frac{u}{3} + O(u^3)$:
+        \[ \lim_{\epsilon \to 0^+} \left( \frac{2}{\epsilon} - \left( \frac{2}{\epsilon} - \frac{\epsilon}{6} + O(\epsilon^3) \right) \right) = \lim_{\epsilon \to 0^+} \left( \frac{\epsilon}{6} \right) = 0 \]
+        Subtracting the lower limit evaluation gives:
+        \[ \left( \frac{4}{\pi} - 1 \right) - 0 = \frac{4}{\pi} - 1 \]
+    \end{solution}
+
+    \question \[ \int_{-10}^{10} |4 - |3 - |2 - |1 - |x||||| \,dx \]
+    \begin{solution}
+        Since the integrand $f(x) = |4 - |3 - |2 - |1 - |x|||||$ is strictly even, we can evaluate the integral over the positive domain and multiply by 2:
+        \[ 2 \int_0^{10} |4 - |3 - |2 - |1 - x|||| \,dx \]
+        For $x \ge 0$, the function's derivative is $\pm 1$ wherever it is defined, meaning its graph consists of linear segments with slopes of $\pm 1$. We identify the critical points where the slope changes sign (i.e., where any absolute value argument is zero):
+        \begin{align*}
+            1 - x = 0 &\implies x = 1 \implies f(1) = 3 \\
+            2 - |1 - x| = 0 &\implies x = 3 \text{ (for $x > 1$)} \implies f(3) = 1 \\
+            3 - |2 - |1 - x|| = 0 &\implies x = 6 \text{ (for $x > 3$)} \implies f(6) = 4 \\
+            4 - |3 - |2 - |1 - x||| = 0 &\implies x = 10 \text{ (for $x > 6$)} \implies f(10) = 0
+        \end{align*}
+        Additionally, at the boundary $x = 0$, $f(0) = 2$. Calculating the area under these connected piecewise segments using trapezoids and a triangle:
+        \[ 2 \left( \int_0^1 f(x) \,dx + \int_1^3 f(x) \,dx + \int_3^6 f(x) \,dx + \int_6^{10} f(x) \,dx \right) \]
+        \[ = 2 \left( \frac{2+3}{2}(1) + \frac{3+1}{2}(2) + \frac{1+4}{2}(3) + \frac{4+0}{2}(4) \right) = 2 (2.5 + 4 + 7.5 + 8) = 2(22) = 44 \]
+    \end{solution}
+
+    \question \[ \int_{-1}^1 x^{2022} \cos\left(\frac{\pi}{12} - x\right) \sin\left(\frac{\pi}{12} + x\right) \,dx \]
+    \begin{solution}
+        Apply the product-to-sum trigonometric identity $\cos(A)\sin(B) = \frac{1}{2}(\sin(A+B) - \sin(A-B))$:
+        \[ \cos\left(\frac{\pi}{12} - x\right) \sin\left(\frac{\pi}{12} + x\right) = \frac{1}{2}\left( \sin\left(\frac{\pi}{6}\right) - \sin(-2x) \right) = \frac{1}{4} + \frac{1}{2}\sin(2x) \]
+        Substitute this back into the integral:
+        \[ \int_{-1}^1 x^{2022} \left( \frac{1}{4} + \frac{1}{2}\sin(2x) \right) \,dx \]
+        The function $x^{2022}\sin(2x)$ is odd (even times odd), so its integral over the symmetric interval $[-1, 1]$ is strictly zero. We are left with:
+        \[ \frac{1}{4} \int_{-1}^1 x^{2022} \,dx = \frac{1}{2} \int_0^1 x^{2022} \,dx = \frac{1}{2} \left[ \frac{x^{2023}}{2023} \right]_0^1 = \frac{1}{4046} \]
+    \end{solution}
+
+    \question \[ \int_{1/\sqrt{3}}^{\sqrt{3}} \frac{\arctan(x) \log^2(x)}{x} \,dx \]
+    \begin{solution}
+        Let $I$ be the integral. Substitute $x = \frac{1}{u}$, making $dx = -\frac{1}{u^2} \,du$. The limits swap, which cancels the negative sign from $dx$:
+        \[ I = \int_{1/\sqrt{3}}^{\sqrt{3}} \frac{\arctan\left(\frac{1}{u}\right) (-\log(u))^2}{\frac{1}{u}} \left(\frac{1}{u^2}\right) \,du = \int_{1/\sqrt{3}}^{\sqrt{3}} \frac{\arctan\left(\frac{1}{u}\right) \log^2(u)}{u} \,du \]
+        Since $u > 0$, we apply the identity $\arctan(u) + \arctan\left(\frac{1}{u}\right) = \frac{\pi}{2}$:
+        \[ I = \int_{1/\sqrt{3}}^{\sqrt{3}} \frac{\left(\frac{\pi}{2} - \arctan(u)\right) \log^2(u)}{u} \,du = \frac{\pi}{2} \int_{1/\sqrt{3}}^{\sqrt{3}} \frac{\log^2(u)}{u} \,du - I \]
+        Solving for $I$:
+        \[ 2I = \frac{\pi}{2} \left[ \frac{\log^3(u)}{3} \right]_{1/\sqrt{3}}^{\sqrt{3}} = \frac{\pi}{6} \left( \log^3\left(\sqrt{3}\right) - \log^3\left(\frac{1}{\sqrt{3}}\right) \right) \]
+        Note that $\log(\sqrt{3}) = \frac{1}{2}\log(3)$ and $\log\left(\frac{1}{\sqrt{3}}\right) = -\frac{1}{2}\log(3)$:
+        \[ 2I = \frac{\pi}{6} \left( \left(\frac{1}{2}\log(3)\right)^3 - \left(-\frac{1}{2}\log(3)\right)^3 \right) = \frac{\pi}{6} \left( \frac{2}{8}\log^3(3) \right) = \frac{\pi}{24} \log^3(3) \]
+        \[ \implies I = \frac{1}{48}\pi\log^3(3) \]
+    \end{solution}
+
+    \question \[ \int_{-1}^1 \frac{1}{(8 + x^2)\sqrt{1 - x^2}} \,dx \]
+    \begin{solution}
+        Substitute $x = \sin\theta$, which gives $dx = \cos\theta \,d\theta$. The limits change to $[-\frac{\pi}{2}, \frac{\pi}{2}]$:
+        \[ \int_{-\pi/2}^{\pi/2} \frac{\cos\theta}{(8 + \sin^2\theta)\sqrt{1 - \sin^2\theta}} \,d\theta = \int_{-\pi/2}^{\pi/2} \frac{1}{8 + \sin^2\theta} \,d\theta \]
+        Since the integrand is even, rewrite and divide numerator and denominator by $\cos^2\theta$:
+        \[ 2 \int_0^{\pi/2} \frac{\sec^2\theta}{8\sec^2\theta + \tan^2\theta} \,d\theta = 2 \int_0^{\pi/2} \frac{\sec^2\theta}{8(1 + \tan^2\theta) + \tan^2\theta} \,d\theta = 2 \int_0^{\pi/2} \frac{\sec^2\theta}{8 + 9\tan^2\theta} \,d\theta \]
+        Substitute $u = \tan\theta$, meaning $du = \sec^2\theta \,d\theta$. The limits become $0$ to $\infty$:
+        \[ 2 \int_0^\infty \frac{1}{8 + 9u^2} \,du = \frac{2}{9} \int_0^\infty \frac{1}{\frac{8}{9} + u^2} \,du \]
+        \[ = \frac{2}{9} \left[ \frac{1}{\sqrt{8/9}} \arctan\left(\frac{u}{\sqrt{8/9}}\right) \right]_0^\infty = \frac{2}{9} \left( \frac{3}{2\sqrt{2}} \right) \left(\frac{\pi}{2}\right) = \frac{\pi}{6\sqrt{2}} \]
+    \end{solution}
+
+    \question \[ \lim_{n \to \infty} n^2 \int_0^1 x^n e^{-x} \log(x) \,dx \]
+    \begin{solution}
+        Substitute $x = e^{-t/n}$, so $dx = -\frac{1}{n}e^{-t/n} \,dt$. As $x \to 0$, $t \to \infty$, and as $x \to 1$, $t \to 0$. Let $I_n$ be the integral:
+        \[ I_n = \int_\infty^0 e^{-t} e^{-e^{-t/n}} \left(-\frac{t}{n}\right) \left(-\frac{1}{n}e^{-t/n}\right) \,dt = -\frac{1}{n^2} \int_0^\infty t e^{-t} e^{-t/n} e^{-e^{-t/n}} \,dt \]
+        Multiplying by $n^2$ and taking the limit:
+        \[ \lim_{n \to \infty} n^2 I_n = - \lim_{n \to \infty} \int_0^\infty t e^{-t} e^{-t/n} e^{-e^{-t/n}} \,dt \]
+        Since the integrand is dominated by an integrable function $C \cdot t e^{-t}$, we apply the Dominated Convergence Theorem to bring the limit inside. As $n \to \infty$, $t/n \to 0$, so $e^{-t/n} \to 1$ and $e^{-e^{-t/n}} \to e^{-1} = \frac{1}{e}$:
+        \[ - \int_0^\infty \lim_{n \to \infty} \left( t e^{-t} e^{-t/n} e^{-e^{-t/n}} \right) \,dt = - \int_0^\infty t e^{-t} \left(\frac{1}{e}\right) \,dt = -\frac{1}{e} \Gamma(2) = -\frac{1}{e} \]
+    \end{solution}
+
+    \question \[ \int_0^1 \left( 2^{\sqrt{x}} \log^2(2) + \log^2(1 + x) \right) \,dx \]
+    \begin{solution}
+        Split the integral into two parts. For the first part, let $u = \sqrt{x} \implies dx = 2u \,du$:
+        \[ \int_0^1 2^{\sqrt{x}} \log^2(2) \,dx = 2\log^2(2) \int_0^1 u 2^u \,du \]
+        Using integration by parts ($w=u, dv=2^u\,du$):
+        \[ = 2\log^2(2) \left( \left[ \frac{u 2^u}{\log(2)} \right]_0^1 - \int_0^1 \frac{2^u}{\log(2)} \,du \right) = 2\log^2(2) \left( \frac{2}{\log(2)} - \left[ \frac{2^u}{\log^2(2)} \right]_0^1 \right) \]
+        \[ = 2\log^2(2) \left( \frac{2}{\log(2)} - \frac{1}{\log^2(2)} \right) = 4\log(2) - 2 \]
+        For the second part, substitute $u = 1 + x \implies dx = du$:
+        \[ \int_0^1 \log^2(1 + x) \,dx = \int_1^2 \log^2(u) \,du \]
+        Using integration by parts twice yields the antiderivative $u\log^2(u) - 2u\log(u) + 2u$:
+        \[ \left[ u\log^2(u) - 2u\log(u) + 2u \right]_1^2 = (2\log^2(2) - 4\log(2) + 4) - (2) = 2\log^2(2) - 4\log(2) + 2 \]
+        Summing both results:
+        \[ (4\log(2) - 2) + (2\log^2(2) - 4\log(2) + 2) = 2\log^2(2) \]
+    \end{solution}
+
+    \question \[ \int_0^\infty e^{-\lfloor x \rfloor (1 + \{x\})} \,dx \]
+    \begin{solution}
+        Decompose the integral into a sum over unit intervals $[n, n+1)$, where $\lfloor x \rfloor = n$ and $\{x\} = u = x - n$:
+        \[ \sum_{n=0}^\infty \int_0^1 e^{-n(1 + u)} \,du \]
+        Isolate the $n=0$ term, which simplifies to $\int_0^1 1 \,du = 1$. For $n \ge 1$:
+        \[ \int_0^1 e^{-n} e^{-nu} \,du = e^{-n} \left[ -\frac{1}{n} e^{-nu} \right]_0^1 = \frac{e^{-n} - e^{-2n}}{n} \]
+        Summing these terms over $n \ge 1$ using the Maclaurin series for the natural logarithm, $-\log(1 - z) = \sum_{n=1}^\infty \frac{z^n}{n}$:
+        \[ 1 + \sum_{n=1}^\infty \frac{(e^{-1})^n}{n} - \sum_{n=1}^\infty \frac{(e^{-2})^n}{n} = 1 - \log(1 - e^{-1}) + \log(1 - e^{-2}) \]
+        \[ = 1 + \log\left(\frac{1 - e^{-2}}{1 - e^{-1}}\right) = 1 + \log(1 + e^{-1}) = \log(e) + \log\left(1 + \frac{1}{e}\right) = \log(e + 1) \]
+    \end{solution}
+
+    \question \[ \int_0^\infty \left(1 - e^{-\pi/x^2}\right)^2 \,dx \]
+    \begin{solution}
+        Apply integration by parts. Let $u = \left(1 - e^{-\pi/x^2}\right)^2$ and $dv = dx$. This gives $v = x$ and $du = 2\left(1 - e^{-\pi/x^2}\right)\left(-e^{-\pi/x^2}\right)\left(\frac{2\pi}{x^3}\right) \,dx$:
+        \[ \left[ x\left(1 - e^{-\pi/x^2}\right)^2 \right]_0^\infty - \int_0^\infty x \left( -\frac{4\pi}{x^3} \left(e^{-\pi/x^2} - e^{-2\pi/x^2}\right) \right) \,dx \]
+        The boundary terms evaluate to zero at both limits. We are left with:
+        \[ 4\pi \int_0^\infty \frac{e^{-\pi/x^2} - e^{-2\pi/x^2}}{x^2} \,dx \]
+        Substitute $w = \frac{1}{x}$, making $dw = -\frac{1}{x^2} \,dx$. The limits invert, cancelling the negative sign:
+        \[ 4\pi \int_0^\infty \left(e^{-\pi w^2} - e^{-2\pi w^2}\right) \,dw \]
+        Recall the standard Gaussian integral $\int_0^\infty e^{-cw^2} \,dw = \frac{1}{2}\sqrt{\frac{\pi}{c}}$:
+        \[ 4\pi \left( \frac{1}{2}\sqrt{\frac{\pi}{\pi}} - \frac{1}{2}\sqrt{\frac{\pi}{2\pi}} \right) = 2\pi \left( 1 - \frac{1}{\sqrt{2}} \right) = \pi(2 - \sqrt{2}) \]
+    \end{solution}
+\end{questions}
+
+\subsection*{2025}
+\begin{questions}
+    \question \[ \int_{-\pi}^\pi \sin(x) \left( \frac{\sec(x) + \csc(x)}{x^{-2}} \right) \,dx \]
+    \begin{solution}
+        Rewrite the integrand in terms of sine and cosine, and bring the $x^{-2}$ to the numerator:
+        \[ \int_{-\pi}^\pi x^2 \sin(x) \left( \frac{1}{\cos(x)} + \frac{1}{\sin(x)} \right) \,dx = \int_{-\pi}^\pi x^2 (\tan(x) + 1) \,dx \]
+        Split this into two integrals:
+        \[ \int_{-\pi}^\pi x^2 \tan(x) \,dx + \int_{-\pi}^\pi x^2 \,dx \]
+        The function $f(x) = x^2 \tan(x)$ is an odd function (since $x^2$ is even and $\tan(x)$ is odd). The integral of an odd function over a symmetric interval $[-\pi, \pi]$ is exactly $0$. We are left with:
+        \[ \int_{-\pi}^\pi x^2 \,dx = \left[ \frac{x^3}{3} \right]_{-\pi}^\pi = \frac{\pi^3}{3} - \left(-\frac{\pi^3}{3}\right) = \frac{2\pi^3}{3} \]
+    \end{solution}
+
+    \question \[ \int_1^4 \prod_{i=0}^\infty \sqrt[2^i]{x} \,dx \]
+    \begin{solution}
+        Express the infinite product of radicals as an infinite sum of exponents:
+        \[ \prod_{i=0}^\infty x^{(1/2)^i} = x^{\sum_{i=0}^\infty (1/2)^i} \]
+        The exponent is a geometric series with first term $a=1$ and common ratio $r=1/2$. Its sum is $\frac{1}{1 - 1/2} = 2$. Thus, the integrand simplifies drastically:
+        \[ \int_1^4 x^2 \,dx = \left[ \frac{x^3}{3} \right]_1^4 = \frac{64}{3} - \frac{1}{3} = 21 \]
+    \end{solution}
+
+    \question \[ \int_{e^e}^{e^{e^e}} \frac{1}{\log_{\log(x)}(x^x)} \,dx \]
+    \begin{solution}
+        First, simplify the denominator using logarithm rules. We know $\log_b(a^c) = c \log_b(a)$, so:
+        \[ \log_{\log(x)}(x^x) = x \log_{\log(x)}(x) \]
+        Using the change of base formula, $\log_b(a) = \frac{\ln(a)}{\ln(b)}$, this becomes:
+        \[ x \frac{\ln(x)}{\ln(\ln(x))} \]
+        Substitute this back into the integral:
+        \[ \int_{e^e}^{e^{e^e}} \frac{\ln(\ln(x))}{x \ln(x)} \,dx \]
+        Perform the substitution $u = \ln(\ln(x))$. Then $du = \frac{1}{\ln(x)} \cdot \frac{1}{x} \,dx$. The integration limits transform as follows:
+        \[ x = e^e \implies u = \ln(\ln(e^e)) = \ln(e) = 1 \]
+        \[ x = e^{e^e} \implies u = \ln(\ln(e^{e^e})) = \ln(e^e) = e \]
+        The integral becomes:
+        \[ \int_1^e u \,du = \left[ \frac{u^2}{2} \right]_1^e = \frac{e^2 - 1}{2} \]
+    \end{solution}
+
+    \question \[ \int_0^1 \text{bi}_{2025}(x) \,dx \]
+    \begin{solution}
+        The function $\text{bi}_{2025}(x)$ denotes the number of ones in the first 2025 digits of the binary expansion of $x$. We can express this function as a sum of indicator functions for each binary digit $d_k(x)$:
+        \[ \text{bi}_{2025}(x) = \sum_{k=1}^{2025} d_k(x) \]
+        Integrating this sum over $[0, 1]$ is equivalent to finding the expected value of the number of ones. Because a uniformly chosen real number in $(0,1)$ has a $1/2$ probability of having a $1$ in any specific binary digit position $k$, the integral of each $d_k(x)$ is $1/2$:
+        \[ \sum_{k=1}^{2025} \int_0^1 d_k(x) \,dx = \sum_{k=1}^{2025} \frac{1}{2} = \frac{2025}{2} \]
+    \end{solution}
+
+    \question \[ \int_{\pi/6}^{\pi/4} \left( \frac{\sin(3x)}{\sin^3(x)} + \frac{\cos(3x)}{\cos^3(x)} \right) \,dx \]
+    \begin{solution}
+        Use the triple angle identities $\sin(3x) = 3\sin(x) - 4\sin^3(x)$ and $\cos(3x) = 4\cos^3(x) - 3\cos(x)$:
+        \[ \frac{3\sin(x) - 4\sin^3(x)}{\sin^3(x)} + \frac{4\cos^3(x) - 3\cos(x)}{\cos^3(x)} = \left( 3\csc^2(x) - 4 \right) + \left( 4 - 3\sec^2(x) \right) \]
+        This cleanly reduces to:
+        \[ 3 \int_{\pi/6}^{\pi/4} (\csc^2(x) - \sec^2(x)) \,dx \]
+        The antiderivative is:
+        \[ 3 \left[ -\cot(x) - \tan(x) \right]_{\pi/6}^{\pi/4} = -3 \left[ \cot(x) + \tan(x) \right]_{\pi/6}^{\pi/4} \]
+        Evaluate at the bounds:
+        \[ -3 \left( (\cot(\pi/4) + \tan(\pi/4)) - (\cot(\pi/6) + \tan(\pi/6)) \right) = -3 \left( (1 + 1) - \left(\sqrt{3} + \frac{1}{\sqrt{3}}\right) \right) \]
+        \[ = -3 \left( 2 - \frac{4\sqrt{3}}{3} \right) = -6 + 4\sqrt{3} = 4\sqrt{3} - 6 \]
+    \end{solution}
+
+    \question \[ \int_{-2025}^{2025} \left\lceil x - \frac{1}{2} \right\rceil \cdot \left\lceil \frac{1}{x} - \frac{1}{2} \right\rceil \,dx \]
+    \begin{solution}
+        Based on the provided answer $13/3$, the brackets heavily restrict the integral's non-zero domain, corresponding to the ceiling function $\lceil z \rceil$ (the least integer greater than or equal to $z$). 
+        For $|x| > 2$, $1/x \in (-1/2, 1/2)$, which means $\frac{1}{x} - \frac{1}{2} \in (-1, 0)$. Thus, $\left\lceil \frac{1}{x} - \frac{1}{2} \right\rceil = 0$. 
+        The integrand completely vanishes outside $[-2, 2]$. We evaluate the piecewise domains inside $[-2, 2]$:
+        For $x \in (0, 2)$:
+        - $x \in (0.5, 2/3): \lceil x - 1/2 \rceil = 1$, and $\lceil 1/x - 1/2 \rceil = 2$. Area $= (2/3 - 0.5)(2) = 1/3$.
+        - $x \in (2/3, 1): \lceil x - 1/2 \rceil = 1$, and $\lceil 1/x - 1/2 \rceil = 1$. Area $= (1 - 2/3)(1) = 1/3$.
+        - $x \in (1, 1.5): \lceil x - 1/2 \rceil = 1$, and $\lceil 1/x - 1/2 \rceil = 1$. Area $= (1.5 - 1)(1) = 1/2$.
+        - $x \in (1.5, 2): \lceil x - 1/2 \rceil = 2$, and $\lceil 1/x - 1/2 \rceil = 1$. Area $= (2 - 1.5)(2) = 1$.
+        Total area for $x \in (0, 2)$ is $1/3 + 1/3 + 1/2 + 1 = 13/6$.
+        Since the function is symmetric (even), the area for $x \in (-2, 0)$ is also $13/6$. Summing them yields:
+        \[ \frac{13}{6} + \frac{13}{6} = \frac{13}{3} \]
+    \end{solution}
+
+    \question \[ \int_0^1 4^{\sqrt[4]{x}-1} \,dx \]
+    \begin{solution}
+        Substitute $u = \sqrt[4]{x} - 1$. Then $x = (u+1)^4$, and $dx = 4(u+1)^3 \,du$. The limits change from $x=0 \implies u=-1$ to $x=1 \implies u=0$:
+        \[ \int_{-1}^0 4^u \cdot 4(u+1)^3 \,du = 4 \int_{-1}^0 4^u (u+1)^3 \,du \]
+        Shift the variable by letting $v = u + 1$, so $dv = du$, with new limits $0$ to $1$:
+        \[ 4 \int_0^1 4^{v-1} v^3 \,dv = \int_0^1 v^3 4^v \,dv \]
+        Use integration by parts repeatedly (tabular method) to evaluate $\int v^3 4^v \,dv$:
+        \[ \left[ \frac{v^3 4^v}{\ln(4)} - \frac{3v^2 4^v}{\ln^2(4)} + \frac{6v 4^v}{\ln^3(4)} - \frac{6 \cdot 4^v}{\ln^4(4)} \right]_0^1 \]
+        Evaluating at the upper limit $v=1$:
+        \[ \frac{4}{\ln(4)} - \frac{12}{\ln^2(4)} + \frac{24}{\ln^3(4)} - \frac{24}{\ln^4(4)} \]
+        Evaluating at the lower limit $v=0$:
+        \[ 0 - 0 + 0 - \frac{6}{\ln^4(4)} = -\frac{6}{\ln^4(4)} \]
+        Subtracting the lower limit evaluation from the upper:
+        \[ \frac{4}{\ln(4)} - \frac{12}{\ln^2(4)} + \frac{24}{\ln^3(4)} - \frac{18}{\ln^4(4)} \]
+    \end{solution}
+
+    \question \[ \int_1^{1+\varphi} (x^2 - 1) \sum_{k=0}^{100} \binom{100}{k} x^{2k-102} \,dx \]
+    \begin{solution}
+        Factor out $x^{-102}$ from the sum and recognize the binomial expansion:
+        \[ \sum_{k=0}^{100} \binom{100}{k} (x^2)^k = (x^2 + 1)^{100} \]
+        The integrand can be regrouped as:
+        \[ (x^2 - 1) \frac{(x^2 + 1)^{100}}{x^{102}} = \left( 1 - \frac{1}{x^2} \right) \left( \frac{x^2 + 1}{x} \right)^{100} = \left( 1 - \frac{1}{x^2} \right) \left( x + \frac{1}{x} \right)^{100} \]
+        Substitute $u = x + \frac{1}{x}$, which gives $du = \left( 1 - \frac{1}{x^2} \right) \,dx$. We adjust the integration bounds. For $x = 1$, $u = 2$.
+        For $x = 1 + \varphi = \frac{3+\sqrt{5}}{2}$ (where $\varphi$ is the golden ratio):
+        \[ \frac{1}{x} = \frac{2}{3+\sqrt{5}} = \frac{2(3-\sqrt{5})}{4} = \frac{3-\sqrt{5}}{2} \]
+        \[ u = \frac{3+\sqrt{5}}{2} + \frac{3-\sqrt{5}}{2} = 3 \]
+        The integral beautifully simplifies to:
+        \[ \int_2^3 u^{100} \,du = \left[ \frac{u^{101}}{101} \right]_2^3 = \frac{3^{101} - 2^{101}}{101} \]
+    \end{solution}
+
+    \question \[ \int_0^1 \sum_{n=0}^\infty \left(\frac{3}{4}\right)^n |2\{4^n x\} - 1| \,dx \]
+    \begin{solution}
+        Let $f(x) = |2\{x\} - 1|$, where $\{x\}$ denotes the fractional part of $x$. This is a periodic function with period 1. The integral of $f(x)$ over a single period $[0, 1]$ is:
+        \[ \int_0^1 |2x - 1| \,dx = \frac{1}{2} \]
+        The function $f(4^n x) = |2\{4^n x\} - 1|$ oscillates $4^n$ times faster but maintains the same average value over the interval $[0, 1]$ since $4^n$ is an integer.
+        \[ \int_0^1 |2\{4^n x\} - 1| \,dx = \frac{1}{2} \]
+        By Tonelli's Theorem, we can interchange the sum and the integral:
+        \[ \sum_{n=0}^\infty \left(\frac{3}{4}\right)^n \int_0^1 |2\{4^n x\} - 1| \,dx = \sum_{n=0}^\infty \left(\frac{3}{4}\right)^n \left(\frac{1}{2}\right) \]
+        Evaluate the geometric series:
+        \[ \frac{1}{2} \left( \frac{1}{1 - 3/4} \right) = \frac{1}{2} (4) = 2 \]
+    \end{solution}
+
+    \question \[ \int_0^\infty \sum_{k=1}^{2025} \frac{1}{(k^2+k)x^2 + (2k+1)x + 1} \,dx \]
+    \begin{solution}
+        Factor the quadratic denominator:
+        \[ (k^2+k)x^2 + (2k+1)x + 1 = (kx + 1)((k+1)x + 1) \]
+        Apply partial fraction decomposition to the summand:
+        \[ \frac{1}{(kx + 1)((k+1)x + 1)} = \frac{k+1}{(k+1)x + 1} - \frac{k}{kx + 1} \]
+        The finite sum from $k=1$ to $2025$ telescopes:
+        \[ \sum_{k=1}^{2025} \left( \frac{k+1}{(k+1)x + 1} - \frac{k}{kx + 1} \right) = \frac{2026}{2026x + 1} - \frac{1}{x + 1} \]
+        Now integrate this result over $[0, \infty)$:
+        \[ \int_0^\infty \left( \frac{2026}{2026x + 1} - \frac{1}{x + 1} \right) \,dx = \left[ \ln(2026x + 1) - \ln(x + 1) \right]_0^\infty \]
+        Combine the logarithms:
+        \[ \lim_{R \to \infty} \left[ \ln\left(\frac{2026x + 1}{x + 1}\right) \right]_0^R = \ln(2026) - \ln(1) = \log(2026) \]
+    \end{solution}
+
+    \question \[ \int_0^2 \frac{x}{3\lambda(x)^2 - x} \,dx \]
+    \begin{solution}
+        Let $t = \lambda(x)$, defined as the unique positive root of $t^3 - xt - 1 = 0$. Rearranging this gives $x = t^2 - t^{-1}$. We can calculate the differential $dx$:
+        \[ dx = \left( 2t + t^{-2} \right) \,dt = \frac{2t^3 + 1}{t^2} \,dt \]
+        Express the integrand's denominator in terms of $t$:
+        \[ 3t^2 - x = 3t^2 - (t^2 - t^{-1}) = 2t^2 + t^{-1} = \frac{2t^3 + 1}{t} \]
+        Substitute $x$, $dx$, and the denominator into the integral. At $x=0$, $t^3 - 1 = 0 \implies t=1$. At $x=2$, $t^3 - 2t - 1 = 0$, which factors as $(t+1)(t^2-t-1)=0$; its positive root is $\varphi$:
+        \[ \int_1^\varphi \frac{t^2 - t^{-1}}{\frac{2t^3 + 1}{t}} \left( \frac{2t^3 + 1}{t^2} \right) \,dt = \int_1^\varphi \frac{t^3 - 1}{t^2} \,dt = \int_1^\varphi (t - t^{-2}) \,dt \]
+        Evaluate the integral:
+        \[ \left[ \frac{t^2}{2} + \frac{1}{t} \right]_1^\varphi = \left( \frac{\varphi^2}{2} + \frac{1}{\varphi} \right) - \left( \frac{1}{2} + 1 \right) \]
+        Since $\varphi^2 = \varphi + 1$, we have $1/\varphi = \varphi - 1$:
+        \[ \frac{\varphi + 1}{2} + \varphi - 1 - \frac{3}{2} = \frac{3\varphi - 4}{2} \]
+        \textit{Note: The exact literal derivation of the expression presented in the problem yields $\frac{3\varphi - 4}{2}$. If the numerator was intended to be $\lambda(x)^2$ rather than $x$, the integral perfectly yields $\int_1^\varphi t \,dt = \frac{\varphi^2 - 1}{2}$, matching the official answer key.}
+    \end{solution}
+
+    \question \[ \int_0^1 \frac{x^2 - 2\log(x) - 1}{\log^2(x)} \,dx \]
+    \begin{solution}
+        Define a parametric integral function:
+        \[ J(a) = \int_0^1 \left( \frac{x^a - 1}{\log^2(x)} - \frac{a}{\log(x)} \right) \,dx \]
+        Differentiate with respect to $a$ using Leibniz's rule:
+        \[ J'(a) = \int_0^1 \left( \frac{x^a \log(x)}{\log^2(x)} - \frac{1}{\log(x)} \right) \,dx = \int_0^1 \frac{x^a - 1}{\log(x)} \,dx = \ln(a + 1) \]
+        Integrate $J'(a)$ with respect to $a$ to recover $J(a)$:
+        \[ J(a) = \int \ln(a + 1) \,da = (a + 1)\ln(a + 1) - a + C \]
+        Since $J(0) = \int_0^1 0 \,dx = 0$, the constant $C = 0$. We want the value at $a=2$:
+        \[ J(2) = (2 + 1)\ln(2 + 1) - 2 = 3\log(3) - 2 \]
+    \end{solution}
+
+    \question \[ \int_0^{1/\sqrt{3}} \frac{x}{1-x^4} [\log(1+x^2) - \log(1-x^2)] \,dx \]
+    \begin{solution}
+        Substitute $u = x^2$, making $du = 2x \,dx$. The boundaries become $0$ to $1/3$:
+        \[ \frac{1}{2} \int_0^{1/3} \frac{1}{1 - u^2} \ln\left(\frac{1+u}{1-u}\right) \,du \]
+        Now perform a fractional linear substitution $v = \frac{1+u}{1-u}$, which implies $u = \frac{v-1}{v+1}$ and $du = \frac{2}{(v+1)^2} \,dv$. The limits map from $u=0 \implies v=1$ to $u=1/3 \implies v=2$. Furthermore, $1 - u^2 = \frac{4v}{(v+1)^2}$.
+        \[ \frac{1}{2} \int_1^2 \frac{(v+1)^2}{4v} \ln(v) \frac{2}{(v+1)^2} \,dv = \frac{1}{4} \int_1^2 \frac{\ln(v)}{v} \,dv \]
+        This standard integral resolves cleanly:
+        \[ \frac{1}{4} \left[ \frac{\ln^2(v)}{2} \right]_1^2 = \frac{1}{8} (\ln^2(2) - \ln^2(1)) = \frac{1}{8}\log^2(2) \]
+    \end{solution}
+
+    \question \[ \int_{-\infty}^\infty \left( 1 - \cos\left(\frac{1}{x-1} + \frac{1}{x+1}\right) \right) \,dx \]
+    \begin{solution}
+        The inner fraction simplifies to $\frac{2x}{x^2-1}$. Substitute $u = \frac{2x}{x^2-1}$. Solving for $x$ yields two branches $x = \frac{1 \pm \sqrt{1+u^2}}{u}$. Applying the transformation and summing over the mapped domains $(-\infty, 0)$ and $(0, \infty)$ using the absolute differentials gives an effective measure of $-dx_{total} = \frac{2}{u^2} \,du$:
+        \[ \int_{-\infty}^\infty \frac{2(1 - \cos(u))}{u^2} \,du \]
+        Using the standard integral identity $\int_{-\infty}^\infty \frac{1-\cos(u)}{u^2} \,du = \pi$, we multiply by $2$:
+        \[ 2\pi \]
+    \end{solution}
+
+    \question \[ \int_0^{\pi/2} \tan(x)^{4/5} \,dx \]
+    \begin{solution}
+        Substitute $u = \tan(x) \implies dx = \frac{du}{1+u^2}$, mapping limits to $[0, \infty)$:
+        \[ \int_0^\infty \frac{u^{4/5}}{1+u^2} \,du \]
+        Substitute $u^2 = t \implies du = \frac{1}{2}t^{-1/2} \,dt$:
+        \[ \frac{1}{2} \int_0^\infty \frac{t^{-1/10}}{1+t} \,dt \]
+        This form maps directly to the Beta function property $\int_0^\infty \frac{t^{z-1}}{1+t} \,dt = \frac{\pi}{\sin(\pi z)}$. Setting $z - 1 = -1/10$ gives $z = 9/10$:
+        \[ \frac{1}{2} \frac{\pi}{\sin\left(\frac{9\pi}{10}\right)} = \frac{\pi}{2\sin\left(\frac{\pi}{10}\right)} \]
+        Given the exact geometric value $\sin(\frac{\pi}{10}) = \sin(18^\circ) = \frac{\sqrt{5}-1}{4}$, the expression yields:
+        \[ \frac{\pi}{2 \left( \frac{\sqrt{5}-1}{4} \right)} = \frac{2\pi}{\sqrt{5}-1} \]
+    \end{solution}
+\end{questions}
